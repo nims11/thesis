@@ -1,0 +1,131 @@
+% List down refresh strategies
+In this section, we describe the refresh strategies we investigated. We use the
+term \textit{full refresh} to denote a refresh in which all available judgments
+are used in training and relevance likelihood scores for all the documents are
+calculated. A full refresh runs in $O(n\log n)$~\footnote{In most cases, only
+    top $k$ documents ($k<<n$) are needed, and the refresh can be performed in $O(n \log k)$ time} time where $n$ is the
+number of documents in the corpus. Training takes $O(1)$ time (number of iterations
+is fixed), computing the relevance likelihood scores take $O(n)$ time (assuming
+length of
+the documents to be constant) and sorting the scores take $O(n \log n)$ time. However,
+the constant costs associated with training and scoring are significantly higher
+than sorting.
+
+\subsection*{BMI}
+
+In BMI AutoTAR, a full refresh is performed after every $k$ judgments. Initially $k=1$, and
+after every refresh, is updated using $k \leftarrow k + \lfloor\frac{k +
+9}{10}\rfloor$. Therefore, $k$ increases exponentially over time.
+
+This strategy scales well with the number of judgments ($E$) made during the CAL
+process since only $O(\log E)$ refreshes are done. According to the authors of
+BMI, the motivation behind this strategy was to ``\textit{reap the benefits of
+    early precision, while avoiding downside risk and excessive running time, by
+using exponentially increasing batch size}''~\cite{cormack2015autonomy}.
+
+% This strategy scales well for large datasets since the number of refreshes is $O(n\log n)$.
+
+\subsection*{Static Batch}
+
+In \textit{static batch refresh strategy}, a full refresh is performed after every $k$ judgments ($k$ is fixed).
+
+This strategy incurs a high computation cost and introduces scalability issues
+since it requires $O(E)$ number of refreshes and each refresh takes $\Omega(n)$
+time, where $E$ is the number of documents judged during the CAL process and
+$n$ is the number of documents in the dataset. For very small values of $k$
+(such as $1$) and large values of $n$, pauses as small as half a second due to
+frequent refreshes can disrupt the user experience. One way to work around this
+problem is to perform asynchronous refreshes and immediately show the users
+documents from the old review queue [Blinded]. This delays the effect of user
+feedback on the review queue by $\lceil\frac{t_r}{t_u}\rceil$ documents, where
+$t_r$ is the time it takes to complete a refresh, and $t_u$ is the time a user
+takes to review one document. While this delay is usually tiny, additional
+experiments need to be performed to measure the impact of these delays on
+effectiveness.
+
+\subsection*{Partial Refresh}
+
+In this strategy, a full refresh is performed after every $k$ judgments. At the
+end of each full refresh, $s$ documents with the highest relevance likelihood
+scores are stored in a \textit{partial refresh set}. After every judgment, a
+\textit{partial refresh} is performed. In a partial refresh, all available
+judgments are used in training but relevance likelihood scores are only
+calculated for the documents in the partial refresh set. A single partial
+refresh runs in $O(s \log s)$ time.
+
+With some enhancements, this strategy can also help reduce the high memory costs
+when working with low physical memory or very large datasets (such as ClueWeb).
+As mentioned in Section~\ref{sec.dataeval}, the documents are loaded in memory
+to enable faster operations and improve the responsiveness of the system.
+Partial refreshes are fast and performed on a small set of data which can be
+stored in the memory. Full refresh can be performed in the background, and can
+thus afford reads from the disk without sacrificing the user experience or
+effectiveness of this strategy.
+
+\subsection*{Precision Based Refreshing}
+
+In this strategy, a full refresh is performed when the ``output quality'' of the
+CAL system falls below some threshold. We define ``output quality'' as the
+fraction of relevant judgments in the last $m$ judgments made by the reviewer. A
+full refresh is performed whenever this fraction falls below some threshold $p$.
+
+Unlike previous strategies, we don't define our refresh criteria in terms of
+elapsed number of judgments. Our aim is to find more meaningful factors
+which can help us better understand the effectiveness of various refresh
+strategies, and as a result, help us design better refresh strategies.
+
+\subsection*{Recency Weighting}
+
+This strategy modifies the training step (step 4 in Algorithm~\ref{alg.cal}) in
+the CAL process by favoring documents which were recently judged. As described
+in Section~\ref{sec.cal}, training is done over several iterations. In each
+iteration of the original training, a relevant and a non-relevant document is
+randomly sampled from the training set. The loss computed using them is used to
+update the classifier weights. To incorporate recency weighting, we modified the
+uniform random sampling such that the probability of selecting a document
+increases if it was judged recently.
+
+Given a list of documents $[D_1, D_2, ..., D_n]$ ordered by the time
+they were judged, our modified random sampling will
+select a document $D_x$ with probability $P(D_x)$ where
+
+\begin{equation*}
+P(D_x) = P(D_1) + \frac{P(D_1)(x-1)(w-1)}{N-1}
+\end{equation*}
+
+Therefore, $P(D_x)$ is a linear function such that the latest judged document
+$D_n$ is $w$ times more likely to be selected than the oldest judged document
+$D_1$. A full refresh (with modified training) is performed after every
+judgment.
+
+\begin{table}[]
+\centering
+\caption{Summary of the refresh strategies and their parameters.}
+\label{table.strategies}
+\begin{tabular}{|c|c|}
+\hline
+\textbf{Strategy} & \textbf{Parameters} \\ \hline \hline
+bmi\_refresh & None \\ \hline
+static\_batch & $k$ = \textit{no. of judgments between full refreshes} \\ \hline
+partial\_refresh & \begin{tabular}[x]{@{}c@{}}
+$k$ = \textit{no. of judgments between full refreshes} \\
+$s$ = \textit{no. of documents in the partial refresh}\\
+\textit{set}
+\end{tabular} \\ \hline
+precision\_strategy & \begin{tabular}[x]{@{}c@{}}
+$m$ = \textit{no. of recent judgments to}\\
+\textit{compute precision on} \\
+$p$ = \textit{full refresh is triggered if the precision of} \\ 
+\textit{last $k$ documents fall below this value}
+\end{tabular} \\ \hline
+recency\_weighting & \begin{tabular}[x]{@{}c@{}}
+$w$ = \textit{factor by which the latest judged} \\
+\textit{document is more likely to be sampled}\\
+\textit{than the oldest judged document}
+\end{tabular} \\ \hline
+* & \begin{tabular}[x]{@{}c@{}}
+$it$ = \textit{no. of training iterations} \\
+\textit{(global parameter, $100000$ unless specified)}
+\end{tabular} \\ \hline
+\end{tabular}
+\end{table}

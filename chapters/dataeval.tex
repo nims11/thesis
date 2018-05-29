@@ -1,0 +1,28 @@
+% dataset and stats
+\label{sec.dataeval}
+We used the Athome1 test collection from the TREC 2015 Total Recall
+track~\cite{roegiest2015trec}. The collection has 290,099 documents and 10
+topics. Each topic has an average of 4398 documents labelled as relevant.
+
+% gain curve
+
+To measure the effectiveness, we ran a CAL simulation for each topic and refresh
+strategy until $E_{max}$ number of judgments were made. $E_{max}$ is also known
+as the max review effort. In our experiments, $E_{max}$ was equal to $2\times R$ where
+$R$ is the total number of relevant documents for that topic. We use average
+recall gain curves to compare the effectiveness of different refresh strategies.
+A gain curve for a topic is a plot of recall (y-axis) against the normalized
+review effort ($E_{norm} = \frac{E}{R}$), where $E$ is the number of judgments made since
+the beginning of the simulation. We get the average gain curve by averaging the
+recall over the 10 topics. For the sake of readability and space, we excluded
+those plots from this paper. Instead, we report certain points of interest from
+the plots as a table. Specifically, we compare different refresh strategies based
+on their recall values when $E_{norm} \in \{1,1.5,2\}$. We also report the
+effort required to reach $75\%$ recall for each refresh strategy.
+
+% timings
+To measure the computational efficiency, we fixed $E_{max}=10000$ and ran the
+simulation across four 2.20GHz CPUs (Step 7 of Algorithm~\ref{alg.cal} is the
+only parallelized step) for each topic and refresh strategy. Different refresh
+strategies are compared based on the running time of the simulation averaged
+over the 10 topics.

@@ -1,0 +1,45 @@
+\label{sec.cal}
+% CAL algorithm (assuming an arbitrary refresh strategy)
+A general version of the AutoTAR CAL algorithm is described in
+Algorithm~\ref{alg.cal}.  The choice of refresh strategy can control when to
+perform a refresh (step 10), as well as the behaviour of training (step 4) and
+scoring (step 5). In this paper, we simulate human assessors using a set of
+existing relevance judgments (Step 8). Unlabelled documents are considered
+non-relevant during the simulation.
+
+\begin{algorithm}[]
+Construct a seed document whose content is the topic description \\
+Label the seed document as relevant and add it to the training set \\
+Add 100 random documents from the collection, temporarily labeled as ``not
+relevant'' \\
+Train a Logistic Regression classifier using the training set \\
+Remove the random documents from the training set added in step 3 \\
+Flush the review queue \\
+Using the classifier, order documents by their relevance scores and put them
+into a review queue \\ Review a document from the review queue, coding it as
+``relevant'' or ``not relevant'' \\
+Add the document to the training set \\
+Repeat steps 8-9 until a refresh is needed (defined by the refresh strategy) \\
+Repeat steps 3-10 until some stopping condition is met.
+\caption{AutoTAR CAL Algorithm (assuming an arbitrary refresh strategy). A refresh
+strategy can control behaviour of steps 4, 7 and 10}
+\label{alg.cal}
+\end{algorithm}
+
+Documents are represented as a vector of unigram tf-idf features which are used
+for training the classifier and calculating relevance likelihood scores. BMI
+AutoTAR uses sofia-ml\footnote{https://code.google.com/archive/p/sofia-ml/}
+\cite{sculley2010combined} to train a logistic regression classifier. It uses
+the \textit{logreg-pegasos} learner with $100000$ iterations of \textit{roc}
+sampling. A training iteration involves randomly sampling a relevant and a
+non-relevant document from the training set, computing the loss and adjusting
+the classifier weights accordingly. The classifier weights are used to calculate
+relevance likelihood score for any document.
+
+The BMI tool provided by the TREC Total Recall organizers is written in BASH.
+For efficiency and extensibility, we implemented Algorithm~\ref{alg.cal} in
+C++~[Blinded]. Our implementation organizes all the document feature vectors in
+the memory to eliminate disk accesses and enable faster operations. New refresh
+strategies can be easily implemented and tested using this tool. The tool
+provides a command line interface to run simulations and a HTTP API for use in
+real world applications.

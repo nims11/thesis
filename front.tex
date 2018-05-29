@@ -1,0 +1,138 @@
+% T I T L E   P A G E
+% -------------------
+% Last updated June 14, 2017, by Stephen Carr, IST-Client Services
+% The title page is counted as page `i' but we need to suppress the
+% page number. Also, we don't want any headers or footers.
+\pagestyle{empty}
+\pagenumbering{roman}
+
+% The contents of the title page are specified in the "titlepage"
+% environment.
+\begin{titlepage}
+        \begin{center}
+        \vspace*{1.0cm}
+
+        \Huge
+        {\bf Refresh Strategies in Continuous Active Learning }
+
+        \vspace*{1.0cm}
+
+        \normalsize
+        by \\
+
+        \vspace*{1.0cm}
+
+        \Large
+        Nimesh Ghelani \\
+
+        \vspace*{3.0cm}
+
+        \normalsize
+        A thesis \\
+        presented to the University of Waterloo \\ 
+        in fulfillment of the \\
+        thesis requirement for the degree of \\
+        Master in Mathematics \\
+        in \\
+        Computer Science \\
+
+        \vspace*{2.0cm}
+
+        Waterloo, Ontario, Canada, 2018 \\
+
+        \vspace*{1.0cm}
+
+        \copyright\ Nimesh Ghelani 2018 \\
+        \end{center}
+\end{titlepage}
+
+% The rest of the front pages should contain no headers and be numbered using Roman numerals starting with `ii'
+\pagestyle{plain}
+\setcounter{page}{2}
+
+\cleardoublepage % Ends the current page and causes all figures and tables that have so far appeared in the input to be printed.
+% In a two-sided printing style, it also makes the next page a right-hand (odd-numbered) page, producing a blank page if necessary.
+
+ 
+% D E C L A R A T I O N   P A G E
+% -------------------------------
+  % The following is a sample Delaration Page as provided by the GSO
+  % December 13th, 2006.  It is designed for an electronic thesis.
+  \noindent
+I hereby declare that I am the sole author of this thesis. This is a true copy of the thesis, including any required final revisions, as accepted by my examiners.
+
+  \bigskip
+  
+  \noindent
+I understand that my thesis may be made electronically available to the public.
+
+\cleardoublepage
+
+% A B S T R A C T
+% ---------------
+
+\begin{center}\textbf{Abstract}\end{center}
+High recall information retrieval is crucial to tasks such as electronic
+discovery and systematic review. \textit{Continuous Active Learning} (CAL) is a
+technique where a human reviewer works in loop with a machine learning model; the
+model presents a set of documents likely to be relevant and the reviewer
+provides relevance feedback. Our focus in this paper is on one particular aspect
+of CAL:  \textit{refreshing}, which is a crucial and recurring event in the CAL
+process.  During a \textit{refresh}, the machine learning model is trained with
+the relevance judgments and a new list of likely-to-be-relevant documents is
+produced for the reviewer to judge. It is also computationally the most
+expensive step in CAL. In this paper, we investigate the effects of the default
+and alternative refresh strategies on the effectiveness and efficiency of CAL.
+We find that more frequent refreshes can significantly reduce the human effort
+required to achieve certain recall. For moderately sized datasets, the high
+computation cost of frequent refreshes can be reduced through a careful
+implementation. For dealing with resource constraints and large datasets, we
+propose alternative refresh strategies which provide the benefits of frequent
+refreshes at a lower computation cost.
+
+\cleardoublepage
+
+% A C K N O W L E D G E M E N T S
+% -------------------------------
+
+\begin{center}\textbf{Acknowledgements}\end{center}
+
+\cleardoublepage
+
+% D E D I C A T I O N
+% -------------------
+
+\begin{center}\textbf{Dedication}\end{center}
+
+\cleardoublepage
+
+% T A B L E   O F   C O N T E N T S
+% ---------------------------------
+\renewcommand\contentsname{Table of Contents}
+\tableofcontents
+\cleardoublepage
+\phantomsection    % allows hyperref to link to the correct page
+
+% L I S T   O F   T A B L E S
+% ---------------------------
+\addcontentsline{toc}{chapter}{List of Tables}
+\listoftables
+\cleardoublepage
+\phantomsection		% allows hyperref to link to the correct page
+
+% L I S T   O F   F I G U R E S
+% -----------------------------
+\addcontentsline{toc}{chapter}{List of Figures}
+\listoffigures
+\cleardoublepage
+\phantomsection		% allows hyperref to link to the correct page
+
+% % GLOSSARIES (Lists of definitions, abbreviations, symbols, etc. provided by the glossaries-extra package)
+% % -----------------------------
+% \printglossaries
+% \cleardoublepage
+% \phantomsection		% allows hyperref to link to the correct page
+
+% Change page numbering back to Arabic numerals
+\pagenumbering{arabic}
+

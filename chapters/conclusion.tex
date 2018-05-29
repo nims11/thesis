@@ -1,0 +1,25 @@
+% summarize everything
+We investigated a crucial part of the Continuous Active Learning (CAL) process
+called \textit{refreshing}. We proposed and compared various \textit{refresh
+strategies}. Our results show that by refreshing more often, CAL can be used to
+achieve higher recall. Refreshing after every judgment (\textit{static\_batch}($k
+= 1$)) results in consistently better performance than the original BMI AutoTAR
+in terms of recall. However, frequent refreshing is computationally more
+expensive than the BMI refresh
+strategy. But with an efficient implementation on modern computers, frequent
+refreshing can be practically used in real world CAL systems.  We also defined and
+analysed alternative refresh strategies which are as effective as refreshing
+after every judgments. In our experiments, various settings of \textit{partial refresh
+strategy} and \textit{precision strategy} achieved recall scores similar to
+\textit{static\_batch($k = 1$)} at a lower computation cost. For situations
+where computational resources are limited or dataset is very large,
+\textit{partial refresh strategy} can be used. \textit{Precision based
+refreshing} is efficient when the relevant documents are abundant and easier to
+find.
+
+We also provide an efficient C++ implementation of CAL and all the refresh
+strategies mentioned in this paper as an open source tool. The tool is designed
+to be used both as a research tool and in real world applications.
+
+% static-1 if your corpus and resources are a match
+% others parameters to tune to squeeze out performance
