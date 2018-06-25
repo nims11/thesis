@@ -78,6 +78,7 @@
 %\newcommand{\texorpdfstring}[2]{#1} % does nothing, but defines the command
 % Anything defined here may be redefined by packages added below...
 
+\newcommand{\red}[1]{\textcolor{red}{#1}}
 % This package allows if-then-else control structures.
 \usepackage{ifthen}
 \newboolean{PrintVersion}
@@ -238,6 +239,9 @@
 
 \chapter{Continuous Active Learning}
 \input{chapters/cal.tex}
+
+\chapter{Implementation}
+\input{chapters/implementation.tex}
 
 \chapter{Experiment Setup}
 \input{chapters/dataeval.tex}
