@@ -237,37 +237,20 @@
 \chapter{Introduction}
 \input{chapters/intro.tex}
 
-\chapter{Continuous Active Learning}
+\chapter{Background and Related Work}
 \input{chapters/cal.tex}
 
 \chapter{Implementation}
 \input{chapters/implementation.tex}
 
-\chapter{Experiment Setup}
-\input{chapters/dataeval.tex}
-
 \chapter{Refresh Strategies}
 \input{chapters/refresh.tex}
 
+\chapter{Dataset and Evaluation}
+\input{chapters/dataeval.tex}
+
 \chapter{Results and Discussion}
 \input{chapters/results.tex}
-
-\chapter{Future Work}
-There are a many large scale datasets (ClueWeb, Twitter, etc) which far exceed
-the scale of dataset used in this paper.  It is desirable to run CAL efficiently on
-these datasets. We described an enhancement to the \textit{partial refresh
-strategy} which could potentially achieve this. Additional strategies which deal
-with large amount of data could also be designed. In addition to
-runtime efficiency, these strategies will also need to optimize for memory
-efficiency.
-
-In this paper, we measure computational efficiency of strategies using the
-running time of the simulations. In a more practical setting where an actual
-human is judging documents, responsiveness of the CAL system also becomes
-important.  Under \textit{static batch refresh strategy}, we mentioned the idea
-of introducing a \textit{delay} to improve responsiveness of CAL systems. Additional
-experiments which simulate and measure the impact of those delays could be
-designed.
 
 \chapter{Conclusion}
 \input{chapters/conclusion.tex}
