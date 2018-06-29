@@ -1,60 +1,104 @@
 \label{chap:refresh}
 % List down refresh strategies
-In this section, we describe the refresh strategies we investigated. We use the
-term \textit{full refresh} to denote a refresh in which all available judgments
-are used in training and relevance likelihood scores for all the documents are
-calculated. A full refresh runs in $O(n\log n)$~\footnote{In most cases, only
-    top $k$ documents ($k<<n$) are needed, and the refresh can be performed in $O(n \log k)$ time} time where $n$ is the
-number of documents in the corpus. Training takes $O(1)$ time (number of iterations
-is fixed), computing the relevance likelihood scores take $O(n)$ time (assuming
-length of
-the documents to be constant) and sorting the scores take $O(n \log n)$ time. However,
-the constant costs associated with training and scoring are significantly higher
-than sorting.
+In this chapter, we discuss some of the refresh strategies we investigated.
 
-\subsection*{BMI}
+\section{Full Refresh}
+Before discussing the refresh strategies, it is useful to define \textit{full
+refresh}. We use the term \textit{full refresh} to denote a refresh in which all
+available judgments are used in training and relevance likelihood scores for all
+the documents are calculated.
 
-In BMI AutoTAR, a full refresh is performed after every $k$ judgments. Initially $k=1$, and
-after every refresh, is updated using $k \leftarrow k + \lfloor\frac{k +
-9}{10}\rfloor$. Therefore, $k$ increases exponentially over time.
+A full refresh runs in $O(t + n\log n)$ time where $n$ is the number of
+documents in the corpus and $t$ is the number of training iterations. The number
+of iterations $t$ required for convergence depends on the size of the training data
+(or number of judgments). We set $t$ to a high constant value ($100000$) for our
+dataset. Although the length of documents or specifically, the number of
+non-zero features in a document feature vector affect the running time of training
+and scoring, we treat it as a constant to simplify our analysis. Scoring all the
+documents takes $O(n)$ time and sorting them takes $O(n \log n)$ time. In most
+cases, only top $k$ documents ($k<<n$) are needed. In such cases, complete
+sorting is not required and the refresh can be performed in $O(t + n \log k)$
+time.
 
-This strategy scales well with the number of judgments ($E$) made during the CAL
-process since only $O(\log E)$ refreshes are done. According to the authors of
-BMI, the motivation behind this strategy was to ``\textit{reap the benefits of
-    early precision, while avoiding downside risk and excessive running time, by
-using exponentially increasing batch size}''~\cite{cormack2015autonomy}.
+\section{BMI}
 
-% This strategy scales well for large datasets since the number of refreshes is $O(n\log n)$.
+In the original BMI AutoTAR, full refreshes are performed after receiving a
+batch of judgments. The size of this batch increases exponentially with number
+of refreshes. The batch size is initially set to $k=1$ and after every refresh,
+is updated using $k \leftarrow k + \lfloor\frac{k + 9}{10}\rfloor$.
 
-\subsection*{Static Batch}
+The smaller batch size during the beginning of a task results in frequent
+refreshes and thus allows the classifier to frequently update its understanding
+of relevance. This strategy scales well with the number of judgments ($E$) made
+during the CAL process since only $O(\log E)$ number of refreshes are done.
+According to the authors of BMI, the motivation behind this strategy was to
+``\textit{reap the benefits of early precision, while avoiding downside risk and
+    excessive running time, by using exponentially increasing batch
+size}''~\cite{cormack2015autonomy}.
 
-In \textit{static batch refresh strategy}, a full refresh is performed after every $k$ judgments ($k$ is fixed).
+\section{Static Batch}
+
+In \textit{static batch refresh strategy}, full refreshes are performed after a
+fixed number of judgments are received. When batch size is fixed to $1$, a full
+refresh happens after every judgment. The only parameter in this strategy is the
+judgment batch size.
 
 This strategy incurs a high computation cost and introduces scalability issues
 since it requires $O(E)$ number of refreshes and each refresh takes $\Omega(n)$
 time, where $E$ is the number of documents judged during the CAL process and
-$n$ is the number of documents in the dataset. For very small values of $k$
-(such as $1$) and large values of $n$, pauses as small as half a second due to
-frequent refreshes can disrupt the user experience. One way to work around this
-problem is to perform asynchronous refreshes and immediately show the users
-documents from the old review queue [Blinded]. This delays the effect of user
-feedback on the review queue by $\lceil\frac{t_r}{t_u}\rceil$ documents, where
-$t_r$ is the time it takes to complete a refresh, and $t_u$ is the time a user
-takes to review one document. While this delay is usually tiny, additional
-experiments need to be performed to measure the impact of these delays on
-effectiveness.
+$n$ is the number of documents in the dataset.
 
-\subsection*{Partial Refresh}
+\subsection{Responsiveness}
+%Explain responsiveness
+If a judgment triggers a refresh, the system waits for the refresh to complete
+before returning a fresh set of documents for the user to judge.
+For very small batch sizes (such as $1$) and large values of $n$, full refreshes
+will be frequent and expensive. Pauses as small as half a second after every few
+judgments can disrupt the user experience.
 
-In this strategy, a full refresh is performed after every $k$ judgments. At the
-end of each full refresh, $s$ documents with the highest relevance likelihood
+One way to work around this problem is to perform asynchronous refreshes and
+immediately show the users documents from the old review
+queue~\cite{zhang2017uwaterloomds}. During a refresh, we fill the review queue
+with few extra top documents in addition to the batch size. Whenever a judgment
+triggers a refresh, we delegate the refreshing to a background process and
+continue serving the user the aforementioned extra documents from the review
+queue. Meanwhile, when the refresh in the background is finished, the review
+queue is replaced with a newer version. This modification delays the effect of
+user feedback on the review queue by $\lceil\frac{t_r}{t_u}\rceil$ documents,
+where $t_r$ is the time it takes to complete a refresh, and $t_u$ is the time a
+user takes to review one document.  \red{show that the delay is very tiny, and
+that the classifier doesn't really change much between two refreshes. use data
+from user study}.
+
+If the CAL system can perform two refreshes while the user is reading a
+document (i.e. $2t_r \le t_u$), we can achieve a responsive system without any
+delay in processing of judgments. If the user is reading a document and his
+judgment will trigger a refresh, a background process can just two refreshes;
+one assuming the upcoming judgment will be relevant, and another assuming it
+will be non-relevant.  The two possible future review queues are therefore ready
+while the user is reading the document and the correct one can be immediately
+served once the user judgment is received.
+
+\section{Partial Refresh}
+
+In this strategy, a full refresh is performed after every fixed number of
+judgments, similar to the \textit{static batch strategy}. At the end of each
+full refresh, a small set of documents with the highest relevance likelihood
 scores are stored in a \textit{partial refresh set}. After every judgment, a
-\textit{partial refresh} is performed. In a partial refresh, all available
+\textit{partial refresh} is performed. During a partial refresh, all available
 judgments are used in training but relevance likelihood scores are only
 calculated for the documents in the partial refresh set. A single partial
-refresh runs in $O(s \log s)$ time.
+refresh runs in $O(s\log{s})$ average time, where $s$ is the size of the
+\textit{partial refresh set}. There logarithmic factor in running time
+is a result of the partial set stored as a binary search tree and after every
+judgment, it takes $O(\log(s))$ time to remove a document from that set. Since
+the scores for the document in this set are recomputed after every
+judgment, only the document with maximum score is returned to the user.
 
-With some enhancements, this strategy can also help reduce the high memory costs
+\red{describe the motivation with data. a balanced static\_batch 1. how the top
+documents remain the same across subsequent full refreshes in static batch 1}
+
+With some enhancements, this strategy can also help reduce the memory costs
 when working with low physical memory or very large datasets (such as ClueWeb).
 As mentioned in Section~\ref{sec.dataeval}, the documents are loaded in memory
 to enable faster operations and improve the responsiveness of the system.
@@ -63,19 +107,33 @@ stored in the memory. Full refresh can be performed in the background, and can
 thus afford reads from the disk without sacrificing the user experience or
 effectiveness of this strategy.
 
-\subsection*{Precision Based Refreshing}
+\section{Precision Based Refreshing}
 
-In this strategy, a full refresh is performed when the ``output quality'' of the
-CAL system falls below some threshold. We define ``output quality'' as the
-fraction of relevant judgments in the last $m$ judgments made by the reviewer. A
-full refresh is performed whenever this fraction falls below some threshold $p$.
+The previous strategies we discussed use the elapsed number of judgments as
+a criteria to determine when to refresh. Instead of number of judgments, we can
+perform a full refresh when the ``output quality'' of the CAL system falls below
+some threshold. The output quality of a CAL system is considered high if the
+user judges more documents as relevant. There could be various ways to
+concretely define ``output quality''.
 
-Unlike previous strategies, we don't define our refresh criteria in terms of
-elapsed number of judgments. Our aim is to find more meaningful factors
-which can help us better understand the effectiveness of various refresh
-strategies, and as a result, help us design better refresh strategies.
+In \textit{precision based refreshing}, we work with a very simple definition of
+``output quality''. It is the fraction of relevant judgments in some fixed
+number of latest judgments made by the reviewer. A full refresh is performed
+whenever this fraction falls below some pre-defined threshold.
 
-\subsection*{Recency Weighting}
+Our aim is to find more meaningful factors which can help us better understand
+the effectiveness of various refresh strategies, and as a result, help us design
+better refresh strategies. For example, in certain cases, it is desirable to
+save computation by not refreshing when the output quality is high and force
+more frequent refreshes when the output quality is low. However, during later
+stages of a task when the output quality is always low and the likelihood of
+finding relevant documents is very low, \textit{precision based refreshing}
+behaves similar to \textit{static batch refreshing} with batch size of $1$. This
+is undesirable as frequent refreshing at this stage of a task don't have any
+positive effect.\red{show data. how at later stages, training data and trained
+weights changes by very little with addition of one non-relevant document}.
+
+\section{Recency Weighting}
 
 This strategy modifies the training step (step 4 in Algorithm~\ref{alg.cal}) in
 the CAL process by favoring documents which were recently judged. As described
