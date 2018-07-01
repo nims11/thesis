@@ -3,17 +3,35 @@
 
 \section{High Recall Information Retrieval}
 
+\red{previous efforts, TAR, CAL, HiCAL}
+
 \section{Continuous Active Learning}
+\label{sec:cal}
+\red{Add some history}
 
 A general version of the AutoTAR CAL algorithm is described in
-Algorithm~\ref{alg.cal}.  The choice of refresh strategy can control when to
-perform a refresh (step 10), as well as the behaviour of training (step 4) and
-scoring (step 5). In this paper, we simulate human assessors using a set of
-existing relevance judgments (Step 8). Unlabelled documents are considered
-non-relevant during the simulation.
+Algorithm~\ref{alg.cal}. The CAL process bootstraps using a user provided query
+and 100 randomly sampled documents from the document collection. The former is
+treated as a relevant document and the rest are treated as non-relevant in the
+training set. The training set is then used to train a Logistic Regression
+classifier. Using the classifier, relevance likelihood scores are computed
+for unjudged documents in the collection and top documents are pushed to
+the review queue. The assessor judges documents from the review queue as
+relevant or non-relevant. These judgments are added to the training set. This
+feedback loop continues until some stopping criteria is met. The stopping
+criteria could be the assessor time allotted for the task or some target number of
+relevant documents. In the experiments reported in this thesis, we simulate
+human assessors using a set of existing relevance judgments (Step 8). Unlabelled
+documents are considered non-relevant during the simulation.
+
+We define the term \textit{refresh} as the set of steps in the CAL process which
+deal with processing user judgments. This includes training the classifier,
+scoring documents and selecting documents for review. The choice of refresh
+strategy can control when to perform a refresh (step 10), as well as the
+behaviour of training (step 4) and scoring (step 5). 
 
 \begin{algorithm}[]
-Construct a seed document whose content is the topic description \\
+Construct a seed document whose content is a user provided query\\
 Label the seed document as relevant and add it to the training set \\
 Add 100 random documents from the collection, temporarily labeled as ``not
 relevant'' \\
@@ -27,27 +45,24 @@ Add the document to the training set \\
 Repeat steps 8-9 until a refresh is needed (defined by the refresh strategy) \\
 Repeat steps 3-10 until some stopping condition is met.
 \caption{AutoTAR CAL Algorithm (assuming an arbitrary refresh strategy). A refresh
-strategy can control behaviour of steps 4, 7 and 10}
+strategy can alter/control behaviour of steps 4, 7 and 10}
 \label{alg.cal}
 \end{algorithm}
 
-Documents are represented as a vector of unigram tf-idf features which are used
-for training the classifier and calculating relevance likelihood scores. BMI
-AutoTAR uses sofia-ml\footnote{https://code.google.com/archive/p/sofia-ml/}
-\cite{sculley2010combined} to train a logistic regression classifier. It uses
-the \textit{logreg-pegasos} learner with $100000$ iterations of \textit{roc}
+The organizers of the TREC 2015 Total Recall Track distributed the Baseline
+Model Implementation (BMI) of AutoTAR as a virtual machine. The implementation
+was a collection of C++ programs invoked and orchestrated using few BASH
+scripts.  In BMI, Documents are represented as a vector of unigram tf-idf
+features which are used for training the classifier and calculating relevance
+likelihood scores. It relies on
+sofia-ml\footnote{https://code.google.com/archive/p/sofia-ml/}
+\cite{sculley2010combined} to train a logistic regression classifier using the
+\textit{logreg-pegasos} learner with $200000$ iterations of \textit{roc}
 sampling. A training iteration involves randomly sampling a relevant and a
 non-relevant document from the training set, computing the loss and adjusting
-the classifier weights accordingly. The classifier weights are used to calculate
-relevance likelihood score for any document.
-
-The BMI tool provided by the TREC Total Recall organizers is written in BASH.
-For efficiency and extensibility, we implemented Algorithm~\ref{alg.cal} in
-C++~[Blinded]. Our implementation organizes all the document feature vectors in
-the memory to eliminate disk accesses and enable faster operations. New refresh
-strategies can be easily implemented and tested using this tool. The tool
-provides a command line interface to run simulations and a HTTP API for use in
-real world applications.
+the classifier weights accordingly. The relevance likelihood score for any
+document is obtained by computing the dot product of the classifier weights and
+document feature vector.
 
 \section{Related Work}
 \subsection{Large scale classification}
