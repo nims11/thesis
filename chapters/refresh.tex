@@ -3,7 +3,9 @@
 In this chapter, we discuss some of the refresh strategies we investigated.
 Along with the description of the strategies, we also describe the motivation
 which led us to designing them, and their potential impact on the behaviour of
-the CAL algorithm, in terms of effectiveness and efficiency.
+the CAL algorithm, in terms of effectiveness and efficiency. When applicable, we
+also report results of supporting experiments which can help gain more insight
+into some refresh strategies.
 
 \section{Basic Concepts}
 Before discussing the refresh strategies, it is useful to define few basic
@@ -77,6 +79,7 @@ time, where $E$ is the number of documents judged during the CAL process and
 $n$ is the number of documents in the dataset.
 
 \subsection{Responsiveness}
+\label{sec:async}
 If a judgment triggers a refresh, the system waits for the refresh to complete
 before returning a fresh set of documents for the user to judge.
 For very small batch sizes (such as $1$) and large values of $n$, full refreshes
@@ -160,32 +163,32 @@ Partial refresh strategy has two parameters:
     \item $s$: size of the partial refresh set (should not be less than $k$)
 \end{itemize}
 
-Our motivation behind designing this strategy was to efficiently replicate the
-behaviour of \textit{static batch strategy} (batch size = $1$). We hypothesized
-that the classifier's notion of relevance does not change dramatically between
-two nearby judgments and we can safely avoid computing scores for low ranked
-documents. To get some evidence, we constructed an experiment (the setup of the
-experiment is explained in Section~\ref{}). After each judgment, we stored the
-list of top 1000 unjudged documents scored by the classifier. Since we employed
-the static batch strategy with batch size of $1$, a refresh occurred after every
-judgment. Similarity between two lists was computed as the fraction of documents
-present in both lists.  Figure~\ref{plot:partial} reports the average similarity
-of these document lists separated by various number of judgments. $90.8\%$ of
-the top documents remain the same across consecutive judgments (i.e., separated
-by 1 judgment). For the any two lists separated by 100 judgments, there were
-$70.3\%$ common documents in the top 1000.  The results of the above experiment
-can also be qualitatively analysed to determine the parameters for partial
-refresh strategy. For example, based on our results, setting partial set size to
-1000 and full refreshing every 100 judgments looks like a reasonable starting
-point.
-
-\begin{figure}[h]
+\begin{figure}[]
 \includegraphics[width=\textwidth]{plots/ranklist_similarity.pdf}
 \caption{Average similarity between two ranked lists (truncated at 1000)
 separated by various number of judgments. Similarity between two lists is
 computed as the fraction of common documents between them.}
 \label{plot:partial}
 \end{figure}
+
+Our motivation behind designing this strategy was to efficiently replicate the
+behaviour of \textit{static batch strategy} (batch size = $1$). We hypothesized
+that the classifier's notion of relevance does not change dramatically between
+two nearby judgments and we can safely avoid computing scores for low ranked
+documents. To get some evidence, we constructed an experiment (the setup for
+this experiment is explained in Section~\ref{}). After each judgment, we stored
+the list of top 1000 unjudged documents scored by the classifier. Since we
+employed the static batch strategy with batch size of $1$, a refresh occurred
+after every judgment. Similarity between two lists was computed as the fraction
+of documents present in both lists.  Figure~\ref{plot:partial} reports the
+average similarity of these document lists separated by various number of
+judgments. $90.8\%$ of the top documents remain the same across consecutive
+judgments (i.e., separated by 1 judgment). For the any two lists separated by
+100 judgments, there were $70.3\%$ common documents in the top 1000.  The
+results of the above experiment can also be qualitatively analysed to determine
+the parameters for partial refresh strategy. For example, based on our results,
+setting partial set size to 1000 and full refreshing every 100 judgments looks
+like a reasonable starting point.
 
 With some enhancements, this strategy can also help reduce the memory costs
 when working with low physical memory or very large datasets (such as ClueWeb).
@@ -283,7 +286,7 @@ of training with low number of iterations.
 
 \begin{table}[]
 \centering
-\caption{Summary of the refresh strategies and their parameters.}
+\caption{List of the refresh strategies and their parameters.}
 \label{table.strategies}
 \begin{tabular}{|c|c|}
 \hline

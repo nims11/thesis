@@ -1,11 +1,41 @@
 % dataset and stats
 \label{chap:dataset}
-We used the Athome1 test collection from the TREC 2015 Total Recall
-track~\cite{roegiest2015trec}. The collection has 290,099 documents and 10
-topics. Each topic has an average of 4398 documents labelled as relevant.
+
+\section{Dataset}
+Unless specified, all our experiments were done using the \texttt{athome1} test
+collection from the TREC 2015 Total Recall track~\cite{roegiest2015trec}. The
+collection has 290,099 documents and 10 topics. The documents are redacted
+emails from Jen Bush's eight year tenure as Governor of Florida. Each topic has
+an average of 4398 documents labelled as relevant. The topics are described in
+Table~\ref{tab:topics}. The \texttt{athome1} test collection is suitable for
+evaluating high recall systems due to the extensive judgments available for its
+topics.
+
+\begin{table}[h]
+\centering
+\caption{List of \texttt{athome1} topics}
+\label{tab:topics}
+\begin{tabular}{|c|c|c|}
+\hline
+\textbf{Topic ID} & \textbf{Description} & \textbf{Relevant Documents} \\ \hline \hline
+athome100 & School and Preschool Funding & 4542 \\ \hline
+athome101 & Judicial Selection & 5836 \\ \hline
+athome102 & Capital Punishment & 1624 \\ \hline
+athome103 & Manatee Protection & 5725 \\ \hline
+athome104 & New medical schools & 227 \\ \hline
+athome105 & Affirmative Action & 3635 \\ \hline
+athome106 & Terri Schiavo & 17135 \\ \hline
+athome107 & Tort Reform & 2375 \\ \hline
+athome108 & Manatee County & 2375 \\ \hline
+athome109 & Scarlet Letter Law & 506 \\ \hline
+\end{tabular}
+\end{table}
 
 % gain curve
 
+\section{Runtime Environment}
+
+\section{Evaluation}
 To measure the effectiveness, we ran a CAL simulation for each topic and refresh
 strategy until $E_{max}$ number of judgments were made. $E_{max}$ is also known
 as the max review effort. In our experiments, $E_{max}$ was equal to $2\times R$ where
