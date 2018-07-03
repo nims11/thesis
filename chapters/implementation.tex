@@ -40,8 +40,8 @@ possible system delay. Due to to these reasons, we decided to implement CAL from
 scratch in C++. We chose C++ because it provides a good control over efficiency
 and is usually easy to maintain/extend.
 
-We wanted to build a system which along with satisfying all the requirements of
-HiCAL, could be easily used for other applications and future research, such as
+We wanted to build a system which could satisfying all the requirements of
+HiCAL, and could be easily used for other applications and future research, such as
 the work presented in this thesis. We designed this system to meet the following
 goals:
 
@@ -111,7 +111,9 @@ obtained from training is used to fetch few top documents from a set (depending
 on the refresh strategy). The score for a single document is obtained by
 computing the dot product of the document feature vector and the trained
 weight vector. The scoring of all the documents is parallelized across multiple
-threads (8 by default).
+threads (8 by default). By default, the code compiles with the \texttt{-O3}
+compiler optimisation flag, which contributes to significant reductions in the
+running time of various computations.
 
 The CAL system is designed such that it is easy to extend or modify parts of the
 algorithm. Most of the refresh strategies mentioned in this thesis were

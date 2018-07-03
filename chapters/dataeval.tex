@@ -33,26 +33,83 @@ athome109 & Scarlet Letter Law & 506 \\ \hline
 
 % gain curve
 
-\section{Runtime Environment}
-
 \section{Evaluation}
-To measure the effectiveness, we ran a CAL simulation for each topic and refresh
-strategy until $E_{max}$ number of judgments were made. $E_{max}$ is also known
-as the max review effort. In our experiments, $E_{max}$ was equal to $2\times R$ where
-$R$ is the total number of relevant documents for that topic. We use average
-recall gain curves to compare the effectiveness of different refresh strategies.
-A gain curve for a topic is a plot of recall (y-axis) against the normalized
-review effort ($E_{norm} = \frac{E}{R}$), where $E$ is the number of judgments made since
-the beginning of the simulation. We get the average gain curve by averaging the
-recall over the 10 topics. For the sake of readability and space, we excluded
-those plots from this paper. Instead, we report certain points of interest from
-the plots as a table. Specifically, we compare different refresh strategies based
-on their recall values when $E_{norm} \in \{1,1.5,2\}$. We also report the
-effort required to reach $75\%$ recall for each refresh strategy.
+\label{sec:eval}
+
+All our experiments were conducted across all the 10 \texttt{athome1} topics.
+When reporting the outcome of each experiment, we averaged the results over
+these topics. A combination of experiment conditions (such as refresh strategy
+and its parameters) and a topic is referred as
+a ``task''. We use review effort as the stopping criteria for each task (step 11
+of Algorithm ~\ref{alg.cal}). One judgment is equal to one unit of reviewer's
+effort. The CAL process for a task stops whenever the number of judgments
+processed by the system is equal to the maximum effort.
+
+To measure the effectiveness of various refresh strategies, we ran a CAL simulation for
+each topic and strategy. We can compare different strategies based on the recall
+values they achieved at various values of effort. The recall is
+defined as
+
+\begin{equation}
+    Recall = \frac{\text{No. of relevant documents found by the system}}{\text{Total no. of
+    relevant documents in the corpus}}
+\end{equation}
+
+Using absolute values of review effort can cause an imbalance among the recall
+values of individual topics. This is due to uneven number of relevant documents
+present across different topics (see Table~\ref{tab:topics}). Instead of
+absolute effort, we use normalized effort $E_{norm}$ for analyzing results.
+$E_{norm}$ is calculated by dividing the absolute review effort by the total
+number of relevant documents. The maximum normalized review effort in our
+effectiveness experiments was set to $2$.
+
+Gain curve is a widely used method to evaluate high recall retrieval
+systems~\cite{roegiest2015trec,grossman2016trec,grossman2011overview}. It is a
+plot of recall as a function of assessed documents. We use average recall gain
+curves to compare the effectiveness of different refresh strategies.  A gain
+curve for a topic is a plot of recall (y-axis) against the normalized review
+effort ($E_{norm} = \frac{E}{R}$), where $E$ is the number of judgments made
+since the beginning of the simulation and $R$ is the total number of relevant
+documents for that topic. We get the average gain curve by averaging the recall
+over the 10 topics. For the sake of readability, we also report certain points
+of interest from the plots as a table. Specifically, we compare different
+refresh strategies based on their recall values when $E_{norm} \in \{1,1.5,2\}$.
+We also report the effort required to reach $75\%$ recall.
 
 % timings
-To measure the computational efficiency, we fixed $E_{max}=10000$ and ran the
-simulation across four 2.20GHz CPUs (Step 7 of Algorithm~\ref{alg.cal} is the
-only parallelized step) for each topic and refresh strategy. Different refresh
-strategies are compared based on the running time of the simulation averaged
-over the 10 topics.
+To measure the computational efficiency, we set the maximum review effort to an
+absolute value of $10000$ and run the CAL simulation for every task. Different
+refresh strategies are compared based on the running time of the simulation
+averaged over the 10 topics.
+
+
+\section{Runtime Environment}
+
+We used the command line interface of the CAL implementation discussed in
+Chapter~\ref{chap:implementation} to run our experiments. We ran our experiments
+on a machine with 1 TB memory and four 2.20 GHz Intel Xeon E5-2699 v4 Processors, each having 22 cores.
+However, the only advantage we took from these resources was to parallelize
+multiple experiments and tasks. Each CAL task was allowed to utilize at most
+four threads. This ensured that we were replicating an environment with
+reasonable resources at the task-level.
+
+\section{Secondary Experiments}
+
+\red{not sure about the location of this section. The forward reference looks
+awkward}
+
+We performed few additional experiments to support certain intuitions behind the
+design of refresh strategies discussed in Section~\ref{sec:async} and
+Section~\ref{sec:partial}. The questions these experiments were designed to
+answer are:
+\begin{itemize}
+    \item If a judgment causes a refresh, a new review queue is populated.
+        In the new queue, what is the position of the first unjudged document
+        from the previous queue?
+    \item To what extent does the classifier's notion of relevance change across
+        various number of judgments?
+\end{itemize}
+
+The simulations were run across the 10
+\texttt{athome1} topics and the reported metrics were averaged over them. The
+maximum review effort was set to $500$.

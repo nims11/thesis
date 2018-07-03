@@ -76,12 +76,12 @@ High recall information retrieval is crucial to tasks such as electronic
 discovery and systematic review. \textit{Continuous Active Learning} (CAL) is a
 technique where a human reviewer works in loop with a machine learning model; the
 model presents a set of documents likely to be relevant and the reviewer
-provides relevance feedback. Our focus in this paper is on one particular aspect
+provides relevance feedback. Our focus in this thesis is on one particular aspect
 of CAL:  \textit{refreshing}, which is a crucial and recurring event in the CAL
 process.  During a \textit{refresh}, the machine learning model is trained with
 the relevance judgments and a new list of likely-to-be-relevant documents is
 produced for the reviewer to judge. It is also computationally the most
-expensive step in CAL. In this paper, we investigate the effects of the default
+expensive step in CAL. In this thesis, we investigate the effects of the default
 and alternative refresh strategies on the effectiveness and efficiency of CAL.
 We find that more frequent refreshes can significantly reduce the human effort
 required to achieve certain recall. For moderately sized datasets, the high
@@ -89,6 +89,10 @@ computation cost of frequent refreshes can be reduced through a careful
 implementation. For dealing with resource constraints and large datasets, we
 propose alternative refresh strategies which provide the benefits of frequent
 refreshes at a lower computation cost.
+
+In this thesis, we also discuss the design of a modern implementation of the CAL
+algorithm which is efficient and extensible. Our implementation can be used as a
+research tool as well as for practical applications.
 
 \cleardoublepage
 

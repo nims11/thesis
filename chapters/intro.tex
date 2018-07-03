@@ -7,31 +7,35 @@ like Google which are built to deliver high precision (but low recall) results
 to its users.
 
 Various approaches addressing the problem of high recall information retrieval
-exist~\cite{}. One such set of approaches is called Technical Assisted Review
-(TAR).  In a TAR process, a computer system uses judgments made by human
-reviewers to classify documents as either relevant or non-relevant. TAR methods
-outperform manual review in legal eDiscovery by reducing the cost spent on human
-reviewers~\cite{grossman2010technology,roitblat2010document}.   Continuous
-active learning (CAL)~\cite{cormack2014evaluation} is a TAR protocol where a
-machine learning algorithm suggests most likely relevant documents for review
-and continuously incorporates relevance feedback to improve its understanding of
-the search task.  In a previous study, \citet{cormack2014evaluation} showed that
-CAL outperforms other TAR protocols on review tasks from actual legal matters
-and TREC 2009 Legal Track.  The Total Recall track in TREC 2015 and 2016
-evaluated different systems under a simulated TAR
-setting~\cite{grossman2016trec,roegiest2015trec}.  Baseline Model Implementation
-(BMI) based on CAL was used as the baseline in these tracks. BMI implements the
-AutoTAR algorithm.  None of the participating systems were able to consistently
-outperform the baseline.
+under various applications
+exist~\cite{li2014req,hogan2010automation,cormack2014evaluation}. One such set
+of approaches is called Technical Assisted Review (TAR).  In a TAR process, a
+computer system uses judgments made by human assessors to classify documents as
+either relevant or non-relevant. TAR methods outperform manual review in legal
+eDiscovery by reducing the cost spent on human
+assessors~\cite{grossman2010technology,roitblat2010document}.   Continuous
+active learning (CAL)~\cite{cormack2014evaluation,cormack2015autonomy} is a TAR
+protocol where a machine learning algorithm suggests most likely relevant
+documents for human assessment and continuously incorporates relevance feedback to improve
+its understanding of the search task.  In a previous study, Cormack and
+Grossman~\cite{cormack2014evaluation} showed that CAL outperforms other TAR
+protocols on review tasks from actual legal matters and TREC 2009 Legal Track.
+The Total Recall track in TREC 2015 and 2016 evaluated different systems under a
+simulated TAR setting~\cite{grossman2016trec,roegiest2015trec}.  Baseline Model
+Implementation (BMI) based on CAL was used as the baseline in these tracks. BMI
+implements the AutoTAR algorithm~\cite{cormack2015autonomy}.  None of the
+participating systems were able to consistently outperform the baseline.
 
 In this thesis, we modify and extend the AutoTAR CAL algorithm. We isolate an
 important step of the algorithm and call it \textit{refreshing}.  During a
-\textit{refresh}, the relevance judgments from the reviewer are used to train a
+\textit{refresh}, the relevance judgments from the assessor are used to train a
 new classifier. This classifier generates an ordered list of documents most
-likely to be relevant, which is later processed by the reviewer. This step has a
-high computation cost because it involves training a classifier and computing
-relevance likelihood scores for potentially all the documents in the corpus. A
-\textit{refresh strategy} determines when and how to perform the refresh.
+likely to be relevant, which is later processed by the assessor. Apart from
+being a crucial factor in the effectiveness of the retrieval algorithm, this
+step also has a high computation cost because it involves training a classifier
+and computing relevance likelihood scores for potentially all the documents in
+the corpus. A \textit{refresh strategy} determines when and how to perform the
+refresh.
 
 We propose different refresh strategies and compare their effect on the
 performance of CAL. By studying various refresh strategies, we aim to:
@@ -40,24 +44,20 @@ to achieve higher recall with lesser effort \item Improve computational
 efficiency of CAL; so that it is responsive and  feasible in a production
 environment.  \end{itemize}
 
-In original algorithm, refreshing is done after a certain number of judgments is
-received. This number increases exponentially over time. We find we can make CAL
-more effective by refreshing after every judgment. However, refresh is an
+In the AutoTAR algorithm, refreshing is done after a certain number of documents
+are assessed. This number increases exponentially over time. We find we can make CAL
+more effective by refreshing after every assessment. However, refresh is an
 expensive operation. Frequent refreshing can severely impact the running time
-and usability of a CAL system. One of our contributions is a modern and
-efficient implementation of CAL which can support aggressive refresh strategies
-for reasonably sized datasets. Our tool is designed to be used both as a
-research tool and in real world applications.  We also design and evaluate
+and usability of a CAL system. We also design and evaluate
 alternative refresh strategies which have lower computation cost and achieve similar
 effectiveness.  These strategies can be considered when dealing with resource
 constraints or large datasets.
 
+The work described in this thesis required a suitable implementation of CAL.
+Another contribution of this thesis is a modern and efficient implementation of
+CAL which can support aggressive refresh strategies. Our tool is designed to be
+used both as a research tool and in real world applications.  
 
-
-% The issue of scaling for large datasets crop up in multiple parts of this paper.
-% Scalable Continuous Active Learning (or ``S-CAL'')~\cite{cormack2016scalability}
-% is designed to work with large document collections where it is desirable to
-% build an effective classifier using minimal labelling effort.
 
 \section{Thesis Organization}
 
@@ -67,16 +67,18 @@ In Chapter~\ref{chap:rel}, we introduce prerequisites to understanding the
 subsequent chapters of this thesis. We discuss the Continuous Active Learning
 algorithm and define the concept of \textit{refresh} and \textit{refresh
 strategy}. We then review related work approaching similar problems and work
-which can be potentially applied to the problem addressed by this thesis.
-
-We define various refresh strategies in Chapter~\ref{chap:refresh}. In
-Chapter~\ref{chap:dataset}, we discuss the design of our experiments, along with
-the dataset and evaluation metrics used. In Chapter~\ref{chap:results}, we
-evaluate and compare the performance of these refresh strategies.
+which can be potentially applied to the problem addressed in this thesis.
 
 In Chapter~\ref{chap:implementation}, we describe the design and features of
-the system using which all the experiments in this thesis were
+the implementation using which all the experiments in this thesis were
 performed.
+
+In Chapter~\ref{chap:dataset}, we discuss the design of our experiments, along
+with the dataset and evaluation metrics used.
+
+In Chapter~\ref{chap:refresh}, we define and explain various refresh strategies.  In
+Chapter~\ref{chap:results}, we evaluate and compare the performance of these
+refresh strategies.
 
 In Chapter~\ref{chap:conclusion}, we discuss the conclusions of our work
 and the future work addressing various practical applications.

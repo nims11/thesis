@@ -122,7 +122,7 @@ judging the top two documents from the current review queue before the new
 review queue is ready. To estimate the quality of the second
 document showed to the user, we obtained the rank of that second document
 in the next review queue (the review queue populated by the background refresh).
-The setup for this experiment is described in Section~\ref{}. We found that
+The setup for this experiment is described in Appendix~\ref{AppendixB}. We found that
 $41.2\%$ of these documents were top ranked after the background refresh.
 Moreover, $85\%$ and $96.8\%$ of these documents were ranked top 10 and top 50
 respectively, after the background refresh. Figure~\ref{plot:async} plots the
@@ -142,6 +142,7 @@ served once the user judgment is received. For the numbers provided in the
 previous paragraph, the constraint $2t_r \le t_u$ hold true.
 
 \section{Partial Refresh}
+\label{sec:partial}
 
 In this strategy, a full refresh is performed after every fixed number of
 judgments, similar to the \textit{static batch strategy}. At the end of each
@@ -176,7 +177,7 @@ behaviour of \textit{static batch strategy} (batch size = $1$). We hypothesized
 that the classifier's notion of relevance does not change dramatically between
 two nearby judgments and we can safely avoid computing scores for low ranked
 documents. To get some evidence, we constructed an experiment (the setup for
-this experiment is explained in Section~\ref{}). After each judgment, we stored
+this experiment is explained in Appendix~\ref{AppendixB}). After each judgment, we stored
 the list of top 1000 unjudged documents scored by the classifier. Since we
 employed the static batch strategy with batch size of $1$, a refresh occurred
 after every judgment. Similarity between two lists was computed as the fraction
@@ -235,6 +236,7 @@ behaves similar to \textit{static batch refreshing} with batch size of $1$.
 \section{Prioritizing Recent Judgments}
 
 \subsection{Recency Weighting Strategy}
+\label{sec:recency}
 This strategy modifies the training step (step 4 in Algorithm~\ref{alg.cal}) in
 the CAL process by favoring documents which were recently judged. As described
 in Section~\ref{sec:cal}, training is done over several iterations. In each
@@ -291,25 +293,25 @@ of training with low number of iterations.
 \begin{tabular}{|c|c|}
 \hline
 \textbf{Strategy} & \textbf{Parameters} \\ \hline \hline
-bmi\_refresh & None \\ \hline
-static\_batch & $k$ = \textit{no. of judgments between full refreshes} \\ \hline
-partial\_refresh & \begin{tabular}[x]{@{}c@{}}
+\texttt{bmi} & None \\ \hline
+\texttt{static} & $k$ = \textit{no. of judgments between full refreshes} \\ \hline
+\texttt{partial} & \begin{tabular}[x]{@{}c@{}}
 $k$ = \textit{no. of judgments between full refreshes} \\
 $s$ = \textit{no. of documents in the partial refresh}\\
 \textit{set}
 \end{tabular} \\ \hline
-precision\_strategy & \begin{tabular}[x]{@{}c@{}}
+\texttt{precision} & \begin{tabular}[x]{@{}c@{}}
 $m$ = \textit{no. of recent judgments to}\\
 \textit{compute precision on} \\
 $p$ = \textit{full refresh is triggered if the precision of} \\ 
 \textit{last $m$ documents fall below this value}
 \end{tabular} \\ \hline
-recency\_weighting & \begin{tabular}[x]{@{}c@{}}
+\texttt{recency} & \begin{tabular}[x]{@{}c@{}}
 $w$ = \textit{factor by which the latest judged} \\
 \textit{document is more likely to be sampled}\\
 \textit{than the oldest judged document}
 \end{tabular} \\ \hline
-* & \begin{tabular}[x]{@{}c@{}}
+\texttt{*} & \begin{tabular}[x]{@{}c@{}}
 $it$ = \textit{no. of training iterations} \\
 \textit{(global parameter, $100000$ unless specified)}
 \end{tabular} \\ \hline

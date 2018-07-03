@@ -3,11 +3,74 @@
 
 \section{High Recall Information Retrieval}
 
-\red{previous efforts, TAR, CAL, HiCAL}
+High Recall Information Retrieval deals with retrieval problems where the goal
+is to find all or nearly all relevant documents. Legal eDiscovery is one such
+high-recall problem where evidence related to some matter is required be retrieved
+from a digital collection of
+information~\cite{oard2013information,oard2010evaluation}. High recall problems
+also extend to patent searches and systematic reviews~\cite{yu2016read} in the
+medical/health
+space. Building test collections can also be interpreted as a high-recall
+problem because it is desirable to include large number of relevant documents
+using fixed amount of assessor effort.
+
+Traditional retrieval systems such as Google, Indri and others address a
+different set of information retrieval problems where the goal is to deliver a
+small ordered list highly relevant documents, which are preferably at top.
+Evaluation of such systems is usually done using the Cranfield
+paradigm~\cite{voorhees2001philosophy}, using metrics such as precision at
+certain ranks, MAP (Mean Average Precision), nDCG (Discounted Cumulative Gain),
+and so on. Such retrieval systems and evaluation techniques cannot be directly
+used in the context of high recall retrieval~\cite{roegiest2017design}.
+
+Earlier retrieval systems such as IBM STAIRS relied on keyword queries provided
+by the assessor along with various options (such as boolean combinations) to
+retrieve documents~\cite{blair1985evaluation}. Cormack et
+al.~\cite{cormack1998efficient} proposed Interactive Search and Judging (ISJ)
+where multiple searchers used an ad-hoc search engine to build a test
+collection using a fraction of assessor cost when compared to the traditional
+NIST pooling~\cite{harman1993overview}.
+
+Technology Assisted Review (TAR) is a process where a computer system uses
+judgments made by human assessors to classify documents as either relevant or
+non-relevant~\cite{grossman2014grossman}. The classifier can control the
+documents which should be assessed during the TAR process. TAR methods
+outperform manual review or traditional keyword based search methods in legal
+eDiscovery by reducing the cost spent on human
+assessors~\cite{grossman2010technology,roitblat2010document}
+
+Cormack and Grossman~\cite{cormack2014evaluation} compared three TAR protocols,
+namely Continuous Active Learning (CAL), Simple Active Learning (SAL), and
+Simple Passive Learning (SPL). They showed that CAL outperforms other TAR
+protocols on review tasks from actual legal matters and TREC 2009 Legal Track.
+The Total Recall track in TREC 2015 and 2016 evaluated different systems under a
+simulated TAR setting~\cite{grossman2016trec,roegiest2015trec}. None of the
+participating teams were able to consistently beat BMI (Baseline Model
+Implementation), which implemented the AutoTAR CAL
+algorithm~\cite{cormack2015autonomy}.
+
+Li et al. proposed a double loop process~\cite{li2014req} where an outer loop uses a set of
+queries to retrieve a pool of documents and an inner loop uses a classifier to
+select documents from the pool for assessment. The classifier uses the relevance
+feedback from the assessor to update itself. Once the classifier is stable, new
+set of queries are added to the outer loop based on the newly retrieved relevant
+documents. Their work very similar to how CAL approaches the TAR problem.
+
+Scalable Continuous Active Learning (or ``S-CAL'')~\cite{cormack2016scalability}
+was designed to work with large document collections where it is desirable to
+build an effective classifier using minimal labelling effort or estimate metrics
+like the recall and precision. It is a modification to the AutoTAR algorithm
+where only a sample from a larger batch is assessed by a human.
+
+HiCAL~\cite{sigirdemo} is a ``system for efficient high-recall retrieval'' which
+combines ISJ and CAL. It allows assessors to find relevant documents by
+switching between an ad-hoc search engine and a CAL-powered review interface.
+To improve assessment throughput, the system by default only presents a summary
+of the document and assessors can optionally click an extra button to view the
+full document.
 
 \section{Continuous Active Learning}
 \label{sec:cal}
-\red{Add some history}
 
 A general version of the AutoTAR CAL algorithm is described in
 Algorithm~\ref{alg.cal}. The CAL process bootstraps using a user provided query
@@ -28,7 +91,12 @@ We define the term \textit{refresh} as the set of steps in the CAL process which
 deal with processing user judgments. This includes training the classifier,
 scoring documents and selecting documents for review. The choice of refresh
 strategy can control when to perform a refresh (step 10), as well as the
-behaviour of training (step 4) and scoring (step 5). 
+behaviour of training (step 4) and scoring (step 5). In the AutoTAR algorithm,
+refresh is performed after a batch of judgments is received. The size \texttt{k} of the
+batch is initially set to $1$. After each refresh, this size is updated using
+\begin{equation*}
+k \leftarrow k + \lfloor\frac{k + 9}{10}\rfloor
+\end{equation*}
 
 \begin{algorithm}[]
 Construct a seed document whose content is a user provided query\\
@@ -65,6 +133,37 @@ document is obtained by computing the dot product of the classifier weights and
 document feature vector.
 
 \section{Related Work}
-\subsection{Large scale classification}
-\subsection{Online methods}
-\subsection{S-CAL}
+
+The Baseline Model Implementation (BMI) was made available to the participants
+by the organizers of the Total Recall Track in TREC 2015. We take a look at few
+approaches of participants which are relevant to our interest.
+
+The UvA.ILPS team~\cite{van2015university} modified the way batch sizes were
+set in BMI. They started with a batch size of 100. After a batch was assessed, the
+batch size was set to some value proportional to the number of relevant
+documents assessed in the previous batch.
+
+The Webis team~\cite{hagen2015webis} used BM25 using the topic description as query to get an
+initial set of documents which were used to train a SVM classifier. The batch size of
+to-be-assessed-documents was initially set to 32. After every iteration, it was
+either halved, doubled, or untouched depending on the ratio of documents
+assessed relevant and non-relevant. Another run submitted by this team used
+keyphrase extraction from document assessed as relevant to perform ad-hoc
+searches at every step and use it to enhance the SVM classifier.
+
+The TUW team~\cite{lupu2015tuw} tweaked the term weighting in the document feature vectors
+used by the BMI. In another run, they used all the learners available in
+sofia-ml separately and then used voting to select relevant documents.
+
+
+There is a vast literature which separately addresses efficiency and scalability
+of various steps in the AutoTAR algorithm. Online learning algorithms can
+significantly improve the running times of the training step. Such algorithms
+have been investigated in detail for spam
+filtering~\cite{sculley2007relaxed,cormack2007online,sculley2007online}. Cormack
+et al.  proposed an online logistic regression based spam filter for large
+datasets~\cite{cormack2011efficient}. Crammer et al. proposed a SVM-based
+Passive-Aggressive algorithm for online binary
+classification~\cite{crammer2006online}. Both of these online learning methods
+make a prediction for an incoming training examples and depending on the ground
+truth, updates the classifier weights.
