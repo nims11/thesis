@@ -19,19 +19,19 @@
 \begin{tabular}[x]{@{}c@{}}
     \textbf{Running Time}\\ \textbf{(in min)}
 \end{tabular} \\ \hline \hline
-\texttt{bmi}& 0.715 & 0.827 & 0.905 & 1.128 & 0.22 \\ \hline \hline
-\texttt{static(k=1)} & 0.750 & 0.865 & 0.926 & 1.021 & 49.29 \\ \hline
-\texttt{static(k=100)} &  0.704 & 0.807 & 0.887 & 1.167 & 0.47 \\ \hline \hline
-\texttt{partial(k=10,s=1000)} &  0.753 & 0.862 & 0.926 & 1.008 & 40.92 \\ \hline
-\texttt{partial(k=100,s=500)} &  0.753 & 0.855 & 0.923 & 1.022 & 38.28 \\ \hline
-\texttt{partial(k=100,s=1000)} &  0.754 & 0.856 & 0.922 & 1.013 & 39.57 \\ \hline
-\texttt{partial(k=100,s=5000)} &  0.756 & 0.855 & 0.921 & 1.016 & 40.70 \\ \hline
-\texttt{partial(k=500,s=1000)} &  0.700 & 0.785 & 0.815 & 1.324 & 38.63\\
+\texttt{exponential}& 0.715 & 0.827 & 0.905 & 1.128 & 0.3 \\ \hline \hline
+\texttt{static(k=1)} & 0.750 & 0.865 & 0.926 & 1.021 & 59.59 \\ \hline
+\texttt{static(k=100)} &  0.704 & 0.807 & 0.887 & 1.167 & 0.59 \\ \hline \hline
+\texttt{partial(k=10,s=1000)} &  0.753 & 0.862 & 0.926 & 1.008 & 38.72 \\ \hline
+\texttt{partial(k=100,s=500)} &  0.753 & 0.855 & 0.923 & 1.022 & 36.62 \\ \hline
+\texttt{partial(k=100,s=1000)} &  0.754 & 0.856 & 0.922 & 1.013 & 36.52 \\ \hline
+\texttt{partial(k=100,s=5000)} &  0.756 & 0.855 & 0.921 & 1.016 & 37.19 \\ \hline
+\texttt{partial(k=500,s=1000)} &  0.700 & 0.785 & 0.815 & 1.324 & 35.77 \\
 \hline \hline
-\texttt{precision(m=25,p=0.4)} &  0.698 & 0.849 & 0.915 & 1.129 & 35.68 \\ \hline
-\texttt{precision(m=25,p=0.6)} &  0.735 & 0.859 & 0.923 & 1.059 & 40.20 \\ \hline
-\texttt{precision(m=25,p=0.8)} &  0.750 & 0.862 & 0.926 & 1.024 & 44.64 \\ \hline
-\texttt{precision(m=25,p=1.0)} &  0.752 & 0.865 & 0.926 & 1.014 & 47.41 \\
+\texttt{precision(m=25,p=0.4)} &  0.698 & 0.849 & 0.915 & 1.129 & 35.16 \\ \hline
+\texttt{precision(m=25,p=0.6)} &  0.735 & 0.859 & 0.923 & 1.059 & 39.44 \\ \hline
+\texttt{precision(m=25,p=0.8)} &  0.750 & 0.862 & 0.926 & 1.024 & 35.52 \\ \hline
+\texttt{precision(m=25,p=1.0)} &  0.752 & 0.865 & 0.926 & 1.014 & 36.96 \\
 \hline
 % recency\_weighting($w=1$,$it=1000$) &  0.704 & 0.798 & 0.875 & 1.243 & 11.75 \\ \hline
 % recency\_weighting($w=2$,$it=1000$) &  0.705 & 0.806 & 0.884 & 1.219 & 11.66 \\ \hline
@@ -47,7 +47,7 @@ all the refresh strategies.
 For sake of readability, we encode each strategy with their parameter
 settings as \texttt{strategy\_name(param1=x,$\ldots$)}. For reference, Table~\ref{table.strategies}
 lists all the strategies and their parameters. Table~\ref{table.summary} lists
-the results for different parameter settings of \texttt{bmi}, \texttt{static},
+the results for different parameter settings of \texttt{exponential}, \texttt{static},
 \texttt{partial} and \texttt{precision}.
 We report the recall achieved at different values of effort, effort required to
 achieve $75\%$ recall, and the average running time. Instead of absolute effort,
@@ -56,26 +56,23 @@ example, ``Avg. recall@($E_{norm}=1.5$)'' refers to the average recall achieved
 across all the topics when $1.5 \times R$ documents haven been judged, where $R$
 is the total number of relevant documents for a topic.
 
-\subsection*{BMI Refresh Strategy}
-lol
-
 \subsection*{Static Batch Refresh Strategy}
-Figure~\ref{plot:bmi_static} compares the gain curves for \texttt{bmi},
+Figure~\ref{plot:bmi_static} compares the gain curves for \texttt{exponential},
 \texttt{static(k=1)} and \texttt{static(k=100)}.
 
-With \texttt{static(k=1)}, CAL achieves significantly higher recall of
-$75\%$ at $E_{norm} = 1$ than \texttt{bmi} which achieves $71.5\%$
+With \texttt{static(k=1)}, CAL achieves noticeably higher recall of
+$0.750$ at $E_{norm} = 1$ than \texttt{exponential} which achieves $0.715$
 recall.  \texttt{static(k=100)} performs worse than
-\texttt{bmi}, managing to achieve $70.4\%$ recall at the same effort.
+\texttt{exponential}, managing to achieve $0.704$ recall at the same effort.
 These results establish that frequent refreshing improves the effectiveness of a
 CAL system.
 Although the batch sizes in BMI increases exponentially with time, it still does
 frequent refreshes during the early stages of the CAL process, thus performing
-better than \texttt{static(k = 100)}. \texttt{bmi} is also
-extremely cheap in terms of computation cost since it only performs a
+better than \texttt{static(k = 100)}. \texttt{exponential} is also
+extremely cheap in terms of total computation cost since it only performs a
 logarithmic number of refreshes compared to the \texttt{static} strategies.
-The \texttt{bmi} simulation finished in less than a minute while
-\texttt{static(k=1)} took $49$ minutes!
+The \texttt{exponential} simulation finished in less than a minute while
+\texttt{static(k=1)} took around an hour.
 
 We evaluate rest of the refresh strategies by comparing them to
 \texttt{static(k = 1)}.
@@ -89,31 +86,32 @@ By fixing the partial set size \texttt{s=1000} and varying the full refresh
 period \texttt{k} in \texttt{partial}, we observe
 that for \texttt{k=10} and \texttt{k=100}, the difference in recall remains insignificant throughout the
 CAL process. Their recall values are also very similar to
-\texttt{static(k=1)}. They achieve $86.2\%$ and $85.5\%$ recall, respectively at
-$E_{norm} = 1.5$. For \texttt{k=500}, we observe $78.6\%$ recall at the
-same effort, which is worse than \texttt{bmi} ($82.6\%$). This is in
+\texttt{static(k=1)}. They achieve $0.862$ and $0.855$ recall, respectively at
+$E_{norm} = 1.5$. For \texttt{k=500}, we observe $0.786$ recall at the
+same effort, which is worse than \texttt{exponential} ($0.826$). This is in
 agreement with our previous observation that more frequent full refreshes
 increases CAL's effectiveness. \texttt{static(k=100)}
 consistently achieved lower recall when compared to \texttt{static(k=1)} while
 \texttt{partial(k=100,s=1000)} is as effective as the latter. Based
 on this, it can be established that partial refreshing contributes noticeable
-improvements to recall.
+improvements to recall over plain static batch refreshing with same batch size
+for full refresh.
 
 Figure~\ref{plot:partial2} shows the effect of varying partial set size
 \texttt{s} when the full refresh period \texttt{k} is fixed to $100$. We observe
 no changes to the recall values when the size of partial set is 500 or higher. At
 $s=100$, the decrease in performance is noticeable.
 
-\texttt{partial} simulations on average ran $20\%$ faster than
-\texttt{static(k=1)}. \texttt{partial(k=100,s=1000)}, which achieved similar
-effectiveness as \texttt{static(k=1)}, ran $19.7\%$ faster.
+\texttt{partial} simulations on average ran $37.97\%$ faster than
+\texttt{static(k=1)}. While achieving similar effectiveness as 
+\texttt{static(k=1)}, \texttt{partial(k=100,s=1000)} ran $38.71\%$ faster.
 
 \begin{figure}
     \centering
     \begin{subfigure}[t]{0.48\textwidth}
         \centering
         \includegraphics[width=\textwidth]{plots/bmi_static.pdf}
-        \caption{Comparison of \texttt{bmi} and \texttt{static}.
+        \caption{Comparison of \texttt{exponential} and \texttt{static}.
             \texttt{static(k=1)} consistently outperforms the rest.}
         \label{plot:bmi_static}
     \end{subfigure}
@@ -152,19 +150,19 @@ Figure~\ref{plot:prec} compares the gain curves for
 various settings of \texttt{precision}.
 
 In this strategy, we fixed \texttt{m=25} and varied \texttt{p}. For
-\texttt{p=0.8} and \texttt{p=1.0}, \texttt{precision} achieves $75\%$ recall at
+\texttt{p=0.8} and \texttt{p=1.0}, \texttt{precision} achieves $0.75$ recall at
 $E_{norm} = 1$ which is similar to \texttt{static(k=1)}. This
 similarity of recall is also seen at $E_{norm} = 1.5$ and $E_{norm} = 2$. For
 \texttt{precision(p=1.0)}, CAL refreshes whenever a non-relevant judgment
 is made, thus behaving very similar to \texttt{static(k=1)}. For
 smaller values of \texttt{p}, we observe lower recall values during the initial stages; 
-$73.5\%$ and $69.8\%$ recall at $E_{norm} = 1$ for \texttt{precision(p=0.6)} and
+$0.735$ and $0.698$ recall at $E_{norm} = 1$ for \texttt{precision(p=0.6)} and
 \texttt{precision(p=0.4)}, respectively. However, they catch up to
 \texttt{static(k=1)} at higher $E_{norm}$, as relevant documents
-become rarer; $85.9\%$ and $84.9\%$ recall at $E_{norm} = 1.5$ for
+become rarer; $0.859$ and $0.849$ recall at $E_{norm} = 1.5$ for
 \texttt{precision(p=0.6)} and \texttt{precision(p=0.4)}, respectively.
 
-This strategy improved the running time of simulations by $15\%$
+This strategy improved the running time of simulations by $38.3\%$
 on average when compared to \texttt{static(k=1)}.
 \texttt{precision} strategies triggers lower number of refreshes during the
 beginning of the CAL process when relevant documents are easier to find. During
@@ -190,12 +188,12 @@ the \texttt{precision} strategies start refreshing as frequently as
 \subsection*{Effect of Training Iterations}
 
 In all the previously discussed strategies, the improvement in running time over
-\texttt{static(k=1)} is either due to refreshing less often (\texttt{bmi},
+\texttt{static(k=1)} is either due to refreshing less often (\texttt{exponential},
 \texttt{precision}) or by optimizing scoring during a refresh
 (\texttt{partial}). The running time of scoring can be further improved by just
 increasing the number of threads. However, training is another expensive step
 which cannot be trivially distributed across multiple threads. One way to
-significantly reduce the training time is by simply reducing the number of
+dramatically reduce the training time is by simply reducing the number of
 training iterations (\texttt{it}). In our experiments, the average time to train a classifier
 for 100000 (default), 10000, and 1000 number of iterations was 265ms, 33ms, and
 4ms respectively.
@@ -205,7 +203,7 @@ iterations \texttt{it} beyond a certain point will directly
 reduces the quality of the classifier, and thus harming the effectiveness of
 CAL. Figure~\ref{plot:train} shows the impact of \texttt{it} on the gain curves
 of \texttt{static(k=1)}. We find that reducing \texttt{it} from 100000 to 10000
-didn't do any noticeable affect on the recalls. This suggests that setting
+didn't do any noticeable affect on the recall. This suggests that setting
 \texttt{it=10000} for all our experiments on \texttt{athome1} might have been
 enough for the classifier to converge. Beyond this, we observe noticeable loss in
 performance.
@@ -236,16 +234,16 @@ During our initial experiments, recency weighting seemed to have no
 impact on the recall values. By reducing the number of training iterations
 to $1000$, we introduced significant degradation in the system's effectiveness.
 Reducing the number of training iterations also
-reduced the running time of simulation by $76\%$ when compared to
+reduced the running time of simulation by $59.3\%$ when compared to
 \texttt{static(k=1)}. We used recency weighting to see whether it could recover
 the lost effectiveness.  \texttt{recency(w=1,it=1000)} is equivalent to
-\texttt{static(k=1,it=1000)} and it achieves $70.4\%$ and $79.8\%$
+\texttt{static(k=1,it=1000)} and it achieves $0.704$ and $0.798$
 recall when $E_{norm}$ is equal to $1$ and $1.5$ respectively. By increasing
 $w$, we observe an increase in recall for $E_{norm} \in \{1.5, 2\}$. However,
-the recall is consistently and significantly lower when compared to
+the recall is consistently lower when compared to
 \texttt{static(k=1,it=100000)}. For example, \texttt{recency(w=10,it=1000)} is
-only able to achieve $82.4\%$ recall at $E_{norm}=1.5$, while
-\texttt{static(k=1,it=100000)} achieves $86.5\%$ recall at the same effort.
+only able to achieve $0.824$ recall at $E_{norm}=1.5$, while
+\texttt{static(k=1,it=100000)} achieves $0.865$ recall at the same effort.
 
 
 \begin{table*}[]
@@ -267,10 +265,10 @@ only able to achieve $82.4\%$ recall at $E_{norm}=1.5$, while
 \begin{tabular}[x]{@{}c@{}}
     \textbf{Running Time}\\ \textbf{(in min)}
 \end{tabular} \\ \hline \hline
-\texttt{recency(w=1,it=1000)} &  0.704 & 0.798 & 0.875 & 1.243 & 11.75 \\ \hline
-\texttt{recency(w=2,it=1000)} &  0.705 & 0.806 & 0.884 & 1.219 & 11.66 \\ \hline
-\texttt{recency(w=5,it=1000)} &  0.704 & 0.814 & 0.887 & 1.191 & 11.63\\ \hline
-\texttt{recency(w=10,it=1000)} &  0.707 & 0.824 & 0.891 & 1.206 & 11.54\\ \hline
+\texttt{recency(w=1,it=1000)} &  0.704 & 0.798 & 0.875 & 1.243 & 23.75 \\ \hline
+\texttt{recency(w=2,it=1000)} &  0.705 & 0.806 & 0.884 & 1.219 & 23.15 \\ \hline
+\texttt{recency(w=5,it=1000)} &  0.704 & 0.814 & 0.887 & 1.191 & 26.71\\ \hline
+\texttt{recency(w=10,it=1000)} &  0.707 & 0.824 & 0.891 & 1.206 & 23.30\\ \hline
 \end{tabular}
 }
 \end{table*}

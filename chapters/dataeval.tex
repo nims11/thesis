@@ -5,8 +5,8 @@
 Unless specified, all our experiments were done using the \texttt{athome1} test
 collection from the TREC 2015 Total Recall track~\cite{roegiest2015trec}. The
 collection has 290,099 documents and 10 topics. The documents are redacted
-emails from Jen Bush's eight year tenure as Governor of Florida. Each topic has
-an average of 4398 documents labelled as relevant. The topics are described in
+emails from Jeb Bush's eight year tenure as Governor of Florida. There are
+an average of 4398 documents labelled as relevant per topic. The topics are described in
 Table~\ref{tab:topics}. The \texttt{athome1} test collection is suitable for
 evaluating high recall systems due to the extensive judgments available for its
 topics.
@@ -47,7 +47,7 @@ processed by the system is equal to the maximum effort.
 
 To measure the effectiveness of various refresh strategies, we ran a CAL simulation for
 each topic and strategy. We can compare different strategies based on the recall
-values they achieved at various values of effort. The recall is
+values they achieved at various values of effort. For each topic, the recall is
 defined as
 
 \begin{equation}
@@ -63,7 +63,7 @@ $E_{norm}$ is calculated by dividing the absolute review effort by the total
 number of relevant documents. The maximum normalized review effort in our
 effectiveness experiments was set to $2$.
 
-Gain curve is a widely used method to evaluate high recall retrieval
+The gain curve is a widely used method to evaluate high recall retrieval
 systems~\cite{roegiest2015trec,grossman2016trec,grossman2011overview}. It is a
 plot of recall as a function of assessed documents. We use average recall gain
 curves to compare the effectiveness of different refresh strategies.  A gain
@@ -77,26 +77,23 @@ refresh strategies based on their recall values when $E_{norm} \in \{1,1.5,2\}$.
 We also report the effort required to reach $75\%$ recall.
 
 % timings
-To measure the computational efficiency, we set the maximum review effort to an
-absolute value of $10000$ and run the CAL simulation for every task. Different
-refresh strategies are compared based on the running time of the simulation
-averaged over the 10 topics.
+To measure the computational efficiency, we record the running time of the
+simulation. Different refresh strategies are compared based on the running time
+of the simulation averaged over the 10 topics.
 
 
 \section{Runtime Environment}
 
 We used the command line interface of the CAL implementation discussed in
 Chapter~\ref{chap:implementation} to run our experiments. We ran our experiments
-on a machine with 1 TB memory and four 2.20 GHz Intel Xeon E5-2699 v4 Processors, each having 22 cores.
-However, the only advantage we took from these resources was to parallelize
-multiple experiments and tasks. Each CAL task was allowed to utilize at most
-four threads. This ensured that we were replicating an environment with
-reasonable resources at the task-level.
+on a google cloud instance with 9 GB memory and ten vCPUs (2.00 GHz Intel Xeon
+Processor). We ran a CAL process for each strategy and parameter setting
+sequentially. A CAL process simulated ten parallel tasks (one for each of the
+ten topics). For each task, we restricted the scoring of documents to a single
+thread.
 
 \section{Secondary Experiments}
-
-\red{not sure about the location of this section. The forward reference looks
-awkward}
+\label{sec:secondary}
 
 We performed few additional experiments to support certain intuitions behind the
 design of refresh strategies discussed in Section~\ref{sec:async} and

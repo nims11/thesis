@@ -2,7 +2,7 @@
 % summarize everything
 The work described in this thesis is an attempt towards improving the AutoTAR
 algorithm, which utilizes Continuous Active Learning in the TAR framework
-(Technology Assisted Review). We explored several modifications to the original
+(Technology Assisted Review). We explored various modifications to the original
 algorithm and measured their impact on its performance. A modern implementation
 of this algorithm is proposed, which increases the usability of Continuous Active
 Learning in real world eDiscovery and high recall retrieval applications.
@@ -10,11 +10,11 @@ Learning in real world eDiscovery and high recall retrieval applications.
 We investigated a crucial part of the Continuous Active Learning (CAL) process
 called \textit{refreshing}. We proposed and compared various modifications to it
 in form of \textit{refresh strategies}. Our results show that by refreshing more
-often, we can achieve higher recall using lesser effort. Refreshing after every
+often, we can achieve higher recall using less effort. Refreshing after every
 judgment (\texttt{static(k = 1)}) resulted in consistently better effectiveness
 than the exponentially increasing batch sizes in the AutoTAR. However, frequent
 refreshing is computationally more expensive. With an efficient implementation
-and a reasonably modern computer, refresh strategies relying on frequent
+and a reasonably modern hardware, refresh strategies relying on frequent
 refreshing can be practically employed in real world applications.  We also
 defined and analysed alternative refresh strategies which are as effective as
 \texttt{static(k=1)}.  In our experiments, various settings of \textit{partial
@@ -24,7 +24,7 @@ computational resources are limited or dataset is very large, \textit{partial
 refresh strategy} can be used.  \textit{Precision based refreshing} is efficient
 when the relevant documents are abundant and easier to find.
 
-We also briefly explored ways to reduce training costs. By reducing the number
+We also briefly explored a way reduce training costs. By reducing the number
 of training iterations, we observed a significant improvement in running times
 of our simulation. However, it was also accompanied with noticeable loss of
 effectiveness. By prioritising recently assessed documents in training, we were
@@ -34,10 +34,10 @@ enough to justify the use of this strategy.
 Efficiency and effectiveness are important measures of a retrieval system. For
 interactive systems in the TAR framework, responsiveness is also crucial. In
 eDiscovery tasks, it is important to deliver a smooth and lag-free experience to
-the assessors. We discuss modifications to the refresh strategies which can
+the assessors. We discussed modifications to the refresh strategies which can
 eliminate any user-perceptible delay during documents assessment.
 
-Finally, we provide an efficient C++ implementation of CAL and all the refresh
+Finally, we provided an efficient C++ implementation of CAL and all the refresh
 strategies mentioned in this paper as an open source
 tool\footnote{\url{https://github.com/HTAustin/CoreTrec/tree/master/CALEngine}}. The tool is designed
 to be used as a research tool and in real world applications.
@@ -59,7 +59,7 @@ optimize for memory
 efficiency.
 
 There is a vast amount of literature which deal with scaling and optimizing
-various steps in the AutoTAR algorithm. There are lots of work which approach
+various steps in the AutoTAR algorithm. Various work approach
 problems like online training, distributed and large-scale classification. The
 knowledge gained from exploring these works can be used to design better refresh
-strategies and enable the use of CAL in even more real world scenarios.
+strategies and enable the use of CAL in wider range of real world applications.

@@ -74,13 +74,13 @@ I understand that my thesis may be made electronically available to the public.
 \begin{center}\textbf{Abstract}\end{center}
 High recall information retrieval is crucial to tasks such as electronic
 discovery and systematic review. \textit{Continuous Active Learning} (CAL) is a
-technique where a human reviewer works in loop with a machine learning model; the
-model presents a set of documents likely to be relevant and the reviewer
+technique where a human assessor works in loop with a machine learning model; the
+model presents a set of documents likely to be relevant and the assessor
 provides relevance feedback. Our focus in this thesis is on one particular aspect
 of CAL:  \textit{refreshing}, which is a crucial and recurring event in the CAL
 process.  During a \textit{refresh}, the machine learning model is trained with
 the relevance judgments and a new list of likely-to-be-relevant documents is
-produced for the reviewer to judge. It is also computationally the most
+produced for the assessor to judge. It is also computationally the most
 expensive step in CAL. In this thesis, we investigate the effects of the default
 and alternative refresh strategies on the effectiveness and efficiency of CAL.
 We find that more frequent refreshes can significantly reduce the human effort
@@ -89,7 +89,6 @@ computation cost of frequent refreshes can be reduced through a careful
 implementation. For dealing with resource constraints and large datasets, we
 propose alternative refresh strategies which provide the benefits of frequent
 refreshes at a lower computation cost.
-
 In this thesis, we also discuss the design of a modern implementation of the CAL
 algorithm which is efficient and extensible. Our implementation can be used as a
 research tool as well as for practical applications.
@@ -101,12 +100,24 @@ research tool as well as for practical applications.
 
 \begin{center}\textbf{Acknowledgements}\end{center}
 
+I would like to thank my supervisor Mark D. Smucker for his effort and guidance
+throughout my time here. Mark gave me the freedom and support to work on
+problems I was interested in, for which I am very grateful.
+
+I thank Gordon V. Cormack and Maura R. Grossman for agreeing to be the readers
+of this thesis. Their course on ``High Stakes Information Retrieval" played a
+significant role in defining my research interests. Gordon's feedback and
+suggestions were crucial in refining my ideas.
+
 \cleardoublepage
 
 % D E D I C A T I O N
 % -------------------
 
 \begin{center}\textbf{Dedication}\end{center}
+
+\centerline{This thesis is dedicated to everyone who directly or indirectly, made
+it possible.}
 
 \cleardoublepage
 

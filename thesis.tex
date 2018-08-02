@@ -89,6 +89,10 @@
 %\usepackage{nomencl} % For a nomenclature (optional; available from ctan.org)
 \usepackage{amsmath,amssymb,amstext} % Lots of math symbols and environments
 \usepackage[pdftex]{graphicx} % For including graphics N.B. pdftex graphics driver 
+\usepackage{cite}
+% \usepackage{natbib}   % omit 'round' option if you prefer square brackets
+\usepackage[numbers]{natbib}
+\usepackage{multirow}
 
 % Hyperlinks make it very easy to navigate an electronic document.
 % In addition, this is where you should specify the thesis title
@@ -206,7 +210,7 @@
 % \makeglossaries
 
 \usepackage[linesnumbered,ruled,vlined]{algorithm2e}
-\usepackage{natbib}
+% \bibliographystyle{plainnat}
 \usepackage{textcomp}
 \usepackage{subcaption}
 %======================================================================
@@ -266,7 +270,8 @@
 % -----------------------
 
 % The following statement selects the style to use for references.  It controls the sort order of the entries in the bibliography and also the formatting for the in-text labels.
-\bibliographystyle{plain}
+% \bibliographystyle{plain}
+\bibliographystyle{plainnat}
 % This specifies the location of the file containing the bibliographic information.  
 % It assumes you're using BibTeX (if not, why not?).
 \cleardoublepage % This is needed if the book class is used, to place the anchor in the correct page,
@@ -288,58 +293,11 @@
 \nocite{*}
 
 % The \appendix statement indicates the beginning of the appendices.
-\appendix
+% \appendix
 % % Add a title page before the appendices and a line in the Table of Contents
-\chapter*{APPENDICES}
-\addcontentsline{toc}{chapter}{APPENDICES}
+% \chapter*{APPENDICES}
+% \addcontentsline{toc}{chapter}{APPENDICES}
 % %======================================================================
-\chapter{Weighted Random Sampling}
-\label{AppendixA}
-Our objective is to develop an efficient weighted random sampling method for the
-recency weighting strategy in Section~\ref{sec:recency}. Given an integer $N$,
-we want to generate a random integer between $0$ and $N$. Additionally, we want
-each integer to have a linearly increasing chance of getting sampled, and $N$
-being $w$ times more likely to be sampled than $0$. The expression below
-describes the probability of an integer $x$ being sampled
-
-\begin{equation}
-\label{eq:pdist}
-P(x) = P(0) + \frac{P(0)(x)(w-1)}{N}
-\end{equation}
-
-Rejection Sampling is a method to design such random number generators, but they
-require the probabilities of each integer to be precomputed. We can instead
-apply Inverse Transformation Sampling~\cite{devroye} to a uniform random number generator to
-efficiently generate our desired distribution. Given a uniform random variable U
-in $[0,N]$ and a cumulative distribution function $F$ over $[0, N]$, $F^{-1}(U)$
-has our desired distribution (which is F).
-
-
-Equation~\ref{eq:pdist} is also valid for any real number $x \in [0,N]$.
-Substituting $p = P(0)$ and $m = \frac{p(w-1)}{N}$, we get $P(x) = p + mx$. The
-cumulative distribution function for $P(x)$ is
-
-\begin{equation}
-\begin{split}
-    F(x) & = \int_0^x P(x)dx \\
-         & = \frac{mx^2}{2} + px
-\end{split}
-\end{equation}
-
-Solving for the inverse, $u \in U$
-\begin{equation}
-\begin{split}
-\label{eq:target}
-    F(F^{-1}(u)) & = u \\
-    \frac{mF^{-1}(u)^2}{2} + pF^{-1}(u) - x & = 0
-\end{split}
-\end{equation}
-
-To obtain the target random number $F^{-1}(u)$, we can solve the quadratic
-equation~\ref{eq:target}. We
-implemented\footnote{\url{https://github.com/HTAustin/HiCAL/blob/426955e7f1c88e450b05d3c8d42d58544f864b51/CALEngine/src/classifier.h\#L37}}
-    the sampling in recency weighting strategy using the above method.
-
 % % Tip 4: Example of how to get a shorter chapter title for the Table of Contents 
 % %======================================================================
 

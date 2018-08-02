@@ -8,11 +8,11 @@ also report results of supporting experiments which can help gain more insight
 into some refresh strategies.
 
 \section{Basic Concepts}
-Before discussing the refresh strategies, it is useful to define few basic
+Before discussing the refresh strategies, it is useful to define a few basic
 concepts.
 \subsection*{Effectiveness}
 Effectiveness is the measure of utility the CAL system provides to its users. A
-more effective system would let users find more relevant documents with lesser
+more effective system would let users find more relevant documents with less
 review effort.  Chapter~\ref{chap:dataset} defines in detail how we measure the
 effectiveness.
 
@@ -47,7 +47,7 @@ cases, only top $k$ documents (where $k<<n$) are needed. In such cases, complete
 sorting is not required and the refresh can be performed in $O(t + n \log k)$
 time.
 
-\section{BMI}
+\section{Exponential Batch Refresh Strategy}
 
 In the original BMI AutoTAR, full refreshes are performed after receiving a
 batch of judgments. The size of this batch increases exponentially with number
@@ -61,17 +61,17 @@ The smaller batch size during the beginning of a task results in frequent
 refreshes and thus allows the classifier to frequently update its understanding
 of relevance. This strategy scales well with the number of judgments ($E$) made
 during the CAL process since only $O(\log E)$ number of refreshes are done.
-According to the authors of BMI, the motivation behind this strategy was to
-``\textit{reap the benefits of early precision, while avoiding downside risk and
+According to \citet{cormack2015autonomy}, the motivation behind this strategy was to
+``reap the benefits of early precision, while avoiding downside risk and
     excessive running time, by using exponentially increasing batch
-size}''~\cite{cormack2015autonomy}.
+size''.
 
 \section{Static Batch}
 
-The simplest refresh strategy. In \textit{static batch refresh strategy}, full
-refreshes are performed after a fixed number of judgments are received. When
-batch size is fixed to $1$, a full refresh happens after every judgment. The
-only parameter in this strategy is the judgment batch size.
+In \textit{static batch refresh strategy}, full refreshes are performed after a
+fixed number of judgments are received. When batch size is fixed to $1$, a full
+refresh happens after every judgment. The only parameter in this strategy is the
+judgment batch size.
 
 This strategy incurs a high computation cost and introduces scalability issues
 since it requires $O(E)$ number of refreshes and each refresh takes $\Omega(n)$
@@ -89,7 +89,7 @@ judgments can disrupt the user experience.
 One way to address this problem is to perform asynchronous refreshes and
 immediately show the users documents from the old review
 queue~\cite{sigirdemo}. During a refresh, we fill the review queue
-with few extra top documents in addition to the batch size. Whenever a judgment
+with a few extra top documents in addition to the batch size. Whenever a judgment
 triggers a refresh, we delegate the refreshing to a background process and
 continue serving the user the aforementioned extra documents from the review
 queue. Meanwhile, when the refresh in the background is finished, the review
@@ -103,12 +103,11 @@ power their manual review tool.  They used asynchronous static batch strategy
 with batch size of 1. The tool presented summaries in addition to the full
 document to the reviewers.  The authors and a group of graduate students used
 the review tool to judge numerous documents in the New York Times collection
-across 250 topics. The average and median time spent on a judgment were 13 and
+across 250 topics. The average and median time spent on a judgment ($t_u$) were 13 and
 4.1 seconds respectively. We simulated their judgments using our system and the
-average refresh time was 1.71 seconds. Thus, for both average and median user
-judgment times, the effect of user feedback is delayed by 1 document! \red{Fix
-the average refresh time. It will be lower since it is currently based on
-scoring paragraphs rather than documents}.
+average refresh time ($t_r$) was 1.71 seconds. For both the average and median user
+judgment times, the effect of user feedback would have been delayed by 1 document
+($\lceil\frac{1.71}{13}\rceil$ and $\lceil\frac{1.71}{4.1}\rceil$).
 
 \begin{figure}[h]
 \includegraphics[width=\textwidth]{plots/top_doc_avg_rank.pdf}
@@ -122,11 +121,11 @@ judging the top two documents from the current review queue before the new
 review queue is ready. To estimate the quality of the second
 document showed to the user, we obtained the rank of that second document
 in the next review queue (the review queue populated by the background refresh).
-The setup for this experiment is described in Appendix~\ref{AppendixB}. We found that
+The setup for this experiment is described in Section~\ref{sec:secondary}. We found that
 $41.2\%$ of these documents were top ranked after the background refresh.
 Moreover, $85\%$ and $96.8\%$ of these documents were ranked top 10 and top 50
 respectively, after the background refresh. Figure~\ref{plot:async} plots the
-percentage of documents which were within some given top ranks after the
+percentage of documents which were within a given rank after the
 background refresh.
 
 
@@ -152,32 +151,34 @@ scores are stored in a \textit{partial refresh set}. After every judgment, a
 judgments are used in training but relevance likelihood scores are only
 calculated for the documents in the partial refresh set. A single partial
 refresh runs in $O(s\log{s})$ average time, where $s$ is the size of the
-\textit{partial refresh set}. There logarithmic factor in running time
+\textit{partial refresh set}. The logarithmic factor in running time
 is a result of the partial set stored as a binary search tree and after every
 judgment, it takes $O(\log(s))$ time to remove a document from that set. Since
 the scores for the document in this set are recomputed after every
 judgment, only the document with maximum score is returned to the user.
+Figure~\ref{fig:partial_flow} demonstrates the CAL relevance feedback loop with
+partial refresh strategy.
+
+\begin{figure}
+ \centering 
+ \includegraphics[width=1.0\textwidth]{figures/partial.pdf}
+ \caption{Partial Refresh Strategy}
+ \label{fig:partial_flow}
+\end{figure}
+
 
 Partial refresh strategy has two parameters:
 \begin{itemize}
     \item $k$: number of judgments between two full refreshes
-    \item $s$: size of the partial refresh set (should not be less than $k$)
+    \item $s$: size of the partial refresh set ($s \ge k$)
 \end{itemize}
-
-\begin{figure}[]
-\includegraphics[width=\textwidth]{plots/ranklist_similarity.pdf}
-\caption{Average similarity between two ranked lists (truncated at 1000)
-separated by various number of judgments. Similarity between two lists is
-computed as the fraction of common documents between them.}
-\label{plot:partial}
-\end{figure}
 
 Our motivation behind designing this strategy was to efficiently replicate the
 behaviour of \textit{static batch strategy} (batch size = $1$). We hypothesized
 that the classifier's notion of relevance does not change dramatically between
 two nearby judgments and we can safely avoid computing scores for low ranked
 documents. To get some evidence, we constructed an experiment (the setup for
-this experiment is explained in Appendix~\ref{AppendixB}). After each judgment, we stored
+this experiment is explained in Section~\ref{sec:secondary}). After each judgment, we stored
 the list of top 1000 unjudged documents scored by the classifier. Since we
 employed the static batch strategy with batch size of $1$, a refresh occurred
 after every judgment. Similarity between two lists was computed as the fraction
@@ -191,11 +192,24 @@ the parameters for partial refresh strategy. For example, based on our results,
 setting partial set size to 1000 and full refreshing every 100 judgments looks
 like a reasonable starting point.
 
+\begin{figure}[]
+    \centering
+\includegraphics[width=0.9\textwidth]{plots/ranklist_similarity.pdf}
+\caption{Average similarity between two ranked lists (truncated at 1000)
+separated by various number of judgments. Similarity between two lists is
+computed as the fraction of common documents between them.}
+\label{plot:partial}
+\end{figure}
+
+
 With some enhancements, this strategy can also help reduce the memory costs
 when working with low physical memory or very large datasets (such as ClueWeb).
 As mentioned in Section~\ref{sec:cal.design}, the documents are loaded in memory
 to enable faster operations and improve the responsiveness of the system.
-Partial refreshes are fast and performed on a small set of data which can be
+Partial refreshes are faster than full refreshes~\footnote{In our experiments
+    with \texttt{athome1},
+scoring a partial set of 1000 documents and scoring the entire collection took
+on average of 148ms and 1ms, respectively.} and performed on a small set of data which can be
 stored in the memory. Full refresh can be performed in the background, and can
 thus afford reads from the disk without sacrificing the user experience or
 effectiveness of this strategy.
@@ -207,7 +221,18 @@ a criteria to determine when to refresh. Instead of number of judgments, we can
 perform a full refresh when the ``output quality'' of the CAL system falls below
 some threshold. The output quality of a CAL system is considered high if the
 user judges more documents as relevant. There could be various ways to
-concretely define ``output quality''.
+concretely define ``output quality''. Our motivation behind designing this
+strategy was to investigate a more meaningful criterion for triggering a
+refresh.
+Figure~\ref{fig:prec_flow} demonstrates the CAL relevance feedback loop with
+precision based refreshing.
+
+\begin{figure}
+ \centering 
+ \includegraphics[width=0.81\textwidth]{talk_sigir/animation/prec.pdf}
+ \caption{Precision Based Refreshing}
+ \label{fig:prec_flow}
+\end{figure}
 
 In \textit{precision based refreshing}, we work with a very simple definition of
 ``output quality''. It is the fraction of relevant judgments in some fixed
@@ -233,9 +258,8 @@ behaves similar to \textit{static batch refreshing} with batch size of $1$.
 % positive effect.\red{show data. how at later stages, training data and trained
 % weights changes by very little with addition of one non-relevant document}.
 
-\section{Prioritizing Recent Judgments}
+\section{Recency Weighting Strategy}
 
-\subsection{Recency Weighting Strategy}
 \label{sec:recency}
 This strategy modifies the training step (step 4 in Algorithm~\ref{alg.cal}) in
 the CAL process by favoring documents which were recently judged. As described
@@ -264,26 +288,74 @@ probabilities of documents as shown in the above expression is inefficient. The
 probabilities will have to be computed for all the documents in the training set
 before every refresh. To achieve minimum overhead from the modified sampling, we
 use a transformation on the uniform random number generator to achieve our
-desired distribution. Appendix~\ref{AppendixA} covers the implementation of our
+desired distribution. In the next subsection, we cover the implementation of our
 modified sampling in further detail.
+
+\subsection{Weighted Random Sampling}
+\label{AppendixA}
+Our objective is to develop an efficient weighted random sampling method for the
+recency weighting strategy. Given an integer $N$,
+we want to generate a random integer between $0$ and $N$. Additionally, we want
+each integer to have a linearly increasing chance of getting sampled, and $N$
+being $w$ times more likely to be sampled than $0$. The expression below
+describes the probability of an integer $x$ being sampled
+
+\begin{equation}
+\label{eq:pdist}
+P(x) = P(0) + \frac{P(0)(x)(w-1)}{N}
+\end{equation}
+
+Rejection Sampling is a method to design such random number generators, but they
+require the probabilities of each integer to be precomputed. We can instead
+apply Inverse Transformation Sampling~\cite{devroye} to a uniform random number generator to
+efficiently generate our desired distribution. Given a uniform random variable U
+in $[0,N]$ and a cumulative distribution function $F$ over $[0, N]$, $F^{-1}(U)$
+has our desired distribution (which is F).
+
+
+Equation~\ref{eq:pdist} is also valid for any real number $x \in [0,N]$.
+Substituting $p = P(0)$ and $m = \frac{p(w-1)}{N}$, we get $P(x) = p + mx$. The
+cumulative distribution function for $P(x)$ is
+
+\begin{equation}
+\begin{split}
+    F(x) & = \int_0^x P(x)dx \\
+         & = \frac{mx^2}{2} + px
+\end{split}
+\end{equation}
+
+Solving for the inverse, $u \in U$
+\begin{equation}
+\begin{split}
+\label{eq:target}
+    F(F^{-1}(u)) & = u \\
+    \frac{mF^{-1}(u)^2}{2} + pF^{-1}(u) - x & = 0
+\end{split}
+\end{equation}
+
+To obtain the target random number $F^{-1}(u)$, we can solve the quadratic
+equation~\ref{eq:target}. We
+implemented\footnote{\url{https://github.com/HTAustin/HiCAL/blob/426955e7f1c88e450b05d3c8d42d58544f864b51/CALEngine/src/classifier.h\#L37}}
+    the sampling in recency weighting strategy using the above method.
 
 \subsection{Number of Training Iterations}
 Scoring can be made efficient by using strategies like \textit{partial
 refreshing} or simply performing it over multiple processes. The choice of
 training methods in the CAL algorithm makes it difficult to parallelize. There are
-alternative training methods which are designed for efficiency and scalability,
+alternative training methods which are designed for efficiency and
+scalability~\cite{andrew2007scalable,peng2013evaluating},
 but that is a direction for future work. A parameter in our training algorithm
 which can be easily controlled and has a significant impact on performance is
 the number of training iterations. Reducing the training iterations by some
-factor significantly improves running time by sacrificing the effectiveness
+factor dramatically improves running time by sacrificing the effectiveness
 of the system.
 
 Our initial motivation behind \textit{recency weighting} was to improve the
 default training
 by prioritizing newer judgments. However, we found no difference in
 effectiveness of CAL between the original and modified training. We
-shifted our efforts towards using recency weighting to improve the effectiveness
-of training with low number of iterations.
+shifted our goal towards lowering the number of training iterations while
+maintaining quality using recency weighting.
 
 
 \begin{table}[]
@@ -293,7 +365,7 @@ of training with low number of iterations.
 \begin{tabular}{|c|c|}
 \hline
 \textbf{Strategy} & \textbf{Parameters} \\ \hline \hline
-\texttt{bmi} & None \\ \hline
+\texttt{exponential} & None \\ \hline
 \texttt{static} & $k$ = \textit{no. of judgments between full refreshes} \\ \hline
 \texttt{partial} & \begin{tabular}[x]{@{}c@{}}
 $k$ = \textit{no. of judgments between full refreshes} \\
