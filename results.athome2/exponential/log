@@ -1,0 +1,1512 @@
+Loading document features on memory
+Read 465147 docs
+(documents_loader): 4108ms
+Topic athome2052
+Topic athome2108
+Topic athome2129
+Topic Training on 1Training on Training on 1 +ve docs and  +ve docs and Topic Topic athome2130Topic Topic Topic Topic athome2461
+athome2225
+100Training on 1athome2322
+1 +ve docs and 100 -ve docs
+Training on athome2158
+
+ -ve docsTraining on Training on 1Training on athome2333
+ +ve docs and athome2134
+1 +ve docs and 1 +ve docs and 1100100 -ve docs
+100 -ve docs -ve docs
+
+
+100 +ve docs and 100 -ve docs
+ +ve docs and 100 -ve docs
+ -ve docs
+Training on 1Training on 1 +ve docs and 100 -ve docs
+ +ve docs and 100 -ve docs
+(training): 74ms
+(training): 78ms
+(training): 91ms
+(training): (training): 95ms
+96ms
+(training): 95ms
+(training): 97ms
+(training): 102ms
+(training): 103ms
+(training): 104ms
+(rescoring): 219ms
+Fetched 1 documents
+(rescoring): 215ms
+Fetched 1 documents
+Training on 2 +ve docs and 100 -ve docsTraining on 2 +ve docs and 100 -ve docs
+
+(rescoring): 208ms
+Fetched 1(rescoring(rescoring): (rescoring): 208ms
+Fetched 1 documents
+202ms
+Fetched 1 documents
+): 209ms
+Fetched 1 documents
+ documents
+(rescoring): 214ms
+Fetched 1 documents
+Training on 1 +ve docs and 101 -ve docs
+Training on 2 +ve docs and 100 -ve docs
+Training on 2 +ve docs and 100 -ve docs
+Training on 2 +ve docs and 100 -ve docs
+Training on 2 +ve docs and 100 -ve docs
+(rescoring): 221ms
+Fetched (rescoring): 223ms
+1 documentsFetched (rescoring): 230ms
+Fetched 1 documents
+
+1 documents
+Training on 1 +ve docs and 101 -ve docs
+Training on 1 +ve docs and 101 -ve docs
+Training on 2 +ve docs and 100 -ve docs
+(training): 72ms
+(training): 92ms
+(training): 91ms
+(training): 70ms
+(training): 93ms
+(training): 93ms
+(training): 106ms
+(training): 97ms
+(training): 93ms
+(training): 95ms
+((rescoring): 228ms
+Fetched 2 documents
+((rescoring): 209ms
+Fetched 2 documents
+(rescoring): 210ms
+Fetched 2 documents
+rescoring): 207ms
+Fetched 2 documents
+Training on 3 +ve docs and 101 -ve docs
+rescoring): 208Training on Training on 1 +ve docs and 4ms
+Fetched 2 documents
+103 -ve docs
+ +ve docs and 100 -ve docs
+Training on 2Training on 4 +ve docs and 100 -ve docs
+ +ve docs and 102 -ve docs
+(rescoring): 220ms
+Fetched 2 documents
+Training on 4 +ve docs and 100 -ve docs
+(rescoring): 243ms
+Fetched 2 documents
+Training on 4 +ve docs and 100 -ve docs
+(rescoring): 246ms
+Fetched 2 documents
+Training on 4 +ve docs and 100 -ve docs
+(rescoring): 227ms
+Fetched 2 documents
+Training on 2 +ve docs and 102 -ve docs
+(rescoring): 245ms
+Fetched 2 documents
+Training on 4 +ve docs and 100 -ve docs
+(training): 69ms
+(training): 72ms
+(training): 74ms
+(training): 78ms
+(training): 100ms
+(training): 107ms
+(training): 79ms
+(training): 100ms
+(training): 101ms
+(training): 122ms
+(rescoring): 216ms
+Fetched 3 documents
+(rescoring): 223ms
+Fetched 3 documents
+Training on Training on 1 +ve docs and 106 -ve docs
+5 +ve docs and 102 -ve docs
+(rescoring): 265ms
+Fetched 3 documents
+Training on 7 +ve docs and 100 -ve docs
+(rescoring): 282ms
+Fetched 3 documents
+Training on 5 +ve docs and 102 -ve docs
+(rescoring): 268ms
+Fetched 3 documents
+(rescoring): 261ms
+Fetched 3 documents
+Training on 3(Training on 7 +ve docs and 100 -ve docs
+rescoring): 248ms
+Fetched 3 documents
+ +ve docs and 104 -ve docs
+Training on 4 +ve docs and 103 -ve docs
+(training): 81ms
+(training): 87ms
+(rescoring): 252ms
+Fetched 3 documents
+Training on 7 +ve docs and 100 -ve docs
+(rescoring): 285ms
+Fetched 3 documents
+Training on 7 +ve docs and 100 -ve docs
+(training): 91ms
+(training): 71ms
+(training): 66ms
+(rescoring): 263ms
+Fetched 3 documents
+Training on 7 +ve docs and 100 -ve docs
+(training): 76ms
+(training): 81ms
+(training): 76ms
+(training): 94ms
+(training): 136ms
+(rescoring(): 274rescoring(rescoring): 268ms
+Fetched 4 documents
+(rescoring): 219ms
+Fetched 4 documents
+Training on 8 +ve docs and 103 -ve docsms
+): 216Fetched (rescoring): Training on 84213ms
+ms
+ +ve docs and Fetched 103
+Fetched 4 documents
+ -ve docs
+ documents
+4 documents
+Training on 9 +ve docs and 102 -ve docs
+Training on 1 +ve docs and 110 -ve docs
+Training on 11 +ve docs and 100 -ve docs
+(rescoring): 246(rescoring): 241ms
+Fetched 4 documents
+ms
+Fetched 4 documents
+Training on Training on 7 +ve docs and 104 -ve docs
+7 +ve docs and 104 -ve docs
+(training): 85ms
+(training): 90ms
+(training): 94ms
+(rescoring): 279ms
+Fetched 4 documents
+Training on 11 +ve docs and 100 -ve docs
+(training): 104ms
+(training): 110ms
+(training): 85ms
+(rescoring): 270ms
+Fetched 4 documents
+Training on 11 +ve docs and 100 -ve docs
+(training): 108ms
+(rescoring): 255ms
+Fetched 4 documents
+Training on 11 +ve docs and 100 -ve docs
+(training): 88ms
+(training): 110ms
+(training): 112ms
+((rescoring): (226ms
+rescoring): 220ms
+Fetched 5 documentsFetched 5rescoring): 216ms
+Fetched  documents
+5 documents
+
+Training on 1Training on Training on 15 +ve docs and 115 +ve docs and 14101 -ve docs +ve docs and  -ve docs
+102
+ -ve docs
+(training): 75ms
+(rescoring): 281ms
+Fetched 5 documents
+Training on 12 +ve docs and 104 -ve docs
+(rescoring): 287ms
+Fetched 5 documents
+Training on 12 +ve docs and 104 -ve docs
+(training): 88ms
+(rescoring): 286ms
+Fetched 5 documents
+Training on 10 +ve docs and 106 -ve docs
+(training): 105ms
+(rescoring): 232ms
+Fetched 5 documents
+(Training on 16 +ve docs and 100 -ve docs
+rescoring): 268ms
+Fetched 5 documents
+Training on 12 +ve docs and 104 -ve docs
+(training): 103ms
+(training): 104ms
+(rescoring): 260ms
+Fetched 5 documents
+Training on 16 +ve docs and 100 -ve docs
+(training): 99ms
+(training): 103ms
+(training): 113ms
+(rescoring): 290ms
+Fetched 5 documents
+Training on 16 +ve docs and 100 -ve docs
+(training): 98ms
+(rescoring): (rescoring): 258ms
+Fetched 6 documents(rescoring): 245ms
+Fetched 6 documents
+228ms
+Fetched 6 documents
+
+Training on 1 +ve docs and 121 -ve docs
+Training on 19 +ve docs and 103 -ve docs
+Training on 20 +ve docs and 102 -ve docs
+(training): 55ms
+(training): 79ms
+(training): 100ms
+((rescoring): 259ms
+(rescoring): 241ms
+Fetched 6 documents
+rescoring): 260ms
+Fetched 6(Fetched 6 documents
+ documentsrescoring): 231ms
+Fetched Training on 14 +ve docs and 108 -ve docs6Training on 
+17 +ve docs and 105 documents
+
+ -ve docs
+Training on 14 +ve docs and 108 -ve docs
+Training on 18 +ve docs and 104 -ve docs
+(rescoring): 246ms
+Fetched 6 documents
+Training on 22 +ve docs and 100 -ve docs
+(training): 190ms
+(training): 73ms
+(training): 92ms
+(training): 99ms
+(training): 106ms
+(rescoring): 267ms
+Fetched 6 documents
+Training on 22 +ve docs and 100 -ve docs
+(training): 107ms
+(rescoring): 245ms
+Fetched 7 documents
+Training on 1 +ve docs and 128 -ve docs
+(training): 105ms
+(rescoring): 293ms
+Fetched 7 documents
+Training on 25 +ve docs and 104 -ve docs
+(training): 84ms
+(rescoring): 255ms
+Fetched 6(rescoring): 290ms
+Fetched 7 documents
+ documents
+Training on 22 +ve docs and 100 -ve docs
+Training on 27 +ve docs and 102 -ve docs
+(rescoring): 230ms
+Fetched 7 documents
+(rescoring): 237ms
+Fetched 7 documents
+Training on 18 +ve docs and 111 -ve docs
+Training on 23 +ve docs and 106 -ve docs
+(rescoring): 257ms
+Fetched 7 documents
+Training on 17 +ve docs and 112 -ve docs
+(rescoring): 272ms
+Fetched 7 documents
+Training on 22 +ve docs and 107 -ve docs
+(training): 118ms
+(training): 109ms
+(rescoring): 277ms
+Fetched 7 documents
+Training on 29 +ve docs and 100 -ve docs
+(training): 98ms
+(training): 103ms
+(training): 104ms
+(rescoring): 231ms
+Fetched 7 documents
+Training on 28 +ve docs and 101 -ve docs
+(training): 187ms
+(training): 107ms
+(training): 118ms
+(rescoring): 261ms
+Fetched 8 documents
+Training on 2 +ve docs and 135 -ve docs
+(training): 109ms
+(rescoring): 230ms
+Fetched 8 documents
+Training on 32 +ve docs and 105 -ve docs
+(training): 76ms
+(rescoring): 261ms
+Fetched 8 documents
+Training on 35 +ve docs and 102 -ve docs
+(rescoring): 237ms
+Fetched 8(rescoring): 242ms
+Fetched 8 documents(rescoring): 235ms
+
+ documentsFetched 8 documents
+
+Training on 23Training on 23 +ve docs and Training on 31 +ve docs and 106 -ve docs
+114 -ve docs
+ +ve docs and 114 -ve docs
+(rescoring): 249ms
+Fetched 7 documents
+Training on 28 +ve docs and 101 -ve docs
+(training): 106ms
+(training): 72ms
+(training): 96ms
+(training): 89ms
+(training): 90ms
+(rescoring): 279ms
+Fetched 8 documents
+Training on 30 +ve docs and 107 -ve docs
+(rescoring): 269ms
+Fetched 8 documents
+Training on 37 +ve docs and 100 -ve docs
+(rescoring): 262ms
+Fetched 8 documents
+Training on 36 +ve docs and 101 -ve docs
+(training): 83ms
+(rescoring): 257ms
+Fetched 9 documents
+Training on 2 +ve docs and 144 -ve docs
+(training): 73ms
+(training): 111ms
+(training): 78ms
+(rescoring): 240ms
+Fetched 9 documents
+Training on 41 +ve docs and 105 -ve docs
+((rescoring): 232ms
+Fetched 9 documents
+rescoring): 228ms
+(Training on 39 +ve docs and 107(rescoring): 214ms
+Fetched 9 documents
+ -ve docs
+Fetched 9 documents
+rescoring): 215ms
+Training on 29 +ve docs and 117 -ve docs
+Fetched 9 documents
+Training on 44 +ve docs and 102 -ve docs
+Training on 27 +ve docs and 119 -ve docs
+(training): 265ms
+(training): 66ms
+(training): 92ms
+(training): 94ms
+(training): 115ms
+(training): 100ms
+(rescoring): 241ms
+Fetched 9 documents
+Training on 39 +ve docs and 107 -ve docs
+(rescoring): 254ms
+Fetched 9 documents
+Training on 45 +ve docs and 101 -ve docs
+(rescoring): 232ms
+Fetched 10 documents
+(rescoring): 270ms
+Fetched 9 documents
+Training on 2 +ve docs and 154 -ve docs
+Training on 46 +ve docs and 100 -ve docs
+(training): 103ms
+(rescoring): 258ms
+Fetched 8 documents
+Training on 34 +ve docs and 103 -ve docs
+(training): 74ms
+(training): 103ms
+(training): 106ms
+((rescoring): 253ms
+rescoring): 225ms
+Fetched 10 documents
+Fetched 10 documents
+Training on 53 +ve docs and 103Training on 35 -ve docs
+ +ve docs and 121 -ve docs
+(rescoring): 251ms
+Fetched 10 documents
+(rescoring): 248ms
+(rescoring): 255ms
+Fetched Fetched 1010 documents
+ documents
+Training on 49 +ve docs and 107 -ve docs
+Training on 32 +ve docs and 124 -ve docs
+Training on 49 +ve docs and 107 -ve docs
+(training): 75ms
+(training): 76ms
+(training): 98ms
+(training): 100ms
+(training): 113ms
+(rescoring): 290ms
+Fetched 10 documents
+Training on 47 +ve docs and 109 -ve docs
+(training): 265ms
+(rescoring): 254ms
+Fetched 11 documents
+Training on 2 +ve docs and 165 -ve docs
+(rescoring): 255ms
+Fetched 10 documents
+(rescoring): 233ms
+Fetched 10 documents
+Training on 55 +ve docs and 101 -ve docs
+Training on 56 +ve docs and 100 -ve docs
+(training): 53ms
+(training): 101ms
+(training): 93ms
+(training): 121ms
+(rescoring): (rescoring): 271ms
+Fetched 272ms
+Fetched 11 documents
+11 documents
+Training on 64 +ve docs and 103 -ve docs
+Training on 43 +ve docs and 124 -ve docs
+((rescoring): 268rescoring): 255ms
+Fetched 11 documents
+ms
+Fetched (rescoring): 270ms
+Fetched 11 documents
+11 documents
+Training on 60 +ve docs and 107 -ve docs
+Training on 37 +ve docs and 130 -ve docs
+Training on 57 +ve docs and 110 -ve docs
+(training): 105ms
+(training): 106ms
+(training): 67ms
+(rescoring): 270ms
+Fetched 9 documents
+Training on 40 +ve docs and 106 -ve docs
+(training): 90ms
+(training): 99ms
+(rescoring): 277ms
+Fetched 13 documents
+Training on 3 +ve docs and 177 -ve docs
+(rescoring): 298ms
+Fetched 11 documents
+Training on 58 +ve docs and 109 -ve docs
+(rescoring): 276ms
+Fetched 11 documents
+Training on 66 +ve docs and 101 -ve docs
+(rescoring): 255ms
+Fetched 11 documents
+Training on 67 +ve docs and 100 -ve docs
+(training): 75ms
+(training): 100ms
+(rescoring): 235ms
+Fetched 13(rescoring): 224ms
+Fetched 13 documents
+(rescoring): 236ms
+Fetched 13 documents
+ documents
+Training on 45 +ve docs and 135 -ve docs
+Training on 53 +ve docs and 127 -ve docs
+Training on 77 +ve docs and 103 -ve docs
+(training): 111ms
+(training): 118ms
+(training): 244ms
+(rescoring): 273ms
+Fetched 13 documents
+(rescoring): 281ms
+Fetched 13 documents
+Training on Training on 70 +ve docs and 110 -ve docs
+72 +ve docs and 108 -ve docs
+(training): 101ms
+(training): 109ms
+(training): 111ms
+(rescoring): 246ms
+Fetched 15 documents
+Training on 6 +ve docs and 189 -ve docs
+(training): 112ms
+(training): 116ms
+(training): 70ms
+(rescoring): 253ms
+(rescoring): 223ms
+(rescoring): 238Fetched 13 documents
+Fetched 13 documents
+ms
+Fetched 13 documents
+Training on Training on 69 +ve docs and 111 -ve docs80 +ve docs and 100 -ve docs
+
+Training on 79 +ve docs and 101 -ve docs
+(rescoring): 272ms
+Fetched 10 documents
+Training on 49 +ve docs and 107 -ve docs
+(rescoring): 219((rescoring): 208ms
+Fetched 15 documents
+rescoring): 210ms
+ms
+Fetched Fetched 15 documents
+15 documents
+Training on 92 +ve docs and 103 -ve docs
+Training on 50 +ve docs and 145 -ve docs
+Training on 61 +ve docs and 134 -ve docs
+(training): 118ms
+(training): 122ms
+(training): 129ms
+(training): 72ms
+(training): 108ms
+(training): 111ms
+(rescoring): 266ms
+Fetched 15 documents
+Training on 85 +ve docs and 110 -ve docs
+(rescoring): 300ms
+Fetched 15 documents
+Training on 85 +ve docs and 110 -ve docs
+(rescoring): 291ms
+Fetched 17 documents
+Training on 10 +ve docs and 202 -ve docs
+(training): 104ms
+(training): 284ms
+(rescoring): 230(rescoring): 241ms
+Fetched 15 documents
+ms
+Fetched 15 documents
+(rescoring): 237ms
+Fetched 15 documents
+Training on 94 +ve docs and 101 -ve docs
+Training on 95 +ve docs and 100 -ve docs
+Training on 81 +ve docs and 114 -ve docs
+(training): 77ms
+(training): 129ms
+(rescoring): ((250ms
+Fetched rescoring): 254ms
+17rescoringFetched 17 documents
+ documents
+): 289ms
+Fetched 17 documents
+Training on 72 +ve docs and 140 -ve docs
+Training on 109 +ve docs and 103 -ve docs
+Training on 59 +ve docs and 153 -ve docs
+(training): 108ms
+(training): 122ms
+(training): 141ms
+(training): 87ms
+(training): 92ms
+(training): 114ms
+(rescoring): 263ms
+Fetched 17 documents
+Training on 96 +ve docs and 116 -ve docs
+(rescoring): 243ms
+Fetched 19 documents
+Training on 13 +ve docs and 218 -ve docs
+(rescoring): 273ms
+Fetched 11 documents
+Training on 54 +ve docs and 113 -ve docs
+(rescoring): 288ms
+Fetched 17 documents
+Training on 100 +ve docs and 112 -ve docs
+(training): 68ms
+(training): 117ms
+(rescoring): 261ms
+(rescoring): 274ms
+Fetched (rescoring): 241ms
+Fetched 17 documentsFetched 17 documents
+17 documents
+
+Training on 97 +ve docs and 115 -ve docs
+Training on Training on 111 +ve docs and 101 -ve docs
+112 +ve docs and 100 -ve docs
+(rescoring): 258ms
+Fetched 19 documents
+Training on 73 +ve docs and 158 -ve docs
+(training): 121ms
+(rescoring): 285ms
+Fetched 19 documents
+Training on 79 +ve docs and 152 -ve docs
+(rescoring): 280ms
+Fetched 19 documents
+Training on 128 +ve docs and 103 -ve docs
+(training): 119ms
+(training): 255ms
+(training): 126ms
+(training): 127ms
+(training): 97ms
+(training): 102ms
+(rescoring): 239ms
+Fetched 21 documents
+Training on 22 +ve docs and 230 -ve docs
+(training): 100ms
+(rescoring): 269ms
+Fetched 19 documents
+Training on 112 +ve docs and 119 -ve docs
+(training): 76ms
+(rescoring): 270ms
+Fetched 19 documents
+Training on 115 +ve docs and 116 -ve docs
+(training): 110ms
+(rescoring): 212ms
+(rescoring): 211ms
+(rescoring): 218ms
+Fetched 19 documents
+(rescoring): 203ms
+Fetched (rescoring): 211Fetched ms
+Fetched 1921 documents
+Fetched 19 documents
+ documents
+13 documents
+Training on 130 +ve docs and 101 -ve docs
+Training on 131 +ve docs and 100 -ve docs
+Training on 114 +ve docs and 117 -ve docs
+Training on 82 +ve docs and 170 -ve docs
+Training on 66 +ve docs and 114 -ve docs
+(rescoring): 247ms
+Fetched 21 documents
+Training on 85 +ve docs and 167 -ve docs
+(training): 71ms
+(training): 72ms
+(training): 122ms
+(rescoring): 272ms
+Fetched 21 documents
+Training on 148 +ve docs and 104 -ve docs
+(training): 122ms
+(training): 128ms
+(training): 91ms
+(rescoring): 263ms
+Fetched 24 documents
+Training on 31 +ve docs and 245 -ve docs
+(training): 117ms
+(training): 78ms
+(rescoring): 267ms
+Fetched 21 documents
+Training on 129 +ve docs and 123 -ve docs
+(training): 292ms
+(rescoring): 239ms
+Fetched 21 documents(rescoring): 240ms
+Fetched 24 documents
+
+Training on 100 +ve docs and 176 -ve docs
+Training on 151 +ve docs and 101 -ve docs
+(rescoring): 261ms
+Fetched 21 documents
+Training on 132 +ve docs and 120 -ve docs
+(rescoring): 248ms
+Fetched 21 documents
+Training on 131 +ve docs and 121 -ve docs
+(training): 119ms
+(rescoring): 260ms
+Fetched (rescoring): 227ms
+Fetched 24 documents
+21 documents
+Training on 98 +ve docs and 178 -ve docs
+Training on 152 +ve docs and 100 -ve docs
+(training): 98ms
+(training): 129ms
+(training): 107ms
+(training): 100ms
+(rescoring): 269ms
+Fetched 24 documents
+Training on 171 +ve docs and 105 -ve docs
+(training): 134ms
+(rescoring): 269ms
+Fetched 27 documents
+Training on 44 +ve docs and 259 -ve docs
+(training): 147ms
+(rescoring): 248ms
+Fetched 15 documents
+Training on 71 +ve docs and 124 -ve docs
+(training): 86ms
+(training): 128ms
+(rescoring): 256ms
+Fetched 24 documents
+Training on 147 +ve docs and 129 -ve docs
+(rescoring): 256ms
+Fetched 27 documents
+Training on 108 +ve docs and 195 -ve docs
+((rescoring): 244ms
+Fetched 24 documents
+rescoring): 268ms
+Fetched 24 documents
+Training on 147 +ve docs and 129 -ve docs
+Training on 174 +ve docs and 102 -ve docs
+(training): 95ms
+(rescoring): 230ms
+(rescoring): 246ms
+Fetched 27 documentsFetched 24 documents
+
+Training on 150 +ve docs and 126 -ve docs
+Training on 106 +ve docs and 197 -ve docs
+(training): 125ms
+(training): 273ms
+(rescoring): 298ms
+Fetched 24 documents
+Training on 176 +ve docs and 100 -ve docs
+(training): 134ms
+(training): 146ms
+(training): 125ms
+(training): 146ms
+(rescoring): 284ms
+Fetched 30 documents
+Training on 56 +ve docs and 277 -ve docs
+(rescoring): 292ms
+Fetched 27 documents
+Training on 198 +ve docs and 105 -ve docs
+(training): 76ms
+(training): 152ms
+(rescoring): 282ms
+Fetched 27 documents
+Training on 162 +ve docs and 141 -ve docs
+(rescoring): 274ms
+Fetched 30 documents
+Training on 121 +ve docs and 212 -ve docs
+(training): 145ms
+(rescoring): 256ms
+Fetched 17 documents
+Training on 88 +ve docs and 124 -ve docs
+(rescoring): 248ms
+Fetched 27 documents
+Training on 201 +ve docs and 102 -ve docs
+(rescoring): 246ms
+Fetched 27 documents
+(rescoring): 241ms
+Fetched 30 documents
+Training on 161 +ve docs and 142 -ve docs
+Training on 116 +ve docs and 217 -ve docs
+(training): 132ms
+(rescoring): 262ms
+Fetched 27 documents
+Training on 170 +ve docs and 133 -ve docs
+(training): 122ms
+(training): 97ms
+(rescoring): 254ms
+Fetched 33 documents
+Training on 70 +ve docs and 296 -ve docs
+(training): 124ms
+(training): 161ms
+(rescoring): 267ms
+Fetched 27 documents
+Training on 203 +ve docs and 100 -ve docs
+(training): 62ms
+(training): 157ms
+(rescoring): 271ms
+Fetched 30 documents
+Training on 228 +ve docs and 105 -ve docs
+(training): 290ms
+(rescoring): 256ms
+Fetched 30 documents
+Training on 182 +ve docs and 151 -ve docs
+(training): 164ms
+(rescoring): 246ms
+(rescoring): 258ms
+Fetched 33 documents
+Fetched 33 documents
+Training on 123 +ve docs and 243 -ve docs
+Training on 130 +ve docs and 236 -ve docs
+(training): 123ms
+(rescoring): 256ms
+Fetched 30 documents
+Training on 180 +ve docs and 153 -ve docs
+(rescoring): 238ms
+Fetched 30 documents
+Training on 231 +ve docs and 102 -ve docs
+(training): 110ms
+(training): 104ms
+(rescoring): 271ms
+Fetched 37 documents
+Training on 88 +ve docs and 315 -ve docs
+(training): 124ms
+(rescoring): 277ms
+Fetched 30 documents
+Training on 196 +ve docs and 137 -ve docs
+(training): 126ms
+(training): 127ms
+(training): 89ms
+(rescoring): 298ms
+Fetched 19 documents
+Training on 105 +ve docs and 126 -ve docs
+(rescoring): 261ms
+Fetched 30 documents
+Training on 233 +ve docs and 100 -ve docs
+(training): 145ms
+(rescoring): 275ms
+Fetched 33 documents
+Training on 259 +ve docs and 107 -ve docs
+(rescoring): 282ms
+Fetched 33 documents
+Training on 207 +ve docs and 159 -ve docs
+(training): 77ms
+(rescoring): 269ms
+Fetched 37 documents
+Training on 128 +ve docs and 275 -ve docs
+(rescoring): 257ms
+Fetched 37 documents
+Training on 134 +ve docs and 269 -ve docs
+(training): 154ms
+(rescoring): 269ms
+Fetched 33 documents
+Training on 199 +ve docs and 167 -ve docs
+(rescoring): 281ms
+Fetched 33 documents
+Training on 264 +ve docs and 102 -ve docs
+(training): 115ms
+(rescoring): 279ms
+Fetched 41 documents
+Training on 111 +ve docs and 333 -ve docs
+(training): 108ms
+(training): 297ms
+(training): 131ms
+(rescoring): 270ms
+Fetched 33 documents
+Training on 224 +ve docs and 142 -ve docs
+(training): 126ms
+(training): 90ms
+(training): 146ms
+(rescoring): 259ms
+Fetched 37 documents
+Training on 295 +ve docs and 108 -ve docs
+(rescoring): 250ms
+Fetched 33 documents
+Training on 266 +ve docs and 100 -ve docs
+(training): 143ms
+(rescoring): 245ms
+(rescoring): 269ms
+Fetched 41 documents
+Fetched 37 documents
+Training on 133 +ve docs and 311 -ve docs
+Training on 234 +ve docs and 169 -ve docs
+(training): 110ms
+(rescoring): 257ms
+Fetched 41 documents
+(rescoring): 263ms
+Fetched 21 documents
+Training on 112 +ve docs and 140 -ve docs
+Training on 142 +ve docs and 302 -ve docs
+(training): 162ms
+(rescoring): 236ms
+Fetched 46 documents
+(rescoring): 246ms
+Fetched 37 documents
+Training on 213 +ve docs and 190 -ve docs
+Training on 140 +ve docs and 350 -ve docs
+(training): 99ms
+(training): 116ms
+(rescoring): 271ms
+Fetched 37 documents
+Training on 301 +ve docs and 102 -ve docs
+(training): 116ms
+(training): 92ms
+(rescoring): 243ms
+Fetched 37 documents
+Training on 244 +ve docs and 159 -ve docs
+(training): 152ms
+(rescoring): 258ms
+Fetched 41 documents
+Training on 335 +ve docs and 109 -ve docs
+(training): 170ms
+(rescoring): 248ms
+Fetched 37 documents
+Training on 303 +ve docs and 100 -ve docs
+(training): 141ms
+(training): 310ms
+(rescoring): 270ms
+Fetched 46 documents
+(running_time): 7885ms
+(rescoring): 267ms
+Fetched 41 documents
+Training on 261 +ve docs and 183 -ve docs
+(training): 128ms
+(rescoring): 239ms
+Fetched 46 documents
+Training on 152 +ve docs and 338 -ve docs
+(rescoring): 274ms
+Fetched 51 documents
+Training on 172 +ve docs and 369 -ve docs
+(training): 135ms
+(rescoring): 246ms
+Fetched 41 documents
+Training on 228 +ve docs and 216 -ve docs
+(training): 79ms
+(training): 112ms
+(training): 99ms
+(rescoring): 271ms
+Fetched 41 documents
+Training on 342 +ve docs and 102 -ve docs
+(training): 130ms
+(rescoring): 287ms
+Fetched 41 documents
+Training on 272 +ve docs and 172 -ve docs
+(rescoring): 287ms
+Fetched 24 documents
+Training on 133 +ve docs and 143 -ve docs
+(rescoring): 249ms
+Fetched 46 documents
+Training on 379 +ve docs and 111 -ve docs
+(training): 124ms
+(rescoring): 253ms
+Fetched 41 documents
+(rescoring): 215ms
+Fetched 46 documents
+(rescoring): 231ms
+Fetched 51 documents
+Training on 343 +ve docs and 101 -ve docs
+Training on 288 +ve docs and 202 -ve docs
+Training on 163 +ve docs and 378 -ve docs
+(training): 100ms
+(training): 119ms
+(rescoring): 257ms
+Fetched 57 documents
+Training on 196 +ve docs and 402 -ve docs
+(training): 119ms
+(training): 133ms
+(training): 157ms
+(rescoring): 263ms
+Fetched 46 documents
+Training on 234 +ve docs and 256 -ve docs
+(training): 108ms
+(training): 87ms
+(rescoring): 253ms
+Fetched 46 documents
+(training): 321ms
+Training on 388 +ve docs and 102 -ve docs
+(rescoring): 251ms
+Fetched 51 documents(rescoring): 244ms
+Fetched 46 documents
+
+Training on 304 +ve docs and 186 -ve docs
+Training on 428 +ve docs and 113 -ve docs
+(training): 87ms
+(training): 156ms
+(rescoring): 290ms
+Fetched 51 documents
+Training on 314 +ve docs and 227 -ve docs
+(rescoring): 255ms
+Fetched 46(rescoring): 279ms
+ documents
+Fetched 57 documents
+Training on 388 +ve docs and 102 -ve docs
+Training on 170 +ve docs and 428 -ve docs
+(training): 127ms
+(rescoring): 258ms
+Fetched 63 documents
+Training on 227 +ve docs and 434 -ve docs
+(rescoring): 231ms
+Fetched 51 documents
+Training on 242 +ve docs and 299 -ve docs
+(training): 101ms
+(rescoring): 277ms
+Fetched 27 documents
+Training on 137 +ve docs and 166 -ve docs
+(training): 129ms
+(training): 118ms
+(training): 176ms
+(training): 119ms
+(rescoring): 238ms
+Fetched 51 documents
+Training on 336 +ve docs and 205 -ve docs
+(rescoring): 222ms
+Fetched 51 documents
+Training on 439 +ve docs and 102 -ve docs
+(rescoring): 262ms
+Fetched 57 documents
+Training on 482 +ve docs and 116 -ve docs
+(training): 88ms
+(training): 121ms
+(rescoring): 251ms
+Fetched 57 documents
+Training on 344 +ve docs and 254 -ve docs
+(training): 108ms
+(rescoring): 269(rescoring): 236ms
+(rescoring): 223ms
+Fetched 51 documents
+Fetched 70 documents
+ms
+Fetched 63 documents
+(running_time): 9040ms
+Training on 439 +ve docs and 102 -ve docs
+Training on 265 +ve docs and 466 -ve docs
+(training): 335ms
+(rescoring): 273ms
+Fetched 57 documents
+Training on 248 +ve docs and 350 -ve docs
+(training): 118ms
+(training): 125ms
+(rescoring): 242ms
+Fetched 57 documents
+Training on 367 +ve docs and 231 -ve docs
+(training): 98ms
+(training): 190ms
+(rescoring): 258ms
+Fetched 57 documents
+Training on 495 +ve docs and 103 -ve docs
+(rescoring): 241ms
+Fetched 63 documents
+Training on 544 +ve docs and 117 -ve docs
+(training): 127ms
+(rescoring): 211ms
+Fetched 30 documents
+Training on 148 +ve docs and 185 -ve docs
+(training): 101ms
+(rescoring): 241ms
+Fetched 63 documents
+Training on 366 +ve docs and 295 -ve docs
+(training): 100ms
+(rescoring): 218ms
+Fetched 77 documents
+Training on 301 +ve docs and 507 -ve docs
+(training): 117ms
+(rescoring): 273ms
+Fetched 63 documents
+(running_time): 9472ms
+(rescoring): 243ms
+Fetched 57 documents
+Training on 495 +ve docs and 103 -ve docs
+(training): 137ms
+(rescoring): 246ms
+Fetched 63 documents
+(rescoring): 208ms
+Fetched 63 documents
+Training on 399 +ve docs and 262 -ve docs
+Training on 558 +ve docs and 103 -ve docs
+(training): 303ms
+(rescoring): 248ms
+Fetched 70 documents
+Training on 612 +ve docs and 119 -ve docs
+(training): 153ms
+(training): 109ms
+(training): 141ms
+(rescoring): 235ms
+Fetched 70 documents
+Training on 399 +ve docs and 332 -ve docs
+(training): 116ms
+(rescoring): 229ms
+Fetched 85 documents
+Training on 346 +ve docs and 547 -ve docs
+(rescoring): 220ms
+Fetched 33 documents
+(training): 121ms
+Training on 157 +ve docs and 209 -ve docs
+(rescoring): 200ms
+Fetched 63 documents
+Training on 558 +ve docs and 103 -ve docs
+(training): 144ms
+(rescoring): 241ms
+Fetched 70 documents
+Training on 430 +ve docs and 301 -ve docs
+(rescoring): 244ms
+Fetched 70 documents
+Training on 628 +ve docs and 103 -ve docs
+(rescoring): 215ms
+Fetched 77 documents
+Training on 683 +ve docs and 125 -ve docs
+(training): 127ms
+(training): 100ms
+(rescoring): 208ms
+Fetched 77 documents
+Training on 419 +ve docs and 389 -ve docs
+(training): 112ms
+(training): 130ms
+(training): 78ms
+(rescoring): 274ms
+Fetched 94 documents
+Training on 396 +ve docs and 591 -ve docs
+(training): 362ms
+(rescoring): 252ms
+Fetched 70 documents
+Training on 626 +ve docs and 105 -ve docs
+(rescoring): 213ms
+Fetched 77 documents
+Training on 462 +ve docs and 346 -ve docs
+(rescoring): 210ms
+Fetched 77 documents
+Training on 705 +ve docs and 103 -ve docs
+(training): 108ms
+(rescoring): 216ms
+Fetched 85 documents
+Training on 765 +ve docs and 128 -ve docs
+(training): 132ms
+(training): 137ms
+(rescoring): 241ms
+Fetched 85 documents
+Training on 444 +ve docs and 449 -ve docs
+(training): 79ms
+(rescoring): 207ms
+Fetched 37 documents
+Training on 157 +ve docs and 246 -ve docs
+(training): 168ms
+(training): 75ms
+(rescoring): 210ms
+Fetched 104 documents
+Training on 454 +ve docs and 637 -ve docs
+(rescoring): 203ms
+(rescoring): 216ms
+Fetched 77 documents
+Fetched 85 documents
+Training on 698 +ve docs and 110 -ve docs
+Training on 488 +ve docs and 405 -ve docs
+(rescoring): 238ms
+Fetched 94 documents
+Training on 857 +ve docs and 130 -ve docs
+(rescoring): 211ms
+Fetched 85 documents
+(rescoring): 208ms
+Fetched 94 documents
+Training on 790 +ve docs and 103 -ve docs
+Training on 458 +ve docs and 529 -ve docs
+(training): 151ms
+(training): 117ms
+(training): 146ms
+(training): 115ms
+(training): 332ms
+(training): 105ms
+(training): 150ms
+(rescoring): 211(rescoring): 242ms
+ms
+Fetched 94 documents
+Fetched 115 documents
+Training on 511 +ve docs and 476 -ve docs
+Training on 513 +ve docs and 693 -ve docs
+(rescoring): 213ms
+Fetched 85 documents
+Training on 781 +ve docs and 112 -ve docs
+(rescoring): 205ms
+(rescoring): 214ms
+Fetched 41 documents
+Fetched 104 documents
+Training on 162 +ve docs and 282 -ve docs
+Training on 959 +ve docs and 132 -ve docs
+(rescoring): 231ms
+Fetched 104 documents
+Training on 475 +ve docs and 616 -ve docs
+(training): 109ms
+(training): 126ms
+(rescoring): 235ms
+Fetched 94 documents
+Training on 883 +ve docs and 104 -ve docs
+(training): 128ms
+(training): 126ms
+(training): 192ms
+(training): 148ms
+(rescoring): 205ms
+Fetched 104 documents
+Training on 538 +ve docs and 553 -ve docs
+(rescoring): 231ms
+Fetched 127 documents
+Training on 572 +ve docs and 761 -ve docs
+(training): 335ms
+(rescoring): 206ms
+Fetched 115 documents
+Training on 1072 +ve docs and 134 -ve docs
+(training): 130ms
+(rescoring): 238ms
+Fetched 115 documents
+Training on 497 +ve docs and 709 -ve docs
+(training): 146ms
+(rescoring): 285ms
+Fetched 94 documents
+Training on 873 +ve docs and 114 -ve docs
+(training): 138ms
+(rescoring): 249ms
+Fetched 104 documents
+Training on 984 +ve docs and 107 -ve docs
+(training): 133ms
+(rescoring): 285(rescoring): 224ms
+ms
+Fetched 46 documents
+Fetched 115 documents
+(running_time): 11558ms
+Training on 553 +ve docs and 653 -ve docs
+(training): 191ms
+(rescoring): 209ms
+(rescoring): 228ms
+Fetched 140 documentsFetched 127 documents
+
+Training on 1194 +ve docs and 139 -ve docs
+Training on 642 +ve docs and 831 -ve docs
+(training): 203ms
+(training): 114ms
+(rescoring): 210ms
+Fetched 127 documents
+Training on 509 +ve docs and 824 -ve docs
+(training): 115ms
+(training): 156ms
+(rescoring): 210ms
+Fetched 104 documents
+Training on 963 +ve docs and 128 -ve docs
+(training): 117ms
+(rescoring): 240ms
+Fetched 115 documents
+Training on 1094 +ve docs and 112 -ve docs
+(rescoring): 219ms
+Fetched 127 documents
+Training on 570 +ve docs and 763 -ve docs
+(rescoring): 223ms
+Fetched 140 documents
+Training on 1330 +ve docs and 143 -ve docs
+(training): 178ms
+(rescoring): 223ms
+Fetched 154 documents
+Training on 707 +ve docs and 920 -ve docs
+(training): 112ms
+(training): 140ms
+(rescoring): 205ms
+Fetched 140 documents
+(running_time): 12014ms
+(training): 120ms
+(training): 130ms
+(rescoring): 224ms
+Fetched 115 documents
+Training on 1055 +ve docs and 151 -ve docs
+(rescoring): 203ms
+Fetched (rescoring): 197ms
+Fetched 127140 documents
+ documents
+Training on 592 +ve docs and 881 -ve docs
+Training on 1218 +ve docs and 115 -ve docs
+(training): 88ms
+(rescoring): 218ms
+Fetched 154 documents
+Training on 1476 +ve docs and 151 -ve docs
+(rescoring): 213ms
+Fetched 170 documents
+Training on 786 +ve docs and 1011 -ve docs
+(training): 153ms
+(training): 175ms
+(training): 107ms
+(training): 132ms
+(rescoring): 205ms
+Fetched 154 documents
+(running_time): 12504ms
+(rescoring): 205ms
+Fetched 140 documents
+Training on 1351 +ve docs and 122 -ve docs
+(rescoring): 214ms
+Fetched 127 documents
+Training on 1148 +ve docs and 185 -ve docs
+(rescoring): 210ms
+Fetched 170 documents
+Training on 1638 +ve docs and 159 -ve docs
+(rescoring): 204ms
+Fetched 187 documents
+Training on 860 +ve docs and 1124 -ve docs
+(training): 133ms
+(training): 94ms
+(training): 205ms
+(training): 117ms
+(rescoring): 208ms
+Fetched 154 documents
+Training on 1503 +ve docs and 124 -ve docs
+(rescoring): 207ms
+Fetched 187 documents
+Training on 1820 +ve docs and 164 -ve docs
+(rescoring): 218ms
+Fetched 140 documents
+Training on 1200 +ve docs and 273 -ve docs
+(rescoring): 217ms
+Fetched 206 documents
+Training on 931 +ve docs and 1259 -ve docs
+(training): 123ms
+(training): 156ms
+(training): 127ms
+(rescoring): 212ms
+Fetched 206 documents
+(training): 242ms
+Training on 2017 +ve docs and 173 -ve docs
+(rescoring): 214ms
+Fetched 170 documents
+Training on 1665 +ve docs and 132 -ve docs
+(rescoring): 206ms
+Fetched 227 documents
+Training on 1011 +ve docs and 1406 -ve docs
+(training): 102ms
+(training): 147ms
+(rescoring): 202ms
+Fetched 154 documents
+Training on 1222 +ve docs and 405 -ve docs
+(training): 127ms
+(rescoring): 204ms
+Fetched 227 documents
+Training on 2226 +ve docs and 191 -ve docs
+(rescoring): 210ms
+Fetched 187 documents
+Training on 1834 +ve docs and 150 -ve docs
+(training): 115ms
+(rescoring): 202ms
+Fetched 250 documents
+Training on 1077 +ve docs and 1590 -ve docs
+(training): 255ms
+(training): 153ms
+(training): 125ms
+(rescoring): 204ms
+Fetched 250 documents
+Training on 2460 +ve docs and 207 -ve docs
+(rescoring): 200ms
+Fetched 170 documents
+Training on 1239 +ve docs and 558 -ve docs
+(training): 116ms
+(rescoring): 216ms
+Fetched 206 documents
+Training on 2021 +ve docs and 169 -ve docs
+(rescoring): 216ms
+Fetched 275 documents
+Training on 1164 +ve docs and 1778 -ve docs
+(training): 131ms
+(training): 159ms
+(training): 286ms
+(rescoring): 200ms
+Fetched 275 documents
+Training on 2715 +ve docs and 227 -ve docs
+(training): 106ms
+(rescoring): 205ms
+Fetched 303 documents
+Training on 1256 +ve docs and 1989 -ve docs
+(rescoring): 204ms
+Fetched 227 documents
+Training on 2215 +ve docs and 202 -ve docs
+(rescoring): 214ms
+Fetched 187 documents
+Training on 1240 +ve docs and 744 -ve docs
+(rescoring): 200ms
+Fetched 303 documents
+Training on 2996 +ve docs and 249 -ve docs
+(training): 155ms
+(training): 156ms
+(training): 109ms
+(training): 278ms
+(rescoring): 202ms
+Fetched 334 documents
+Training on 1346 +ve docs and 2233 -ve docs
+(rescoring): 206ms
+Fetched 250 documents
+Training on 2426 +ve docs and 241 -ve docs
+(rescoring): 210ms
+Fetched 334 documents
+Training on 3290 +ve docs and 289 -ve docs
+(training): 171ms
+(rescoring): 210ms
+Fetched 206 documents
+Training on 1242 +ve docs and 948 -ve docs
+(training): 177ms
+(training): 134ms
+(rescoring): 216ms
+Fetched 368 documents
+Training on 1456 +ve docs and 2491 -ve docs
+(rescoring): 206ms
+Fetched 275 documents
+Training on 2662 +ve docs and 280 -ve docs
+(rescoring): 204ms
+Fetched 368 documents
+Training on 3636 +ve docs and 311 -ve docs
+(training): 320ms
+(training): 148ms
+(training): 114ms
+(training): 172ms
+(rescoring): 216ms
+Fetched 227 documents
+Training on 1242 +ve docs and 1175 -ve docs
+(rescoring): 213ms
+Fetched 405 documents
+Training on 1553 +ve docs and 2799 -ve docs
+(rescoring): 219ms
+(rescoring): 225ms
+Fetched 405 documents
+Fetched 303 documents
+Training on 2882 +ve docs and 363 -ve docs
+Training on 3988 +ve docs and 364 -ve docs
+(training): 129ms
+(training): 179ms
+(training): 178ms
+(training): 345ms
+(rescoring): 207ms
+Fetched 446 documents
+Training on 4360 +ve docs and 438 -ve docs
+(rescoring): 208ms
+Fetched 446 documents
+Training on 1624 +ve docs and 3174 -ve docs
+(rescoring): 222ms
+Fetched 334 documents
+Training on 3129 +ve docs and 450 -ve docs
+(training): 135ms
+(rescoring): 212ms
+Fetched 250 documents
+Training on 1242 +ve docs and 1425 -ve docs
+(training): 166ms
+(training): 175ms
+(rescoring): 208ms
+Fetched 491 documents
+Training on 4762 +ve docs and 527 -ve docs
+(rescoring): 205ms
+Fetched 491 documents
+(running_time): 16254ms
+(rescoring): 220ms
+Fetched 368 documents
+Training on 3338 +ve docs and 609 -ve docs
+(training): 323ms
+(training): 147ms
+(training): 174ms
+(rescoring): 205ms
+Fetched 275 documents
+(running_time): 16543ms
+(rescoring): 206ms
+Fetched 541 documents
+Training on 5186 +ve docs and 644 -ve docs
+(training): 127ms
+(rescoring): 204ms
+Fetched 405 documents
+Training on 3575 +ve docs and 777 -ve docs
+(training): 177ms
+(rescoring): 209ms
+Fetched 596 documents
+Training on 5624 +ve docs and 802 -ve docs
+(training): 136ms
+(rescoring): 206ms
+Fetched 446 documents
+Training on 3792 +ve docs and 1006 -ve docs
+(rescoring): 208ms
+Fetched 656 documents
+Training on 6084 +ve docs and 998 -ve docs
+(training): 192ms
+(training): 129ms
+(rescoring): 201ms
+Fetched 491 documents
+Training on 3995 +ve docs and 1294 -ve docs
+(rescoring): 205ms
+Fetched 722 documents
+Training on 6539 +ve docs and 1265 -ve docs
+(training): 189ms
+(training): 142ms
+(rescoring): 201ms
+Fetched 541 documents
+Training on 4162 +ve docs and 1668 -ve docs
+(rescoring): 201ms
+Fetched 795 documents
+Training on 6982 +ve docs and 1617 -ve docs
+(training): 198ms
+(training): 154ms
+(rescoring): 203ms
+Fetched 596 documents
+Training on 4304 +ve docs and 2122 -ve docs
+(rescoring): 204ms
+Fetched 875 documents
+Training on 7397 +ve docs and 2077 -ve docs
+(training): 153ms
+(training): 201ms
+(rescoring): 203ms
+Fetched 963 documents
+Training on 7748 +ve docs and 2689 -ve docs
+(rescoring): 206ms
+Fetched 656 documents
+Training on 4412 +ve docs and 2670 -ve docs
+(training): 163ms
+(training): 207ms
+(rescoring): 198ms
+Fetched 1060 documents
+Training on 8062 +ve docs and 3435 -ve docs
+(rescoring): 200ms
+Fetched 722 documents
+Training on 4510 +ve docs and 3294 -ve docs
+(training): 166ms
+(training): 205ms
+(rescoring): 197ms
+Fetched 1166 documents
+Training on 8374 +ve docs and 4289 -ve docs
+(rescoring): 203ms
+Fetched 795 documents
+Training on 4574 +ve docs and 4025 -ve docs
+(training): 175ms
+(training): 217ms
+(rescoring): 200ms
+Fetched 1283 documents
+Training on 8574 +ve docs and 5372 -ve docs
+(rescoring): 200ms
+Fetched 875 documents
+Training on 4631 +ve docs and 4843 -ve docs
+(training): 169ms
+(rescoring): 201ms
+Fetched 1412 documents
+(training): 220ms
+Training on 8798 +ve docs and 6560 -ve docs
+(training): 176ms
+(rescoring): 200ms
+Fetched 963 documents
+(running_time): 20375ms
+(rescoring): 200ms
+Fetched 1554 documents
+Training on 8923 +ve docs and 7989 -ve docs
+(training): 173ms
+(rescoring): 203ms
+Fetched 1710 documents
+Training on 9067 +ve docs and 9555 -ve docs
+(training): 173ms
+(rescoring): 199ms
+Fetched 1881 documents
+(running_time): 21328ms
+(BMI_CLI): 25483ms
+Total Scoring Time = 8859
+Total Training Time = 4765.4
+Total Running Time = 13697.3
+0.75 Running Time = 9321.9
+0.75 Effort  = 0.930144
+Recall at 1  = 0.678714
+Recall at 1.5  = 0.801095
+Recall at 2  = 0.860511
