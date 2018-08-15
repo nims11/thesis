@@ -2,34 +2,38 @@
 \label{chap:dataset}
 
 \section{Dataset}
-Unless specified, all our experiments were done using the \texttt{athome1} test
-collection from the TREC 2015 Total Recall track~\cite{roegiest2015trec}. The
-collection has 290,099 documents and 10 topics. The documents are redacted
-emails from Jeb Bush's eight year tenure as Governor of Florida. There are
-an average of 4398 documents labelled as relevant per topic. The topics are described in
-Table~\ref{tab:topics}. The \texttt{athome1} test collection is suitable for
-evaluating high recall systems due to the extensive judgments available for its
-topics.
+Our experiments were performed using multiple \texttt{athome} test collections.
 
-\begin{table}[h]
-\centering
-\caption{List of \texttt{athome1} topics}
-\label{tab:topics}
-\begin{tabular}{|c|c|c|}
-\hline
-\textbf{Topic ID} & \textbf{Description} & \textbf{Relevant Documents} \\ \hline \hline
-athome100 & School and Preschool Funding & 4542 \\ \hline
-athome101 & Judicial Selection & 5836 \\ \hline
-athome102 & Capital Punishment & 1624 \\ \hline
-athome103 & Manatee Protection & 5725 \\ \hline
-athome104 & New medical schools & 227 \\ \hline
-athome105 & Affirmative Action & 3635 \\ \hline
-athome106 & Terri Schiavo & 17135 \\ \hline
-athome107 & Tort Reform & 2375 \\ \hline
-athome108 & Manatee County & 2375 \\ \hline
-athome109 & Scarlet Letter Law & 506 \\ \hline
-\end{tabular}
-\end{table}
+The \texttt{athome1} and \texttt{athome4} collections were used in the TREC 2015 and 2016 Total Recall
+Track~\cite{roegiest2015trec,grossman2016trec}, respectively. Both consist of
+290,099 documents, which are redacted emails from Jeb Bush's eight year tenure
+as the Governor of Florida. \texttt{athome1} has 10 topics with an average 4398
+documents labelled as relevant per topic. \texttt{athome4} has 34 topics with an
+average of 1059.44 documents labelled as relevant per topic. The topics for
+\texttt{athome1} and \texttt{athome4} are described in
+Table~\ref{tab:topics_athome1} and~\ref{tab:topics_athome4}, respectively.
+
+\texttt{athome2} and \texttt{athome3} collections were used in the TREC 2015
+Total Recall Track~\cite{roegiest2015trec} as well as in the TREC 2015 Dynamic
+Domain Track~\cite{yang2015overview}. \texttt{athome2}, or the \textit{Illicit
+Goods Collection}, consists of 465,147 web forum threads from
+BlackHatWorld\footnote{\url{https://www.blackhatworld.com/}} and
+Hack Forums\footnote{\url{https://hackforums.net/}}. It has 10 topics with an
+average of 2000.5 documents labelled as relevant per topic. \texttt{athome3}, or
+the \textit{Local Politics Collection}, consists of 902,434 news article from
+various sources in United States and Canada. It has 10 topics with an
+average of 642.9 documents labelled as relevant per topic. The topics for
+\texttt{athome2} and \texttt{athome3} are described in
+Table~\ref{tab:topics_athome2} and~\ref{tab:topics_athome3}, respectively.
+
+The \texttt{athome} test collections are suitable for evaluating high recall
+systems due to the extensive judgments available for their topics. They were
+used in the Total Recall tracks, which evaluated participating systems similar
+to how we evaluate different refresh strategies. Moreover, some of the
+\texttt{athome} collections were assessed (\texttt{athome1}) or re-assessed
+(\texttt{athome2} and \texttt{athome3}) using Continuous Active Learning based
+methods. These factors make the \texttt{athome} collections a suitable choice of
+dataset to conduct our experiments on.
 
 % gain curve
 
@@ -57,7 +61,8 @@ defined as
 
 Using absolute values of review effort can cause an imbalance among the recall
 values of individual topics. This is due to uneven number of relevant documents
-present across different topics (see Table~\ref{tab:topics}). Instead of
+present across different topics (see
+Table~\ref{tab:topics_athome1}-\ref{tab:topics_athome4}). Instead of
 absolute effort, we use normalized effort $E_{norm}$ for analyzing results.
 $E_{norm}$ is calculated by dividing the absolute review effort by the total
 number of relevant documents. The maximum normalized review effort in our
@@ -110,3 +115,112 @@ answer are:
 The simulations were run across the 10
 \texttt{athome1} topics and the reported metrics were averaged over them. The
 maximum review effort was set to $500$.
+
+
+
+\begin{table}[h]
+\centering
+\caption{List of \texttt{athome1} topics}
+\label{tab:topics_athome1}
+\begin{tabular}{|c|c|c|}
+\hline
+\textbf{Topic ID} & \textbf{Description} & \textbf{Relevant Documents} \\ \hline \hline
+athome100 & School and Preschool Funding & 4542 \\ \hline
+athome101 & Judicial Selection & 5836 \\ \hline
+athome102 & Capital Punishment & 1624 \\ \hline
+athome103 & Manatee Protection & 5725 \\ \hline
+athome104 & New medical schools & 227 \\ \hline
+athome105 & Affirmative Action & 3635 \\ \hline
+athome106 & Terri Schiavo & 17135 \\ \hline
+athome107 & Tort Reform & 2375 \\ \hline
+athome108 & Manatee County & 2375 \\ \hline
+athome109 & Scarlet Letter Law & 506 \\ \hline
+\end{tabular}
+\end{table}
+
+\begin{table}[h]
+\centering
+\caption{List of \texttt{athome2} topics}
+\label{tab:topics_athome2}
+\begin{tabular}{|c|c|c|}
+\hline
+\textbf{Topic ID} & \textbf{Description} & \textbf{Relevant Documents} \\ \hline \hline
+athome2052 & paying for amazon book reviews                   & 265 \\ \hline
+athome2108 & CAPTCHA Services                                 & 661 \\ \hline
+athome2129 & Facebook Accounts                                & 589 \\ \hline
+athome2130 & Surely bitcoins can be used                      & 2299 \\ \hline
+athome2134 & paypal accounts                                  & 252 \\ \hline
+athome2158 & \begin{tabular}[x]{@{}c@{}}
+Using TOR for anonymous \\browsing on the internet
+\end{tabular} & 1256 \\ \hline
+athome2225 & Rootkits                                         & 182 \\ \hline
+athome2322 & Web Scraping                                     & 9517 \\ \hline
+athome2333 & article spinner spinning                         & 4805 \\ \hline
+athome2461 & Offshore Host Sites                              & 179 \\ \hline
+\end{tabular}
+\end{table}
+
+\begin{table}[h]
+\centering
+\caption{List of \texttt{athome3} topics}
+\label{tab:topics_athome3}
+\begin{tabular}{|c|c|c|}
+\hline
+\textbf{Topic ID} & \textbf{Description} & \textbf{Relevant Documents} \\ \hline \hline
+athome3089 & pickton murders                     & 255 \\ \hline
+athome3133 & pacific gateway                     & 113 \\ \hline
+athome3226 & traffic enforcement cameras         & 2094 \\ \hline
+athome3290 & rooster turkey chicken nuisance     & 26 \\ \hline
+athome3357 & occupy vancouver                    & 629 \\ \hline
+athome3378 & rob mckenna gubernatorial candidate & 66 \\ \hline
+athome3423 & rob ford cut the waist              & 76 \\ \hline
+athome3431 & kingston mills lock murders         & 1111 \\ \hline
+athome3481 & fracking                            & 2036 \\ \hline
+athome3484 & paul and cathy lee martin           & 23 \\ \hline
+\end{tabular}
+\end{table}
+
+\begin{table}[h]
+\centering
+\caption{List of \texttt{athome4} topics}
+\label{tab:topics_athome4}
+\begin{tabular}{|c|c|c|}
+\hline
+\textbf{Topic ID} & \textbf{Description} & \textbf{Relevant Documents} \\ \hline \hline
+athome401 & Summer Olympics                   & 229 \\ \hline
+athome402 & Space                             & 647 \\ \hline
+athome403 & Bottled Water                     & 1091 \\ \hline
+athome404 & Eminent Domain                    & 548 \\ \hline
+athome405 & ewt Gingrich                      & 122 \\ \hline
+athome406 & Felon Disenfranchisement          & 131 \\ \hline
+athome407 & Faith-Based Initiatives           & 1587 \\ \hline
+athome408 & Invasive Species                  & 116 \\ \hline
+athome409 & Climate Change                    & 206 \\ \hline
+athome410 & Condominiums                      & 1354 \\ \hline
+athome411 & "Stand Your Ground"               & 89 \\ \hline
+athome412 & 2000 Recount                      & 1422 \\ \hline
+athome413 & James V. Crosby                   & 552 \\ \hline
+athome414 & Medicaid Reform                   & 841 \\ \hline
+athome415 & George W. Bush                    & 12106 \\ \hline
+athome416 & Marketing                         & 1452 \\ \hline
+athome417 & Movie Gallery                     & 5952 \\ \hline
+athome418 & War Preparations                  & 187 \\ \hline
+athome419 & Lost Foster Child Rilya Wilson    & 1989 \\ \hline
+athome420 & Billboards                        & 742 \\ \hline
+athome421 & Traffic Cameras                   & 21 \\ \hline
+athome422 & Non-Resident Aliens (NRA)         & 33 \\ \hline
+athome423 & National Rifle Association (NRA)  & 286 \\ \hline
+athome424 & Gulf Drilling                     & 500 \\ \hline
+athome425 & Civil Rights Act of 2003          & 718 \\ \hline
+athome426 & Jeffrey Goldhagen                 & 121 \\ \hline
+athome427 & Slot Machines                     & 246 \\ \hline
+athome428 & New Stadiums and Arenas           & 466 \\ \hline
+athome429 & Cuban Child, Elian Gonzales       & 828 \\ \hline
+athome430 & Restraints and Helmets            & 999 \\ \hline
+athome431 & Agency Credit Ratings             & 150 \\ \hline
+athome432 & Gay Adoption                      & 140 \\ \hline
+athome433 & Abstinence                        & 112 \\ \hline
+athome434 & Bacardi Trademark Lobbying        & 38 \\ \hline
+\end{tabular}
+\end{table}
+
