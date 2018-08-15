@@ -40,7 +40,7 @@ dataset to conduct our experiments on.
 \section{Evaluation}
 \label{sec:eval}
 
-All our experiments were conducted across all the 10 \texttt{athome1} topics.
+For each dataset, our experiments were conducted across all the its topics.
 When reporting the outcome of each experiment, we averaged the results over
 these topics. A combination of experiment conditions (such as refresh strategy
 and its parameters) and a topic is referred as
@@ -76,26 +76,32 @@ curve for a topic is a plot of recall (y-axis) against the normalized review
 effort ($E_{norm} = \frac{E}{R}$), where $E$ is the number of judgments made
 since the beginning of the simulation and $R$ is the total number of relevant
 documents for that topic. We get the average gain curve by averaging the recall
-over the 10 topics. For the sake of readability, we also report certain points
+over all the topics. For the sake of readability, we also report certain points
 of interest from the plots as a table. Specifically, we compare different
 refresh strategies based on their recall values when $E_{norm} \in \{1,1.5,2\}$.
-We also report the effort required to reach $75\%$ recall.
+We also report the effort required to reach $75\%$ recall. To measure the
+statistical significance of differences between refresh strategies, we use the paired
+sign-test on the above measures.
 
 % timings
 To measure the computational efficiency, we record the running time of the
 simulation. Different refresh strategies are compared based on the running time
-of the simulation averaged over the 10 topics.
+of the simulation averaged over all the topics.
+
+We performed our experiments on multiple datasets. In addition to reporting
+the above-mentioned metrics for each dataset, we also aggregate these metrics
+using macro-averages. Metrics are averaged over topics for
+each dataset, which are then averaged over datasets.
 
 
 \section{Runtime Environment}
 
 We used the command line interface of the CAL implementation discussed in
 Chapter~\ref{chap:implementation} to run our experiments. We ran our experiments
-on a google cloud instance with 9 GB memory and ten vCPUs (2.00 GHz Intel Xeon
+on a google cloud instance with 11 GB memory and twelve vCPUs (2.00 GHz Intel Xeon
 Processor). We ran a CAL process for each strategy and parameter setting
-sequentially. A CAL process simulated ten parallel tasks (one for each of the
-ten topics). For each task, we restricted the scoring of documents to a single
-thread.
+sequentially. A CAL process simulated a maximum of twelve parallel tasks. For
+each task, we restricted the scoring of documents to a single thread.
 
 \section{Secondary Experiments}
 \label{sec:secondary}

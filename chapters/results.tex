@@ -2,7 +2,7 @@
 \begin{table*}[]
 \centering
 \caption{Summary of results for \texttt{bmi\_refresh}, \texttt{static\_batch},
-\texttt{partial\_refresh} and \texttt{precision\_strategy}}
+    \texttt{partial\_refresh} and \texttt{precision\_strategy}}
 \label{table.summary}
 \resizebox{\textwidth}{!}{%
 \begin{tabular}{|c|c|c|c|c|c|}
@@ -19,41 +19,52 @@
 \begin{tabular}[x]{@{}c@{}}
     \textbf{Running Time}\\ \textbf{(in min)}
 \end{tabular} \\ \hline \hline
-\texttt{exponential}& 0.715 & 0.827 & 0.905 & 1.128 & 0.3 \\ \hline \hline
-\texttt{static(k=1)} & 0.750 & 0.865 & 0.926 & 1.021 & 59.59 \\ \hline
-\texttt{static(k=100)} &  0.704 & 0.807 & 0.887 & 1.167 & 0.59 \\ \hline \hline
-\texttt{partial(k=10,s=1000)} &  0.753 & 0.862 & 0.926 & 1.008 & 38.72 \\ \hline
-\texttt{partial(k=100,s=500)} &  0.753 & 0.855 & 0.923 & 1.022 & 36.62 \\ \hline
-\texttt{partial(k=100,s=1000)} &  0.754 & 0.856 & 0.922 & 1.013 & 36.52 \\ \hline
-\texttt{partial(k=100,s=5000)} &  0.756 & 0.855 & 0.921 & 1.016 & 37.19 \\ \hline
-\texttt{partial(k=500,s=1000)} &  0.700 & 0.785 & 0.815 & 1.324 & 35.77 \\
-\hline \hline
-\texttt{precision(m=25,p=0.4)} &  0.698 & 0.849 & 0.915 & 1.129 & 35.16 \\ \hline
-\texttt{precision(m=25,p=0.6)} &  0.735 & 0.859 & 0.923 & 1.059 & 39.44 \\ \hline
-\texttt{precision(m=25,p=0.8)} &  0.750 & 0.862 & 0.926 & 1.024 & 35.52 \\ \hline
-\texttt{precision(m=25,p=1.0)} &  0.752 & 0.865 & 0.926 & 1.014 & 36.96 \\
+\texttt{exponential} & 0.723 & 0.832 & 0.887 & 1.144 & 0.33 \\ \hline \hline
+\texttt{static(k=1)} & 0.754 & 0.856 & 0.900 & 1.092 & 34.19 \\ \hline
+\texttt{static(k=100)} & 0.652 & 0.769 & 0.840 & 1.257 & 0.34 \\ \hline
+% \texttt{static(k=1,it=100)} & 0.513 & 0.621 & 0.688 & 1.823 & 15.77 \\ \hline
+% \texttt{static(k=1,it=1000)} & 0.708 & 0.810 & 0.859 & 1.197 & 15.51 \\ \hline
+% \texttt{static(k=1,it=10000)} & 0.752 & 0.852 & 0.897 & 1.093 & 18.15 \\ \hline
+% \texttt{static(k=1,it=100000)} & 0.754 & 0.856 & 0.900 & 1.092 & 34.19 \\ \hline
 \hline
-% recency\_weighting($w=1$,$it=1000$) &  0.704 & 0.798 & 0.875 & 1.243 & 11.75 \\ \hline
-% recency\_weighting($w=2$,$it=1000$) &  0.705 & 0.806 & 0.884 & 1.219 & 11.66 \\ \hline
-% recency\_weighting($w=5$,$it=1000$) &  0.704 & 0.814 & 0.887 & 1.191 & 11.63\\ \hline
-% recency\_weighting($w=10$,$it=1000$) &  0.707 & 0.824 & 0.891 & 1.206 & 11.54\\ \hline
+\texttt{partial(k=10,s=1000)} & 0.753 & 0.855 & 0.899 & 1.089 & 18.22 \\ \hline
+% \texttt{partial(k=100,s=100)} & 0.675 & 0.790 & 0.852 & 1.220 & 16.39 \\ \hline
+\texttt{partial(k=100,s=500)} & 0.731 & 0.839 & 0.893 & 1.117 & 16.50 \\ \hline
+\texttt{partial(k=100,s=1000)} & 0.737 & 0.844 & 0.893 & 1.110 & 16.57 \\ \hline
+\texttt{partial(k=100,s=5000)} & 0.747 & 0.852 & 0.896 & 1.102 & 17.34 \\ \hline
+\texttt{partial(k=500,s=1000)} & 0.686 & 0.770 & 0.804 & 1.236 & 16.09 \\ \hline
+\hline
+\texttt{precision(p=0.4,m=25)} & 0.679 & 0.844 & 0.892 & 1.200 & 17.63 \\ \hline
+\texttt{precision(p=0.6,m=25)} & 0.728 & 0.853 & 0.897 & 1.137 & 20.22 \\ \hline
+\texttt{precision(p=0.8,m=25)} & 0.749 & 0.855 & 0.900 & 1.104 & 20.24 \\ \hline
+\texttt{precision(p=1.0,m=25)} & 0.755 & 0.855 & 0.900 & 1.092 & 21.02 \\ \hline
+% \hline
+% \texttt{recency(w=1,it=1000)} & 0.708 & 0.810 & 0.859 & 1.197 & 15.51 \\ \hline
+% \texttt{recency(w=5,it=1000)} & 0.715 & 0.817 & 0.865 & 1.195 & 16.73 \\ \hline
+% \texttt{recency(w=10,it=1000)} & 0.713 & 0.817 & 0.867 & 1.187 & 15.99 \\ \hline
+% \texttt{recency(w=25,it=1000)} & 0.712 & 0.819 & 0.866 & 1.186 & 16.05 \\ \hline
+% \hline
 \end{tabular}
 }
 \end{table*}
-
 In this chapter, we dive into the results of our experiments and compare
 all the refresh strategies.
 
 For sake of readability, we encode each strategy with their parameter
 settings as \texttt{strategy\_name(param1=x,$\ldots$)}. For reference, Table~\ref{table.strategies}
-lists all the strategies and their parameters. Table~\ref{table.summary} lists
-the results for different parameter settings of \texttt{exponential}, \texttt{static},
-\texttt{partial} and \texttt{precision}.
-We report the recall achieved at different values of effort, effort required to
+lists all the strategies and their parameters.
+We summarize the average results obtained across all the datasets for different
+parameter settings of \texttt{exponential}, \texttt{static},
+\texttt{partial} and \texttt{precision} in Table~\ref{table.summary}.
+Table~\ref{table.summary_athome1},~\ref{table.summary_athome2},~\ref{table.summary_athome3}
+and~\ref{table.summary_athome4} reports the dataset-level results obtained when
+using \texttt{athome1}, \texttt{athome2}, \texttt{athome3} and \texttt{athome4}
+, respectively.
+In these tables, we report the recall achieved at certain values of effort, effort required to
 achieve $75\%$ recall, and the average running time. Instead of absolute effort,
 we use normalized effort $E_{norm}$ as defined in Section~\ref{sec:eval}. For
 example, ``Avg. recall@($E_{norm}=1.5$)'' refers to the average recall achieved
-across all the topics when $1.5 \times R$ documents haven been judged, where $R$
+across all the topics when $1.5 \times R$ documents haven been assessed, where $R$
 is the total number of relevant documents for a topic.
 
 \subsection*{Static Batch Refresh Strategy}
@@ -61,9 +72,9 @@ Figure~\ref{plot:bmi_static} compares the gain curves for \texttt{exponential},
 \texttt{static(k=1)} and \texttt{static(k=100)}.
 
 With \texttt{static(k=1)}, CAL achieves noticeably higher recall of
-$0.750$ at $E_{norm} = 1$ than \texttt{exponential} which achieves $0.715$
+$0.754$ at $E_{norm} = 1$ than \texttt{exponential} which achieves $0.723$
 recall.  \texttt{static(k=100)} performs worse than
-\texttt{exponential}, managing to achieve $0.704$ recall at the same effort.
+\texttt{exponential}, managing to achieve $0.652$ recall at the same effort.
 These results establish that frequent refreshing improves the effectiveness of a
 CAL system.
 Although the batch sizes in BMI increases exponentially with time, it still does
@@ -72,7 +83,13 @@ better than \texttt{static(k = 100)}. \texttt{exponential} is also
 extremely cheap in terms of total computation cost since it only performs a
 logarithmic number of refreshes compared to the \texttt{static} strategies.
 The \texttt{exponential} simulation finished in less than a minute while
-\texttt{static(k=1)} took around an hour.
+\texttt{static(k=1)} took little more than a half hour.
+
+Using paired sign-test at the dataset level, \texttt{static(k=1)} was significantly better than
+\texttt{exponential} in terms of
+recall achieved at $E_{norm} \in \{1,1.5,2\}$
+($p < 0.01$ for \texttt{athome1} and \texttt{athome4}, $p < 0.05$ for
+\texttt{athome3}). However, for the \texttt{athome2} collection, the improvement was negligible.
 
 We evaluate rest of the refresh strategies by comparing them to
 \texttt{static(k = 1)}.
@@ -86,25 +103,31 @@ By fixing the partial set size \texttt{s=1000} and varying the full refresh
 period \texttt{k} in \texttt{partial}, we observe
 that for \texttt{k=10} and \texttt{k=100}, the difference in recall remains insignificant throughout the
 CAL process. Their recall values are also very similar to
-\texttt{static(k=1)}. They achieve $0.862$ and $0.855$ recall, respectively at
-$E_{norm} = 1.5$. For \texttt{k=500}, we observe $0.786$ recall at the
-same effort, which is worse than \texttt{exponential} ($0.826$). This is in
+\texttt{static(k=1)}. They achieve $0.855$ and $0.844$ recall, respectively at
+$E_{norm} = 1.5$. For \texttt{k=500}, we observe $0.770$ recall at the
+same effort, which is worse than \texttt{exponential} ($0.832$). This is in
 agreement with our previous observation that more frequent full refreshes
 increases CAL's effectiveness. \texttt{static(k=100)}
 consistently achieved lower recall when compared to \texttt{static(k=1)} while
-\texttt{partial(k=100,s=1000)} is as effective as the latter. Based
+\texttt{partial(k=100,s=1000)} is much closer to the latter. Based
 on this, it can be established that partial refreshing contributes noticeable
-improvements to recall over plain static batch refreshing with same batch size
-for full refresh.
+improvements to recall over plain static batch refreshing with same 
+frequency of full refresh.
 
 Figure~\ref{plot:partial2} shows the effect of varying partial set size
 \texttt{s} when the full refresh period \texttt{k} is fixed to $100$. We observe
 no changes to the recall values when the size of partial set is 500 or higher. At
 $s=100$, the decrease in performance is noticeable.
 
-\texttt{partial} simulations on average ran $37.97\%$ faster than
+\texttt{partial} simulations on average ran $50.44\%$ faster than
 \texttt{static(k=1)}. While achieving similar effectiveness as 
-\texttt{static(k=1)}, \texttt{partial(k=100,s=1000)} ran $38.71\%$ faster.
+\texttt{static(k=1)}, \texttt{partial(k=10,s=1000)} ran $46.71\%$ faster.
+
+\texttt{partial(k=10,s=1000)} was the optimal setting for all the datasets.
+For \texttt{athome1}, there was no significant difference ($p > 0.2$) between the recall
+achieved by
+\texttt{partial(k=100,s=1000)} and \texttt{partial(k=10,s=1000)} at $E_{norm}
+\in \{1,1.5,2\}$.
 
 \begin{figure}
     \centering
@@ -121,7 +144,7 @@ $s=100$, the decrease in performance is noticeable.
         \includegraphics[width=\textwidth]{plots/static_partial.pdf}
         \caption{Comparison of \texttt{partial} and \texttt{static(k=1)}. We fix
             the partial set size to 1000 and observe that
-            \texttt{partial(k=100,s=1000)} performs very similar to
+            \texttt{partial(k=10,s=1000)} performs very similar to
         \texttt{static(k=1)}.}
         \label{plot:partial1}
     \end{subfigure}
@@ -156,13 +179,13 @@ similarity of recall is also seen at $E_{norm} = 1.5$ and $E_{norm} = 2$. For
 \texttt{precision(p=1.0)}, CAL refreshes whenever a non-relevant judgment
 is made, thus behaving very similar to \texttt{static(k=1)}. For
 smaller values of \texttt{p}, we observe lower recall values during the initial stages; 
-$0.735$ and $0.698$ recall at $E_{norm} = 1$ for \texttt{precision(p=0.6)} and
+$0.728$ and $0.679$ recall at $E_{norm} = 1$ for \texttt{precision(p=0.6)} and
 \texttt{precision(p=0.4)}, respectively. However, they catch up to
 \texttt{static(k=1)} at higher $E_{norm}$, as relevant documents
-become rarer; $0.859$ and $0.849$ recall at $E_{norm} = 1.5$ for
+become rarer; $0.853$ and $0.844$ recall at $E_{norm} = 1.5$ for
 \texttt{precision(p=0.6)} and \texttt{precision(p=0.4)}, respectively.
 
-This strategy improved the running time of simulations by $38.3\%$
+This strategy improved the running time of simulations by $42.15\%$
 on average when compared to \texttt{static(k=1)}.
 \texttt{precision} strategies triggers lower number of refreshes during the
 beginning of the CAL process when relevant documents are easier to find. During
@@ -180,7 +203,8 @@ the \texttt{precision} strategies start refreshing as frequently as
 \begin{figure}
     \centering
     \includegraphics[width=0.6\textwidth]{plots/prec2.pdf}
-    \caption{Number of refreshes required to achieve a certain recall.}
+    \caption{Number of refreshes required to achieve a certain recall $-$
+    \texttt{athome1}}
     \label{plot:prec2}
 \end{figure}
 
@@ -204,9 +228,8 @@ reduces the quality of the classifier, and thus harming the effectiveness of
 CAL. Figure~\ref{plot:train} shows the impact of \texttt{it} on the gain curves
 of \texttt{static(k=1)}. We find that reducing \texttt{it} from 100000 to 10000
 didn't do any noticeable affect on the recall. This suggests that setting
-\texttt{it=10000} for all our experiments on \texttt{athome1} might have been
-enough for the classifier to converge. Beyond this, we observe noticeable loss in
-performance.
+\texttt{it=10000} for all our experiments might have been enough for the
+classifier to converge. Beyond this, we observe noticeable loss in performance.
 
 \begin{figure}
     \centering
@@ -228,25 +251,7 @@ performance.
     weighting}
 \end{figure}
 
-\subsection*{Recency Weighting}
-
-During our initial experiments, recency weighting seemed to have no
-impact on the recall values. By reducing the number of training iterations
-to $1000$, we introduced significant degradation in the system's effectiveness.
-Reducing the number of training iterations also
-reduced the running time of simulation by $59.3\%$ when compared to
-\texttt{static(k=1)}. We used recency weighting to see whether it could recover
-the lost effectiveness.  \texttt{recency(w=1,it=1000)} is equivalent to
-\texttt{static(k=1,it=1000)} and it achieves $0.704$ and $0.798$
-recall when $E_{norm}$ is equal to $1$ and $1.5$ respectively. By increasing
-$w$, we observe an increase in recall for $E_{norm} \in \{1.5, 2\}$. However,
-the recall is consistently lower when compared to
-\texttt{static(k=1,it=100000)}. For example, \texttt{recency(w=10,it=1000)} is
-only able to achieve $0.824$ recall at $E_{norm}=1.5$, while
-\texttt{static(k=1,it=100000)} achieves $0.865$ recall at the same effort.
-
-
-\begin{table*}[]
+\begin{table}[]
 \centering
 \caption{Summary of results for recency weighting}
 \label{table.recency}
@@ -265,59 +270,325 @@ only able to achieve $0.824$ recall at $E_{norm}=1.5$, while
 \begin{tabular}[x]{@{}c@{}}
     \textbf{Running Time}\\ \textbf{(in min)}
 \end{tabular} \\ \hline \hline
-\texttt{recency(w=1,it=1000)} &  0.704 & 0.798 & 0.875 & 1.243 & 23.75 \\ \hline
-\texttt{recency(w=2,it=1000)} &  0.705 & 0.806 & 0.884 & 1.219 & 23.15 \\ \hline
-\texttt{recency(w=5,it=1000)} &  0.704 & 0.814 & 0.887 & 1.191 & 26.71\\ \hline
-\texttt{recency(w=10,it=1000)} &  0.707 & 0.824 & 0.891 & 1.206 & 23.30\\ \hline
+\texttt{recency(w=1,it=1000)} & 0.708 & 0.810 & 0.859 & 1.197 & 15.51 \\ \hline
+\texttt{recency(w=5,it=1000)} & 0.715 & 0.817 & 0.865 & 1.195 & 16.73 \\ \hline
+\texttt{recency(w=10,it=1000)} & 0.713 & 0.817 & 0.867 & 1.187 & 15.99 \\ \hline
+\texttt{recency(w=25,it=1000)} & 0.712 & 0.819 & 0.866 & 1.186 & 16.05 \\ \hline
 \end{tabular}
 }
-\end{table*}
+\end{table}
 
-% \begin{figure}
-%  \centering 
-%  \includegraphics[width=1.0\linewidth]{static1.pdf}
-%  \caption{Static Refresh}
-%  \label{fig.static1}
-% \end{figure}
 
-% \begin{figure}
-%  \centering 
-%  \includegraphics[width=1.0\linewidth]{partial1.pdf}
-%  \caption{Partial Refresh}
-%  \label{fig.partial1}
-% \end{figure}
+\subsection*{Recency Weighting}
 
-% \begin{figure}
-%  \centering 
-%  \includegraphics[width=1.0\linewidth]{partial2.pdf}
-%  \caption{Partial Refresh}
-%  \label{fig.partial2}
-% \end{figure}
+During our initial experiments, recency weighting seemed to have no
+impact on the recall. By reducing the number of training iterations
+to $1000$, we introduced significant degradation in the system's effectiveness.
+Reducing the number of training iterations also
+reduced the running time of simulation by $54.64\%$ when compared to
+\texttt{static(k=1)}. We used recency weighting to recover
+the lost effectiveness.  \texttt{recency(w=1,it=1000)} is equivalent to
+\texttt{static(k=1,it=1000)} and it achieves $0.708$ and $0.810$
+recall when $E_{norm}$ is equal to $1$ and $1.5$ respectively. For
+$w > 1$, we observe a negligible increase in recall. Moreover,
+the recall is consistently lower when compared to
+\texttt{static(k=1,it=100000)}. For example, \texttt{recency(w=10,it=1000)} is
+only able to achieve $0.817$ recall at $E_{norm}=1.5$, while
+\texttt{static(k=1,it=100000)} achieves $0.856$ recall at the same effort.
+Table~\ref{table.recency} reports the effectiveness and efficiency measures
+averaged over all the datasets.
+Table~\ref{table.recency_athome1}-\ref{table.recency_athome4} reports the effectiveness and efficiency measures
+for individual datasets.
 
-% \begin{figure}
-%  \centering 
-%  \includegraphics[width=1.0\linewidth]{prec1.pdf}
-%  \caption{Precision Based Refresh}
-%  \label{fig.prec1}
-% \end{figure}
+\newpage
+\begin{table}[]
+\centering
+\caption{Summary of results for \texttt{bmi\_refresh}, \texttt{static\_batch},
+    \texttt{partial\_refresh} and \texttt{precision\_strategy} $-$
+\texttt{athome1} collection}
+\label{table.summary_athome1}
+\resizebox{\textwidth}{!}{%
+\begin{tabular}{|c|c|c|c|c|c|}
+\hline
+\textbf{Strategy} & \begin{tabular}[x]{@{}c@{}}
+    \textbf{Avg. Recall}\\ \textbf{@($E_{norm}$=1)}
+\end{tabular} & \begin{tabular}[x]{@{}c@{}}
+\textbf{Avg. Recall}\\ \textbf{@($E_{norm}$=1.5)}
+\end{tabular} & \begin{tabular}[x]{@{}c@{}}
+\textbf{Avg. Recall}\\ \textbf{@($E_{norm}$=2)}
+\end{tabular} & \begin{tabular}[x]{@{}c@{}}
+\textbf{$E_{norm}$ for}\\ \textbf{75\% recall}
+\end{tabular}&
+\begin{tabular}[x]{@{}c@{}}
+    \textbf{Running Time}\\ \textbf{(in min)}
+\end{tabular} \\ \hline \hline
+\texttt{exponential} & 0.718 & 0.826 & 0.904 & 1.081 & 0.30 \\ \hline \hline
+\texttt{static(k=1)} & 0.751 & 0.865 & 0.925 & 1.021 & 59.59 \\ \hline
+\texttt{static(k=100)} & 0.705 & 0.806 & 0.887 & 1.110 & 0.59 \\ \hline
+% \texttt{static(k=1,it=100)} & 0.486 & 0.610 & 0.699 & 1.778 & 20.83 \\ \hline
+% \texttt{static(k=1,it=1000)} & 0.704 & 0.797 & 0.875 & 1.168 & 22.07 \\ \hline
+% \texttt{static(k=1,it=10000)} & 0.748 & 0.856 & 0.922 & 1.024 & 28.88 \\ \hline
+% \texttt{static(k=1,it=100000)} & 0.751 & 0.865 & 0.925 & 1.021 & 59.59 \\ \hline
+\hline
+\texttt{partial(k=10,s=1000)} & 0.753 & 0.863 & 0.926 & 1.009 & 38.72 \\ \hline
+% \texttt{partial(k=100,s=100)} & 0.710 & 0.811 & 0.885 & 1.110 & 36.27 \\ \hline
+\texttt{partial(k=100,s=500)} & 0.753 & 0.855 & 0.923 & 1.022 & 36.62 \\ \hline
+\texttt{partial(k=100,s=1000)} & 0.754 & 0.856 & 0.922 & 1.013 & 36.52 \\ \hline
+\texttt{partial(k=100,s=5000)} & 0.756 & 0.855 & 0.921 & 1.016 & 37.19 \\ \hline
+\texttt{partial(k=500,s=1000)} & 0.701 & 0.785 & 0.815 & 1.130 & 35.77 \\ \hline
+\hline
+\texttt{precision(p=0.4,m=25)} & 0.700 & 0.849 & 0.917 & 1.127 & 35.16 \\ \hline
+\texttt{precision(p=0.6,m=25)} & 0.735 & 0.860 & 0.923 & 1.065 & 39.44 \\ \hline
+\texttt{precision(p=0.8,m=25)} & 0.749 & 0.862 & 0.927 & 1.030 & 35.52 \\ \hline
+\texttt{precision(p=1.0,m=25)} & 0.753 & 0.864 & 0.927 & 1.010 & 36.96 \\ \hline
+% \hline
+% \hline
+\end{tabular}
+}
+\end{table}
 
-% \begin{figure}
-%  \centering 
-%  \includegraphics[width=1.0\linewidth]{prec2.pdf}
-%  \caption{Precision Based Refresh}
-%  \label{fig.prec2}
-% \end{figure}
+\begin{table}[]
+\centering
+\caption{Summary of results for \texttt{bmi\_refresh}, \texttt{static\_batch},
+    \texttt{partial\_refresh} and \texttt{precision\_strategy} $-$
+\texttt{athome2} collection}
+\label{table.summary_athome2}
+\resizebox{\textwidth}{!}{%
+\begin{tabular}{|c|c|c|c|c|c|}
+\hline
+\textbf{Strategy} & \begin{tabular}[x]{@{}c@{}}
+    \textbf{Avg. Recall}\\ \textbf{@($E_{norm}$=1)}
+\end{tabular} & \begin{tabular}[x]{@{}c@{}}
+\textbf{Avg. Recall}\\ \textbf{@($E_{norm}$=1.5)}
+\end{tabular} & \begin{tabular}[x]{@{}c@{}}
+\textbf{Avg. Recall}\\ \textbf{@($E_{norm}$=2)}
+\end{tabular} & \begin{tabular}[x]{@{}c@{}}
+\textbf{$E_{norm}$ for}\\ \textbf{75\% recall}
+\end{tabular}&
+\begin{tabular}[x]{@{}c@{}}
+    \textbf{Running Time}\\ \textbf{(in min)}
+\end{tabular} \\ \hline \hline
+\texttt{exponential} & 0.679 & 0.801 & 0.861 & 1.281 & 0.23 \\ \hline \hline
+\texttt{static(k=1)} & 0.685 & 0.809 & 0.862 & 1.260 & 28.88 \\ \hline
+\texttt{static(k=100)} & 0.637 & 0.778 & 0.848 & 1.286 & 0.29 \\ \hline
+% \texttt{static(k=1,it=100)} & 0.418 & 0.521 & 0.593 & 2.246 & 14.97 \\ \hline
+% \texttt{static(k=1,it=1000)} & 0.630 & 0.749 & 0.806 & 1.348 & 15.36 \\ \hline
+% \texttt{static(k=1,it=10000)} & 0.684 & 0.804 & 0.856 & 1.258 & 16.70 \\ \hline
+% \texttt{static(k=1,it=100000)} & 0.685 & 0.809 & 0.862 & 1.260 & 28.88 \\ \hline
+\hline
+\texttt{partial(k=10,s=1000)} & 0.686 & 0.809 & 0.862 & 1.259 & 12.08 \\ \hline
+% \texttt{partial(k=100,s=100)} & 0.639 & 0.781 & 0.845 & 1.294 & 9.33 \\ \hline
+\texttt{partial(k=100,s=500)} & 0.669 & 0.806 & 0.861 & 1.288 & 9.74 \\ \hline
+\texttt{partial(k=100,s=1000)} & 0.681 & 0.808 & 0.861 & 1.276 & 10.39 \\ \hline
+\texttt{partial(k=100,s=5000)} & 0.686 & 0.810 & 0.861 & 1.255 & 12.10 \\ \hline
+\texttt{partial(k=500,s=1000)} & 0.614 & 0.726 & 0.784 & 1.395 & 9.69 \\ \hline
+\hline
+\texttt{precision(p=0.4,m=25)} & 0.657 & 0.807 & 0.861 & 1.281 & 12.64 \\ \hline
+\texttt{precision(p=0.6,m=25)} & 0.683 & 0.809 & 0.863 & 1.257 & 15.02 \\ \hline
+\texttt{precision(p=0.8,m=25)} & 0.690 & 0.811 & 0.862 & 1.243 & 16.65 \\ \hline
+\texttt{precision(p=1.0,m=25)} & 0.690 & 0.810 & 0.861 & 1.251 & 17.41 \\ \hline
+% \hline
+% \hline
+\end{tabular}
+}
+\end{table}
 
-% \begin{figure}
-%  \centering 
-%  \includegraphics[width=1.0\linewidth]{train1.pdf}
-%  \caption{Effect of number of training iterations}
-%  \label{fig.train1}
-% \end{figure}
+\begin{table}[]
+\centering
+\caption{Summary of results for \texttt{bmi\_refresh}, \texttt{static\_batch},
+    \texttt{partial\_refresh} and \texttt{precision\_strategy} $-$
+\texttt{athome3} collection}
+\label{table.summary_athome3}
+\resizebox{\textwidth}{!}{%
+\begin{tabular}{|c|c|c|c|c|c|}
+\hline
+\textbf{Strategy} & \begin{tabular}[x]{@{}c@{}}
+    \textbf{Avg. Recall}\\ \textbf{@($E_{norm}$=1)}
+\end{tabular} & \begin{tabular}[x]{@{}c@{}}
+\textbf{Avg. Recall}\\ \textbf{@($E_{norm}$=1.5)}
+\end{tabular} & \begin{tabular}[x]{@{}c@{}}
+\textbf{Avg. Recall}\\ \textbf{@($E_{norm}$=2)}
+\end{tabular} & \begin{tabular}[x]{@{}c@{}}
+\textbf{$E_{norm}$ for}\\ \textbf{75\% recall}
+\end{tabular}&
+\begin{tabular}[x]{@{}c@{}}
+    \textbf{Running Time}\\ \textbf{(in min)}
+\end{tabular} \\ \hline \hline
+\texttt{exponential} & 0.783 & 0.862 & 0.887 & 1.039 & 0.60 \\ \hline \hline
+\texttt{static(k=1)} & 0.827 & 0.878 & 0.899 & 0.990 & 32.45 \\ \hline
+\texttt{static(k=100)} & 0.614 & 0.719 & 0.789 & 1.369 & 0.33 \\ \hline
+% \texttt{static(k=1,it=100)} & 0.614 & 0.691 & 0.729 & 1.537 & 21.80 \\ \hline
+% \texttt{static(k=1,it=1000)} & 0.791 & 0.866 & 0.875 & 1.033 & 19.00 \\ \hline
+% \texttt{static(k=1,it=10000)} & 0.826 & 0.878 & 0.898 & 0.989 & 20.14 \\ \hline
+% \texttt{static(k=1,it=100000)} & 0.827 & 0.878 & 0.899 & 0.990 & 32.45 \\ \hline
+\hline
+\texttt{partial(k=10,s=1000)} & 0.818 & 0.878 & 0.895 & 0.992 & 11.99 \\ \hline
+% \texttt{partial(k=100,s=100)} & 0.672 & 0.776 & 0.831 & 1.245 & 10.29 \\ \hline
+\texttt{partial(k=100,s=500)} & 0.769 & 0.848 & 0.889 & 1.059 & 10.51 \\ \hline
+\texttt{partial(k=100,s=1000)} & 0.776 & 0.858 & 0.891 & 1.052 & 9.86 \\ \hline
+\texttt{partial(k=100,s=5000)} & 0.800 & 0.877 & 0.899 & 1.034 & 10.72 \\ \hline
+\texttt{partial(k=500,s=1000)} & 0.742 & 0.783 & 0.800 & 1.162 & 9.44 \\ \hline
+\hline
+\texttt{precision(p=0.4,m=25)} & 0.675 & 0.869 & 0.888 & 1.162 & 16.24 \\ \hline
+\texttt{precision(p=0.6,m=25)} & 0.774 & 0.875 & 0.894 & 1.066 & 18.32 \\ \hline
+\texttt{precision(p=0.8,m=25)} & 0.813 & 0.877 & 0.899 & 1.019 & 19.44 \\ \hline
+\texttt{precision(p=1.0,m=25)} & 0.831 & 0.878 & 0.902 & 0.996 & 20.12 \\ \hline
+% \hline
+% \hline
+\end{tabular}
+}
+\end{table}
 
-% \begin{figure}
-%  \centering 
-%  \includegraphics[width=1.0\linewidth]{rec1.pdf}
-%  \caption{Recency Weighting}
-%  \label{fig.recency1}
-% \end{figure}
+\begin{table}[]
+\centering
+\caption{Summary of results for \texttt{bmi\_refresh}, \texttt{static\_batch},
+    \texttt{partial\_refresh} and \texttt{precision\_strategy} $-$
+\texttt{athome4} collection}
+\label{table.summary_athome4}
+\resizebox{\textwidth}{!}{%
+\begin{tabular}{|c|c|c|c|c|c|}
+\hline
+\textbf{Strategy} & \begin{tabular}[x]{@{}c@{}}
+    \textbf{Avg. Recall}\\ \textbf{@($E_{norm}$=1)}
+\end{tabular} & \begin{tabular}[x]{@{}c@{}}
+\textbf{Avg. Recall}\\ \textbf{@($E_{norm}$=1.5)}
+\end{tabular} & \begin{tabular}[x]{@{}c@{}}
+\textbf{Avg. Recall}\\ \textbf{@($E_{norm}$=2)}
+\end{tabular} & \begin{tabular}[x]{@{}c@{}}
+\textbf{$E_{norm}$ for}\\ \textbf{75\% recall}
+\end{tabular}&
+\begin{tabular}[x]{@{}c@{}}
+    \textbf{Running Time}\\ \textbf{(in min)}
+\end{tabular} \\ \hline \hline
+\texttt{exponential} & 0.713 & 0.839 & 0.894 & 1.175 & 0.19 \\ \hline \hline
+\texttt{static(k=1)} & 0.754 & 0.872 & 0.913 & 1.098 & 15.85 \\ \hline
+\texttt{static(k=100)} & 0.651 & 0.772 & 0.837 & 1.262 & 0.15 \\ \hline
+% \texttt{static(k=1,it=100)} & 0.534 & 0.662 & 0.730 & 1.731 & 5.47 \\ \hline
+% \texttt{static(k=1,it=1000)} & 0.709 & 0.830 & 0.881 & 1.241 & 5.59 \\ \hline
+% \texttt{static(k=1,it=10000)} & 0.751 & 0.869 & 0.912 & 1.103 & 6.88 \\ \hline
+% \texttt{static(k=1,it=100000)} & 0.754 & 0.872 & 0.913 & 1.098 & 15.85 \\ \hline
+\hline
+\texttt{partial(k=10,s=1000)} & 0.754 & 0.871 & 0.913 & 1.098 & 10.07 \\ \hline
+% \texttt{partial(k=100,s=100)} & 0.679 & 0.794 & 0.848 & 1.230 & 9.67 \\ \hline
+\texttt{partial(k=100,s=500)} & 0.733 & 0.847 & 0.898 & 1.100 & 9.16 \\ \hline
+\texttt{partial(k=100,s=1000)} & 0.739 & 0.855 & 0.899 & 1.100 & 9.50 \\ \hline
+\texttt{partial(k=100,s=5000)} & 0.746 & 0.864 & 0.903 & 1.105 & 9.34 \\ \hline
+\texttt{partial(k=500,s=1000)} & 0.687 & 0.785 & 0.818 & 1.257 & 9.47 \\ \hline
+\hline
+\texttt{precision(p=0.4,m=25)} & 0.684 & 0.850 & 0.902 & 1.229 & 6.48 \\ \hline
+\texttt{precision(p=0.6,m=25)} & 0.721 & 0.867 & 0.909 & 1.162 & 8.09 \\ \hline
+\texttt{precision(p=0.8,m=25)} & 0.745 & 0.870 & 0.910 & 1.122 & 9.36 \\ \hline
+\texttt{precision(p=1.0,m=25)} & 0.747 & 0.869 & 0.909 & 1.112 & 9.60 \\ \hline
+% \hline
+% \hline
+\end{tabular}
+}
+\end{table}
+
+\begin{table}[]
+\centering
+\caption{Summary of results for recency weighting $-$ \texttt{athome1}}
+\label{table.recency_athome1}
+\resizebox{\textwidth}{!}{%
+\begin{tabular}{|c|c|c|c|c|c|}
+\hline
+\textbf{Strategy} & \begin{tabular}[x]{@{}c@{}}
+    \textbf{Avg. Recall}\\ \textbf{@($E_{norm}$=1)}
+\end{tabular} & \begin{tabular}[x]{@{}c@{}}
+\textbf{Avg. Recall}\\ \textbf{@($E_{norm}$=1.5)}
+\end{tabular} & \begin{tabular}[x]{@{}c@{}}
+\textbf{Avg. Recall}\\ \textbf{@($E_{norm}$=2)}
+\end{tabular} & \begin{tabular}[x]{@{}c@{}}
+\textbf{$E_{norm}$ for}\\ \textbf{75\% recall}
+\end{tabular}&
+\begin{tabular}[x]{@{}c@{}}
+    \textbf{Running Time}\\ \textbf{(in min)}
+\end{tabular} \\ \hline \hline
+\texttt{recency(w=1,it=1000)} & 0.704 & 0.797 & 0.875 & 1.168 & 22.07 \\ \hline
+\texttt{recency(w=5,it=1000)} & 0.705 & 0.813 & 0.887 & 1.192 & 26.71 \\ \hline
+\texttt{recency(w=10,it=1000)} & 0.708 & 0.824 & 0.891 & 1.155 & 23.30 \\ \hline
+\texttt{recency(w=25,it=1000)} & 0.708 & 0.827 & 0.893 & 1.148 & 23.15 \\ \hline
+\end{tabular}
+}
+\end{table}
+
+\begin{table}[]
+\centering
+\caption{Summary of results for recency weighting $-$ \texttt{athome2}}
+\label{table.recency_athome2}
+\resizebox{\textwidth}{!}{%
+\begin{tabular}{|c|c|c|c|c|c|}
+\hline
+\textbf{Strategy} & \begin{tabular}[x]{@{}c@{}}
+    \textbf{Avg. Recall}\\ \textbf{@($E_{norm}$=1)}
+\end{tabular} & \begin{tabular}[x]{@{}c@{}}
+\textbf{Avg. Recall}\\ \textbf{@($E_{norm}$=1.5)}
+\end{tabular} & \begin{tabular}[x]{@{}c@{}}
+\textbf{Avg. Recall}\\ \textbf{@($E_{norm}$=2)}
+\end{tabular} & \begin{tabular}[x]{@{}c@{}}
+\textbf{$E_{norm}$ for}\\ \textbf{75\% recall}
+\end{tabular}&
+\begin{tabular}[x]{@{}c@{}}
+    \textbf{Running Time}\\ \textbf{(in min)}
+\end{tabular} \\ \hline \hline
+\texttt{recency(w=1,it=1000)} & 0.630 & 0.749 & 0.806 & 1.348 & 15.36 \\ \hline
+\texttt{recency(w=5,it=1000)} & 0.631 & 0.751 & 0.810 & 1.355 & 15.70 \\ \hline
+\texttt{recency(w=10,it=1000)} & 0.633 & 0.751 & 0.812 & 1.352 & 15.46 \\ \hline
+\texttt{recency(w=25,it=1000)} & 0.633 & 0.752 & 0.809 & 1.348 & 15.97 \\ \hline
+\end{tabular}
+}
+\end{table}
+
+\begin{table}[]
+\centering
+\caption{Summary of results for recency weighting $-$ \texttt{athome3}}
+\label{table.recency_athome3}
+\resizebox{\textwidth}{!}{%
+\begin{tabular}{|c|c|c|c|c|c|}
+\hline
+\textbf{Strategy} & \begin{tabular}[x]{@{}c@{}}
+    \textbf{Avg. Recall}\\ \textbf{@($E_{norm}$=1)}
+\end{tabular} & \begin{tabular}[x]{@{}c@{}}
+\textbf{Avg. Recall}\\ \textbf{@($E_{norm}$=1.5)}
+\end{tabular} & \begin{tabular}[x]{@{}c@{}}
+\textbf{Avg. Recall}\\ \textbf{@($E_{norm}$=2)}
+\end{tabular} & \begin{tabular}[x]{@{}c@{}}
+\textbf{$E_{norm}$ for}\\ \textbf{75\% recall}
+\end{tabular}&
+\begin{tabular}[x]{@{}c@{}}
+    \textbf{Running Time}\\ \textbf{(in min)}
+\end{tabular} \\ \hline \hline
+\texttt{recency(w=1,it=1000)} & 0.791 & 0.866 & 0.875 & 1.033 & 19.00 \\ \hline
+\texttt{recency(w=5,it=1000)} & 0.808 & 0.869 & 0.880 & 1.022 & 18.87 \\ \hline
+\texttt{recency(w=10,it=1000)} & 0.799 & 0.862 & 0.881 & 1.025 & 19.54 \\ \hline
+\texttt{recency(w=25,it=1000)} & 0.800 & 0.864 & 0.879 & 1.035 & 19.52 \\ \hline
+\end{tabular}
+}
+\end{table}
+
+\begin{table}[]
+\centering
+\caption{Summary of results for recency weighting $-$ \texttt{athome4}}
+\label{table.recency_athome4}
+\resizebox{\textwidth}{!}{%
+\begin{tabular}{|c|c|c|c|c|c|}
+\hline
+\textbf{Strategy} & \begin{tabular}[x]{@{}c@{}}
+    \textbf{Avg. Recall}\\ \textbf{@($E_{norm}$=1)}
+\end{tabular} & \begin{tabular}[x]{@{}c@{}}
+\textbf{Avg. Recall}\\ \textbf{@($E_{norm}$=1.5)}
+\end{tabular} & \begin{tabular}[x]{@{}c@{}}
+\textbf{Avg. Recall}\\ \textbf{@($E_{norm}$=2)}
+\end{tabular} & \begin{tabular}[x]{@{}c@{}}
+\textbf{$E_{norm}$ for}\\ \textbf{75\% recall}
+\end{tabular}&
+\begin{tabular}[x]{@{}c@{}}
+    \textbf{Running Time}\\ \textbf{(in min)}
+\end{tabular} \\ \hline \hline
+\texttt{recency(w=1,it=1000)} & 0.709 & 0.830 & 0.881 & 1.241 & 5.59 \\ \hline
+\texttt{recency(w=5,it=1000)} & 0.715 & 0.834 & 0.883 & 1.212 & 5.63 \\ \hline
+\texttt{recency(w=10,it=1000)} & 0.711 & 0.831 & 0.885 & 1.217 & 5.65 \\ \hline
+\texttt{recency(w=25,it=1000)} & 0.707 & 0.834 & 0.882 & 1.214 & 5.58 \\ \hline
+\end{tabular}
+}
+\end{table}
