@@ -40,15 +40,14 @@ dataset to conduct our experiments on.
 \section{Evaluation}
 \label{sec:eval}
 
-For each dataset, our experiments were conducted across all the its topics.
-When reporting the outcome of each experiment, we averaged the results over
-these topics. A combination of experiment conditions (such as refresh strategy
-and its parameters) and a topic is referred as
-a ``task''. We use review effort as the stopping criteria for each task (step 11
-of Algorithm ~\ref{alg.cal}). One judgment is equal to one unit of reviewer's
-effort. The CAL process for a task stops whenever the number of judgments
-processed by the system is equal to the maximum effort.
+We describe the performance metrics we used to compare the
+effectiveness and efficiency of refresh strategies in the following sections.
+For each refresh strategy, these metrics were computed at the dataset level by
+averaging the topic-level metric for each topic in that dataset. These
+dataset-level metrics were further averaged (macro average of topic-level
+metrics) to compute the average metric for a refresh strategy.
 
+\subsubsection{Effectiveness}
 To measure the effectiveness of various refresh strategies, we ran a CAL simulation for
 each topic and strategy. We can compare different strategies based on the recall
 values they achieved at various values of effort. For each topic, the recall is
@@ -65,8 +64,7 @@ present across different topics (see
 Table~\ref{tab:topics_athome1}-\ref{tab:topics_athome4}). Instead of
 absolute effort, we use normalized effort $E_{norm}$ for analyzing results.
 $E_{norm}$ is calculated by dividing the absolute review effort by the total
-number of relevant documents. The maximum normalized review effort in our
-effectiveness experiments was set to $2$.
+number of relevant documents.
 
 The gain curve is a widely used method to evaluate high recall retrieval
 systems~\cite{roegiest2015trec,grossman2016trec,grossman2011overview}. It is a
@@ -75,23 +73,35 @@ curves to compare the effectiveness of different refresh strategies.  A gain
 curve for a topic is a plot of recall (y-axis) against the normalized review
 effort ($E_{norm} = \frac{E}{R}$), where $E$ is the number of judgments made
 since the beginning of the simulation and $R$ is the total number of relevant
-documents for that topic. We get the average gain curve by averaging the recall
-over all the topics. For the sake of readability, we also report certain points
-of interest from the plots as a table. Specifically, we compare different
-refresh strategies based on their recall values when $E_{norm} \in \{1,1.5,2\}$.
-We also report the effort required to reach $75\%$ recall. To measure the
-statistical significance of differences between refresh strategies, we use the paired
-sign-test on the above measures.
+documents for that topic. We get the dataset-level average gain curve by
+averaging the recall values over all its topics. We further average all the
+dataset-level recall values to obtain the average gain curve for a refresh
+strategy.
 
-% timings
+For the sake of readability, we also report certain points of interest from the
+gain curve in a tabular format. Specifically, we compare different refresh strategies based on
+their recall values when $E_{norm} \in \{1,1.5,2\}$.  We also report the effort
+required to reach $75\%$ recall.
+
+To measure the statistical significance of performance difference between two
+strategies, we use the Student's paired t-test on a performance metric (such as
+recall at $E_{norm} \in \{1,1.5,2\})$. When comparing two refresh strategies, we
+perform statistical significance tests separately for each dataset.
+
+\subsubsection{Efficiency}
+A combination of experiment conditions (such as refresh strategy and its
+parameters) and a topic is referred as a ``task''. We use review effort as the
+stopping criteria for each task (step 11 of Algorithm ~\ref{alg.cal}). One
+judgment is equal to one unit of reviewer's effort. The CAL process for a task
+stops whenever the number of judgments processed by the system is equal to the
+maximum effort. The maximum normalized review effort ($E_{norm}$) in our
+efficiency experiments was set to $2$.
+
 To measure the computational efficiency, we record the running time of the
 simulation. Different refresh strategies are compared based on the running time
-of the simulation averaged over all the topics.
-
-We performed our experiments on multiple datasets. In addition to reporting
-the above-mentioned metrics for each dataset, we also aggregate these metrics
-using macro-averages. Metrics are averaged over topics for
-each dataset, which are then averaged over datasets.
+of the simulation averaged over all the topics of a dataset. The dataset-level
+average running times are averaged to obtain the average running time of a
+strategy.
 
 
 \section{Runtime Environment}

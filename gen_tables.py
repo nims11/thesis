@@ -40,6 +40,7 @@ for dataset in datasets:
         print(dataset, strategy)
         data[dataset][strategy] = {}
         strategy_path = os.path.join(results_path, strategy)
+        strategy_path_2 = os.path.join(results_path+'.eff_at_recall', strategy)
         for parameter in parameters[strategy]:
             label = strategy
             if parameter:
@@ -55,6 +56,17 @@ for dataset in datasets:
                         val = val.strip()
                         if key in METRICS:
                             metrics[key] = float(val)
+
+            del metrics['0.75 Effort']
+            with open(os.path.join(strategy_path_2, parameter, 'log')) as logfile:
+                for line in logfile.read().splitlines()[-20:]:
+                    if '=' in line:
+                        key, val = line.strip().split('=')
+                        key = key.strip()
+                        val = val.strip()
+                        if key == '0.75 Effort':
+                            metrics[key] = float(val)
+
             assert(len(metrics) == 9)
             # Gather gain curve statistics
             topic_gain_curves = {}
@@ -70,14 +82,25 @@ for dataset in datasets:
                         else:
                             rel = 0
                         topic_gain_curves[topic].append(topic_gain_curves[topic][-1] + rel)
-                        if topic not in topic_eff_75 and topic_gain_curves[topic][-1] >= 0.75 * num_rels:
-                            topic_eff_75[topic] = len(topic_gain_curves[topic]) / num_rels
                 topic_gain_curves[topic] = [r/num_rels for r in topic_gain_curves[topic]]
-                if topic not in topic_eff_75:
-                    topic_eff_75[topic] = 2 / metrics['Recall at 2'] * 0.75
+
+                topic_gain_curves_tmp = [0]
+                with open(os.path.join(strategy_path_2, parameter, topic)) as f:
+                    for line in f:
+                        _, rel = line.strip().split()
+                        if int(rel) > 0:
+                            rel = 1
+                        else:
+                            rel = 0
+                        topic_gain_curves_tmp.append(topic_gain_curves_tmp[-1] + rel)
+                        if topic not in topic_eff_75 and topic_gain_curves_tmp[-1] >= 0.72 * num_rels:
+                            topic_eff_75[topic] = len(topic_gain_curves_tmp) / num_rels
+
+            assert(len(topic_eff_75) == len(topics[dataset]))
             metrics['r1'] = [topic_gain_curves[topic][int(1 * topics[dataset][topic]['rels'])] for topic in topics[dataset]]
             metrics['r1.5'] = [topic_gain_curves[topic][int(1.5 * topics[dataset][topic]['rels'])] for topic in topics[dataset]]
             metrics['r2'] = [topic_gain_curves[topic][int(1.99 * topics[dataset][topic]['rels'])] for topic in topics[dataset]]
+            metrics['eff0.75'] = [topic_eff_75[topic] for topic in topics[dataset]]
 
             gain_curve_x = []
             gain_curve_y = []
@@ -210,3 +233,11 @@ box = ax.get_position()
 ax.legend(loc='lower right', shadow=True)
 plt.savefig('./plots/recency.pdf', bbox_inches="tight")
 plt.close()
+
+import scipy.stats as stats
+def compare(a, b):
+     print('student t-test', stats.ttest_rel(a, b).pvalue)
+     print('wilcoxon', stats.wilcoxon(a, b).pvalue)
+     wins = sum(0 if aa <= bb else 1 for aa, bb in zip(a, b))
+     print('binomial', stats.binom_test(wins, len(a)), wins)
+
