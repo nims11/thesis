@@ -114,7 +114,7 @@ for dataset in datasets:
                 gain_curve_y.append(y_val)
                 R += 0.1
             metrics['gain_curve'] = (np.array(gain_curve_x), np.array(gain_curve_y))
-            metrics['0.75 Effort'] = sum(topic_eff_75.values()) / len(topic_eff_75)
+            # metrics['0.75 Effort'] = sum(topic_eff_75.values()) / len(topic_eff_75)
 
 
 average = {}
